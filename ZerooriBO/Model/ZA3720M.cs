@@ -25,7 +25,7 @@ namespace ZerooriBO
                 new XElement("ai_pageno", ""),
                 new XElement("as_sessionid", FilterData.ZaBase.SessionId),
                 new XElement("as_Option", ""),
-                new XElement("as_age", ""),
+                new XElement("as_location", ""),
                 new XElement("as_sortby", "")
                 ));
 
@@ -156,7 +156,7 @@ namespace ZerooriBO
                 new XElement("ai_pageno", FilterData.PageNo),
                 new XElement("as_sessionid",""),
                 new XElement("as_Option", FilterData.Catagory.ClasifdSpecDtlId),
-                new XElement("as_age", FilterData.Age.ValMembr),
+                new XElement("as_location", FilterData.Location.ValMembr),
                 new XElement("as_sortby", FilterData.SortBy.ValMembr)
                 ));
 

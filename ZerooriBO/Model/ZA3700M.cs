@@ -211,12 +211,12 @@ namespace ZerooriBO
                 new XElement("ai_pageno", FilterData.PageNo),
                 new XElement("as_sessionid",""),
                 new XElement("as_Option", FilterData.Catagory.MotorSpecDtlId),
-                new XElement("as_location", FilterData.Location.ValMembr<=0?null: FilterData.Location.ValMembr),
-                new XElement("as_sortby", FilterData.SortBy.ValMembr),
-				new XElement("ai_model", ""),
-				new XElement("ai_fuelType", ""),
-				new XElement("ai_color", ""),
-				new XElement("ai_bodyType", "")
+                new XElement("as_location", FilterData.Location.ValMembr  < 0?null: FilterData.Location.ValMembr),
+                new XElement("as_sortby", FilterData.SortBy.ValMembr < 0?null:FilterData.SortBy.ValMembr),
+				new XElement("ai_model",FilterData.Model.MotorSpecDtlId < 0?null:FilterData.Model.MotorSpecValue),
+				new XElement("ai_fuelType", FilterData.FuelType.MotorSpecDtlId < 0 ? null : FilterData.FuelType.MotorSpecValue),
+				new XElement("ai_color", FilterData.Color.MotorSpecDtlId < 0 ? null : FilterData.Color.MotorSpecValue),
+				new XElement("ai_bodyType", FilterData.BodyType.MotorSpecDtlId < 0 ? null : FilterData.BodyType.MotorSpecValue)
 				));
 
                 String XString = doc.ToString();

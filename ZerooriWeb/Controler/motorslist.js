@@ -160,6 +160,10 @@ $scope.SelectedData.SortBy = response.data.SortByCol[0];
 	$scope.FilterLocation = function () {
 		$scope.LoadData();
 	};
+	$scope.ApplyFilters = function () {
+		alert();
+		$scope.LoadData();
+	};
 	
 $scope.SelectedData.Location = response.data.LocationCol[0];
 var PageNo = parseInt(response.data.PageNoCol[0].DisPlyMembr);

@@ -215,45 +215,51 @@
             <div class="row">
                 <div class="col-lg-3">
 
-                    <div class="category-sec">
+					<div class="category-sec">
 
-                        <div class="form-group">
-                            <select class="form-control" id="sel4"
-                                    ng-model="SelectedData.BodyType"
-                                    ng-options="BodyType.MotorSpecValue for BodyType in BodyTypeCol track by BodyType.MotorSpecDtlId"></select>
-                        </div>
+						<div class="form-group">
+							<select class="form-control" id="sel4"
+									ng-model="SelectedData.BodyType"
+									ng-options="BodyType.MotorSpecValue for BodyType in BodyTypeCol track by BodyType.MotorSpecDtlId"></select>
+						</div>
 
-                        <div class="form-group">
-                            <select class="form-control" id="sel2"
-                                    ng-model="SelectedData.Model"
-                                    ng-options="Model.MotorSpecValue for Model in ModelCol track by Model.MotorSpecDtlId"></select>
-                        </div>
+						<div class="form-group">
+							<select class="form-control" id="sel2"
+									ng-model="SelectedData.Model"
+									ng-options="Model.MotorSpecValue for Model in ModelCol track by Model.MotorSpecDtlId"></select>
+						</div>
 
-                        <div class="form-group">
-                            <select class="form-control" id="sel1"
-                                    ng-model="SelectedData.Color"
-                                    ng-options="Color.MotorSpecValue for Color in ColorCol track by Color.MotorSpecDtlId"></select>
-                        </div>
+						<div class="form-group">
+							<select class="form-control" id="sel1"
+									ng-model="SelectedData.Color"
+									ng-options="Color.MotorSpecValue for Color in ColorCol track by Color.MotorSpecDtlId"></select>
+						</div>
 
-                        <div class="form-group">
-                            <select class="form-control" id="sel3"
-                                    ng-model="SelectedData.FuelType"
-                                    ng-options="FuelType.MotorSpecValue for FuelType in FuelTypeCol track by FuelType.MotorSpecDtlId"></select>
-                        </div>
+						<div class="form-group">
+							<select class="form-control" id="sel3"
+									ng-model="SelectedData.FuelType"
+									ng-options="FuelType.MotorSpecValue for FuelType in FuelTypeCol track by FuelType.MotorSpecDtlId"></select>
+						</div>
+
+						<div class="form-group">
+							<button type="button" class="btn btn-success" ng-click="ApplyFilters()">Search</button>
+
+						</div>
 
 
+						<div class="category-bg">
 
-                        <div class="category-bg">
+							<div class="list">
+								<ul ng-repeat="Brand in BrandCol">
+									<li><a href="#"><img src="{{Brand.MotorSpecImgPath}}" alt="" />{{Brand.MotorSpecValue}}</a></li>
 
-                            <div class="list">
-                                <ul ng-repeat="Brand in BrandCol">
-                                    <li><a href="#"><img src="{{Brand.MotorSpecImgPath}}" alt="" />{{Brand.MotorSpecValue}}</a></li>
+								</ul>
+							</div>
 
-                                </ul>
-                            </div>
+						</div>
 
-                        </div><!--category-bg--->
-                    </div><!--category-sec--->
+						<!--category-bg--->
+					</div><!--category-sec--->
 
                     <div class="category-mobile-sec">
                         <a class="btn-block catg-mob" data-toggle="collapse" href="#CatgClassifieds">Category List</a>
@@ -296,12 +302,12 @@
 
 											</ul>
 										</div>
-										<div class="category-bg">
 
-											
-											</div>
+										<div class="form-group">
+											<button type="button" class="btn btn-success" onclick="ApplyFilters()">Success</button>
 
-										</div><!--category-bg--->
+										</div>
+									</div><!--category-bg--->
 
 									</div>
                             </div><!--collapse--->
