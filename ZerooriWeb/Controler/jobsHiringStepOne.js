@@ -170,7 +170,7 @@
                     Init: JSON.stringify($scope.SelectedData)
                 }
             }).then(function successCallback(response) {
-
+				
                 if ($scope.isValidSave(response) && response.data.UserData.ZaBase.SessionId != "") {
                     $scope.SetStatus(true);
                     $scope.LoginStatusCaption = "Hi, " + response.data.UserData.ZaBase.UserName;
@@ -183,14 +183,15 @@
                     $cookies.remove($scope.ZaKey);
                     $cookies.put($scope.ZaKey, $scope.SessionId);
                     
-                    $scope.IndstryCol = response.data.IndstryCol;
+					$scope.IndstryCol = response.data.IndstryCol;
                     $scope.CompnySizeCol = response.data.CompnySizeCol;
                     $scope.EmploymntTypeCol = response.data.EmploymntTypeCol;
                     $scope.MonthlySalaryCol = response.data.MonthlySalaryCol;
                     $scope.ExprnceCol = response.data.ExprnceCol;
                     $scope.EductnLevlCol = response.data.EductnLevlCol;
                     $scope.ListedBycol = response.data.ListedBycol;
-                    $scope.CareervLevelCol = response.data.CareervLevelCol;
+					$scope.CareervLevelCol = response.data.CareervLevelCol;
+					$scope.SelectedData.CompnySize = response.data.CompnySizeCol;
                     
                     if (response.data.FrelncMast.CompnyName != undefined || response.data.FrelncMast.CompnyName != null) {
                         $scope.SelectedData.CompnyName = response.data.FrelncMast.CompnyName;
@@ -201,7 +202,8 @@
                         $scope.SelectedData.Addrs = response.data.FrelncMast.Addrs;
                         $scope.SelectedData.DescrpnStepOne = response.data.FrelncMast.DescrpnStepOne;
                         $scope.SelectedData.Indstry = response.data.FrelncMast.Indstry;
-                        $scope.SelectedData.CompnySize = response.data.FrelncMast.CompnySize;
+						$scope.SelectedData.CompnySize = response.data.FrelncMast.CompnySize;
+						
                     }
                     else {
                         $scope.SelectedData.Indstry = response.data.IndstryCol[0];
@@ -212,14 +214,21 @@
                         $scope.SelectedData.JobTitle = response.data.FrelncMast.JobTitle;
                         $scope.SelectedData.Neighbrhd = response.data.FrelncMast.Neighbrhd;
                         $scope.SelectedData.Location = response.data.FrelncMast.Location;
-                        $scope.SelectedData.DescrptnStepTwo = response.data.FrelncMast.DescrptnStepTwo;
-
+						$scope.SelectedData.DescrptnStepTwo = response.data.FrelncMast.DescrptnStepTwo;
                         $scope.SelectedData.EmplymntTyp = response.data.FrelncMast.EmplymntTyp;
                         $scope.SelectedData.MonthlySalary = response.data.FrelncMast.MonthlySalary;
                         $scope.SelectedData.EductnLvl = response.data.FrelncMast.EductnLvl;
                         $scope.SelectedData.ListedBy = response.data.FrelncMast.ListedBy;
                         $scope.SelectedData.CareerLvl = response.data.FrelncMast.CareerLvl;
-                        $scope.SelectedData.Exprnce = response.data.FrelncMast.Exprnce;
+						$scope.SelectedData.Exprnce = response.data.FrelncMast.Exprnce;
+						$scope.SelectedData.CompnySize = response.data.CompnySizeCol[0];
+						$scope.SelectedData.Indstry = response.data.IndstryCol[0];
+						$scope.SelectedData.EmplymntTyp = response.data.EmploymntTypeCol[0];
+						$scope.SelectedData.MonthlySalary = response.data.MonthlySalaryCol[0];
+						$scope.SelectedData.EductnLvl = response.data.EductnLevlCol[0];
+						$scope.SelectedData.ListedBy = response.data.ListedBycol[0];
+						$scope.SelectedData.CareerLvl = response.data.CareervLevelCol[0];
+						$scope.SelectedData.Exprnce = response.data.ExprnceCol[0];
                     }
                     else {
                         $scope.SelectedData.EmplymntTyp = response.data.EmploymntTypeCol[0];
@@ -287,10 +296,12 @@
                     params: {
                         SaveData: JSON.stringify($scope.SelectedData)
                     }
-                }).then(function successCallback(response) {
+				}).then(function successCallback(response)
+				{
                     if ($scope.isValidSave(response) ) {
                         $scope.SelectedData.CompnyJobMastId = response.data.CompnyJobMastId;
-                        $cookies.put("JobID", $scope.SelectedData.CompnyJobMastId);
+						$cookies.put("JobID", $scope.SelectedData.CompnyJobMastId);
+						console.log($cookies.get("JobID"));
 
                        // alert('You are Successfully Posted');
                         $scope.navigate("jobs-hiring-step-two");
@@ -401,8 +412,13 @@
         return true;
     }
 
-    $scope.SelectedData.CompnyJobMastId = $cookies.get('JobID');
-    $scope.SaveDataStepTwo = function () {
+	
+
+	$scope.SaveDataStepTwo = function ()
+	{
+		$scope.SelectedData.CompnyJobMastId = $cookies.get('JobID');
+		console.log($cookies.get('JobID'));
+		console.log($scope.isValidDataStepTwo());
         
         if ($scope.isValidDataStepTwo() && ($scope.SessionId != null && $scope.SessionId != ""))
         try {

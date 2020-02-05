@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* CSS Document */
 
 /*media  styles*/
@@ -677,7 +677,7 @@ margin: 0 0 10px 0;
 	}
 	
 	.jobs-items-list .image-hr-logo img{
-		height: 30px;
+		height: 116px;
 	}
 	
 	.jobs-items-list .box{

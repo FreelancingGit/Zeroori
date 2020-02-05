@@ -266,34 +266,37 @@
 
                         <div class="category-bg-mob">
                             <div class="collapse" id="CatgClassifieds">
-                                <div class="card card-body">
+								<div class="card card-body">
 
 
-                                    <div class="form-group">
-                                        <select class="form-control" id="sel2"
-                                                ng-model="SelectedData.Model"
-                                                ng-options="Model.MotorSpecValue for Model in ModelCol track by Model.MotorSpecDtlId"></select>
-                                    </div>
+									<div class="form-group">
+										<select class="form-control" id="sel2"
+												ng-model="SelectedData.Model"
+												ng-options="Model.MotorSpecValue for Model in ModelCol track by Model.MotorSpecDtlId"></select>
+									</div>
 
-                                    <div class="form-group">
-                                        <select class="form-control" id="sel1"
-                                                ng-model="SelectedData.Color"
-                                                ng-options="Color.MotorSpecValue for Color in ColorCol track by Color.MotorSpecDtlId"></select>
-                                    </div>
+									<div class="form-group">
+										<select class="form-control" id="sel1"
+												ng-model="SelectedData.Color"
+												ng-options="Color.MotorSpecValue for Color in ColorCol track by Color.MotorSpecDtlId"></select>
+									</div>
 
 
-                                    <div class="form-group">
-                                        <select class="form-control" id="sel3"
-                                                ng-model="SelectedData.FuelType"
-                                                ng-options="FuelType.MotorSpecValue for FuelType in FuelTypeCol track by FuelType.MotorSpecDtlId"></select>
-                                    </div>
+									<div class="form-group">
+										<select class="form-control" id="sel3"
+												ng-model="SelectedData.FuelType"
+												ng-options="FuelType.MotorSpecValue for FuelType in FuelTypeCol track by FuelType.MotorSpecDtlId"></select>
+									</div>
 
-                                    <div class="form-group">
-                                        <select class="form-control" id="sel4"
-                                                ng-model="SelectedData.BodyType"
-                                                ng-options="BodyType.MotorSpecValue for BodyType in BodyTypeCol track by BodyType.MotorSpecDtlId"></select>
-                                    </div>
+									<div class="form-group">
+										<select class="form-control" id="sel4"
+												ng-model="SelectedData.BodyType"
+												ng-options="BodyType.MotorSpecValue for BodyType in BodyTypeCol track by BodyType.MotorSpecDtlId"></select>
+									</div>
+									<div class="form-group">
+										<button type="button" class="btn btn-success" ng-click="ApplyFilters()">Search</button>
 
+									</div>
 									<div class="category-bg">
 
 										<div class="list">
@@ -303,13 +306,10 @@
 											</ul>
 										</div>
 
-										<div class="form-group">
-											<button type="button" class="btn btn-success" onclick="ApplyFilters()">Success</button>
 
-										</div>
 									</div><!--category-bg--->
 
-									</div>
+								</div>
                             </div><!--collapse--->
                         </div><!--category-bg--->
 

@@ -159,8 +159,10 @@
                 params: {
                     Init: JSON.stringify($scope.SelectedData)
                 }
-            }).then(function successCallback(response) {
-                if ($scope.isValidSave(response)) {
+			}).then(function successCallback(response)
+			{
+				if ($scope.isValidSave(response)) {
+					console.log(response.data);
                     $scope.isLoading = true;
                     if (response.data.UserData.FistNam != "") {
                         $scope.SetStatus(true);
