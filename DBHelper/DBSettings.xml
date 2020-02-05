@@ -1,0 +1,17 @@
+<Root>
+  
+  <DbProvider>1</DbProvider>  
+  
+	<OracleCon></OracleCon>
+  <MsSqlCon>Data Source=.\SQLEXPRESS;Initial Catalog=Zeroori;Integrated Security=True;MultipleActiveResultSets=True</MsSqlCon>
+  <!--<MsSqlCon>MH4RyCiXhhOSQ7qdn0WpQXWl5eyk1LHUG0TPMDQ8hJFOSQbx4zG4pTeuOm7HTis0HOBcR3NR3k8dEwP6gKtb3IGivzNuKHOyGWbGt3IreXKpIYDl4Z6t5ohI9JyuF+T4XzAMkipcmUs3s45wvkPfHc01TseutiRoqCwQAtWr6G0=</MsSqlCon>-->  
+  
+ 
+    
+</Root>
+
+<!-- DbProvider
+0   Oracle
+1   MSSql 
+2   MySql
+-->

@@ -1,0 +1,129 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content=""/>
+<meta name="keywords" content="">
+<title>ZEROORI</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/responsive.css" rel="stylesheet">
+	
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-cookies.min.js"></script>
+    <script src="Controler/propertiesstepTwo.js"></script>
+
+    <style>
+        .HCenter {
+            padding: inherit !important;
+            display: table-cell;
+            text-align: center;
+            vertical-align: middle;
+        }
+    </style>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="icon" href="images/fav.png" type="image/gif" sizes="16x16">
+</head>
+
+<body ng-app="ZerooriApp" ng-controller="propertiesstepTwo" ng-cloak>
+
+<div class="post-ad-sec">
+<div class="container">
+	   
+       <div class="post-ad-box">
+		   
+		   <div class="row justify-content-center">
+			   
+			<div class="col-md-6">
+				
+            <div class="post-ad-logo">
+			<a href="index.html"><img src="images/zerooripost.png" alt=""/></a>
+            </div>
+				
+				
+			<div class="login-user-name"><img class="btn-icon" src="images/icon-user-login-color-one.png" alt=""/>{{LoginStatusCaption}}</div>
+			<a class="btn-my-ad" href="#"><img class="btn-icon" src="images/icon-my-ads.png" alt=""/>My Ads</a>
+				
+            <div class="post-ad-header">
+                <h3>Please fill in your details</h3>
+            </div>
+
+				
+<div class="forms-post-sec">
+<form>
+<div class="form-bx">
+
+<div class="row">
+	
+<div class="form-group col-md-12">
+<input type="text" class="rent-post rent-post-motors" ng-model="SelectedData.Title" id="" placeholder="Title">
+</div>
+	
+<div class="form-group col-md-6">
+<select class="form-control" id="sel1" ng-model="SelectedData.Bedroom" ng-options="Bedroom.PropSpecValue for Bedroom in ViewData.BedroomCol track by Bedroom.PropSpecDtlId"></select>
+</div>
+	
+<div class="form-group col-md-6">
+<select class="form-control" id="sel1" ng-model="SelectedData.BathRoom" ng-options="BathRoom.PropSpecValue for BathRoom in ViewData.BathRoomCol track by BathRoom.PropSpecDtlId"></select>
+</div>
+	
+<div class="form-group col-md-6">
+<select class="form-control" id="sel1" ng-model="SelectedData.Size" ng-options="Size.PropSpecValue for Size in ViewData.SizeCol track by Size.PropSpecDtlId"></select>
+</div>
+	
+<div class="form-group col-md-6">
+<select class="form-control" id="sel1" ng-model="SelectedData.Furnished" ng-options="Furnished.PropSpecValue for Furnished in ViewData.FurnishedCol track by Furnished.PropSpecDtlId"></select>
+</div>
+	
+<div class="form-group col-md-6">
+<select class="form-control" id="sel1" ng-model="SelectedData.ApartmentFor" ng-options="ApartmentFor.PropSpecValue for ApartmentFor in ViewData.ApartmentForCol track by ApartmentFor.PropSpecDtlId"></select>
+</div>
+
+<div class="form-group col-md-6">
+<select class="form-control" id="sel1" ng-model="SelectedData.RentIsPaid" ng-options="RentIsPaid.PropSpecValue for RentIsPaid in ViewData.RentIsPaidCol track by RentIsPaid.PropSpecDtlId"></select>
+</div>
+	
+<div class="form-group col-md-6">
+<select class="form-control" id="sel1" ng-model="SelectedData.ListedBy" ng-options="ListedBy.PropSpecValue for ListedBy in ViewData.ListedByCol track by ListedBy.PropSpecDtlId"></select>
+</div>
+	
+<div class="form-group col-md-6">
+<select class="form-control" id="sel1" ng-model="SelectedData.Category" ng-options="Category.PropSpecValue for Category in ViewData.CategoryCol track by Category.PropSpecDtlId"></select>
+</div>
+	
+<div class="form-group col-md-12">
+<textarea class="form-control" ng-model="SelectedData.Description" rows="4" id="" placeholder="Description"></textarea>
+</div>
+	
+</div><!--row-->
+
+<button type="button"  ng-click="DoSave()" class="btn btn-submit">Next</button>
+	
+</div>	
+</form>	
+</div>
+				
+			</div><!--col-md-6-->
+		   </div><!--row-->
+		   
+<div class="footer-text">© Zeroori.com 2019, All Rights Reserved.</div>
+            
+       </div><!--post-ad-box-->
+    
+</div><!--container-->  
+</div><!--post-ad-sec-->
+
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/custom.js"></script>
+    
+</body>
+</html>

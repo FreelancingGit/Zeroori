@@ -1,0 +1,169 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="" />
+    <meta name="keywords" content="">
+    <title>ZEROORI</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+    <link rel="icon" href="images/fav.png" type="image/gif" sizes="16x16">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-cookies.min.js"></script>
+    <script src="Controler/frelncHiringStepOne.js?"></script>
+</head>
+
+<body ng-app="ZerooriApp" ng-controller="frelncHiringStepOne" ng-cloak>
+
+    <div class="post-ad-sec">
+        <div class="container">
+
+            <div class="post-ad-box">
+
+                <div class="row justify-content-center">
+
+                    <div class="col-lg-6 col-md-10">
+
+                        <div class="post-ad-logo">
+                            <a href="index.html"><img src="images/zeroori-logo-inner.png" alt="" /></a>
+                        </div>
+
+                        <div class="login-user-name"><img class="btn-icon" src="images/icon-user-login-color-one.png" alt="" />{{LoginStatusCaption}}</div>
+                        <a class="btn-my-ad" href="my-ads.html"><img class="btn-icon" src="images/icon-my-ads.png" alt="" />My Ads</a>
+
+                        <div class="post-ad-header">
+                            <h3>We manage everything and update you weekly</h3>
+                        </div>
+
+                        <div class="forms-post-sec">
+                            <form>
+                                <div class="form-bx">
+
+                                    <div class="row">
+
+                                        <div class="form-group col-md-12">
+                                            <input type="text" class="form-control" placeholder="Job Title" ng-model="SelectedData.JobTitle">
+                                        </div>
+
+                                        <div class="form-group col-md-6">
+                                            <select class="form-control" id="sel1" ng-model="SelectedData.EmplymntTyp"
+                                                    ng-options="EmplymntTyp.EmpJobValue for EmplymntTyp in EmploymntTypeCol track by EmplymntTyp.EmpJobDtlId"></select>
+                                            <!--<option>Employment Type</option>
+                                            <option>Full Time</option>
+                                            <option>Part Time</option>
+                                            <option>Trainee</option>
+                                            </select>-->
+                                        </div>
+
+                                        <div class="form-group col-md-6">
+                                            <select class="form-control" id="sel2" ng-model="SelectedData.MonthlySalary"
+                                                    ng-options="MonthlySalary.EmpJobValue for MonthlySalary in MonthlySalaryCol track by MonthlySalary.EmpJobDtlId"></select>
+                                               
+                                        </div>
+
+                                        <div class="form-group col-md-6">
+                                            <input type="text" class="form-control" placeholder="Neighbourhood" ng-model="SelectedData.Neighbrhd">
+                                        </div>
+
+                                        <div class="form-group col-md-6">
+                                            <select class="form-control" id="sel3" ng-model="SelectedData.Exprnce"
+                                                    ng-options="Exprnce.EmpJobValue for Exprnce in ExprnceCol track by Exprnce.EmpJobDtlId"></select>
+                                                
+                                        </div>
+
+                                        <div class="form-group col-md-6">
+                                            <select class="form-control" id="sel4" ng-model="SelectedData.EductnLvl"
+                                                    ng-options="EductnLvl.EmpJobValue for EductnLvl in EductnLevlCol track by EductnLvl.EmpJobDtlId"></select>
+                                                
+                                        </div>
+
+                                        <div class="form-group col-md-6">
+                                            <select class="form-control" id="sel5" ng-model="SelectedData.ListedBy"
+                                                    ng-options="ListedBy.EmpJobValue for ListedBy in ListedBycol track by ListedBy.EmpJobDtlId"></select>
+                                                
+                                        </div>
+
+                                        <div class="form-group col-md-6">
+                                            <select class="form-control" id="sel6" ng-model="SelectedData.CareerLvl"
+                                                    ng-options="CareerLvl.EmpJobValue for CareerLvl in CareervLevelCol track by CareerLvl.EmpJobDtlId"></select>
+                                               
+                                        </div>
+
+                                        <div class="form-group col-md-6">
+                                            <input type="text" class="form-control" placeholder="Location" ng-model="SelectedData.Location">
+                                        </div>
+
+                                        <div class="form-group col-md-12">
+                                                <textarea class="form-control" rows="4" id="" placeholder="Description" ng-model="SelectedData.DescrptnStepTwo">
+                                                 </textarea>
+                                        </div>
+
+                                    </div><!--row-->
+
+                                    <button type="button" class="btn btn-submit" ng-click="SaveDataStepTwo()">Submit</button>
+
+                                </div>
+                            </form>
+                        </div>
+
+                    </div><!--col-md-6-->
+                </div><!--row-->
+
+                <div class="footer-text">© Zeroori.com 2019, All Rights Reserved.</div>
+
+            </div><!--post-ad-box-->
+
+        </div><!--container-->
+    </div><!--post-ad-sec-->
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body popup">
+
+                    <form>
+                        <div class="form-group">
+                            <i class="fa fa-user"></i>
+                            <input id="email" ng-model="ViewData.Email" type="text" class="form-control" name="email" placeholder="Email Address">
+                        </div>
+
+                        <div class="form-group">
+                            <i class="fa fa-lock"></i>
+                            <input id="password" ng-model="ViewData.Passwd" type="password" class="form-control" name="password" placeholder="Password">
+                            <img class="icon-eye" src="images/icon-gray-eye.png" alt="" />
+                        </div>
+
+
+                        <div class="login-sec">
+                            <a class="btn btn-block" href="#" ng-click="GetUserInfo('UL')">Login</a>
+                        </div>
+
+                        <div class="sign-up-sec">
+                            <a class="btn btn-block signup-popup" href="#" ng-click="navigate('signup')">
+                                <i class="fa fa-user-plus" aria-hidden="true"></i>
+                                Sign Up
+                            </a>
+                        </div>
+                        <div class="forgot-pwd"><a href="#" ng-click="navigate('forgotpassword')">Forgot Password?</a></div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/custom.js"></script>
+
+</body>
+</html>

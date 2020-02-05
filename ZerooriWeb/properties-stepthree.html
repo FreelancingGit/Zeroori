@@ -1,0 +1,244 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content=""/>
+<meta name="keywords" content="">
+<title>ZEROORI</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/responsive.css" rel="stylesheet">
+	
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-cookies.min.js"></script>
+    <script src="Controler/propertiesstepthree.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="icon" href="images/fav.png" type="image/gif" sizes="16x16">
+</head>
+
+<body ng-app="ZerooriApp" ng-controller="propertiesstepthree"  ng-cloak>
+
+<div class="post-ad-sec">
+<div class="container">
+	   
+       <div class="post-ad-box">
+		   
+		   <div class="row justify-content-center">
+			   
+			<div class="col-md-6">
+				
+            <div class="post-ad-logo">
+			<a href="index.html"><img src="images/zeroori-logo-inner.png" alt=""/></a>
+            </div>
+				
+			<div class="login-user-name"><img class="btn-icon" src="images/icon-user-login-color-one.png" alt=""/>{{LoginStatusCaption}}</div>
+			<a class="btn-my-ad" href="#"><img class="btn-icon" src="images/icon-my-ads.png" alt=""/>My Ads</a>
+
+                        <input id="upload1" style="display:none;" type="file" accept="image/*" onchange="">
+                        <input id="upload2" style="display:none;" type="file" accept="image/*" onchange="">
+                        <input id="upload3" style="display:none;" type="file" accept="image/*" onchange="">
+                        <input id="upload4" style="display:none;" type="file" accept="image/*" onchange="">
+                        <input id="upload5" style="display:none;" type="file" accept="image/*" onchange="">
+                        <input id="upload6" style="display:none;" type="file" accept="image/*" onchange="">
+                        <input id="upload7" style="display:none;" type="file" accept="image/*" onchange="">
+                        <input id="upload8" style="display:none;" type="file" accept="image/*" onchange="">
+                        <input id="upload9" style="display:none;" type="file" accept="image/*" onchange="">
+                        <input id="upload10" style="display:none;" type="file" accept="image/*" onchange="">
+                        <input id="upload11" style="display:none;" type="file" accept="image/*" onchange="">
+                        <input id="upload12" style="display:none;" type="file" accept="image/*" onchange="">
+                        <input id="upload13" style="display:none;" type="file" accept="image/*" onchange="">
+                        <input id="upload14" style="display:none;" type="file" accept="image/*" onchange="">
+                        <input id="upload15" style="display:none;" type="file" accept="image/*" onchange="">
+				
+				
+<div class="forms-post-sec">
+<form>
+<div class="form-bx">
+	
+							<div class="photo-add-sec">
+
+                                        <h3>Add Photos</h3>
+
+                                        <div class="bx-item">
+                                            <a id="upload_link1" href="javascript:void(0)">
+                                                <div class="item-photo">
+                                                    <img id="Imgupload1" src="images/camera.png" alt="" />
+                                                </div>
+                                            </a>
+                                            <a class="link-txt" href="javascript:void(0)" ng-click="RemoveImage('1')">Remove</a>
+                                        </div>
+
+                                        <div class="bx-item">
+                                            <a id="upload_link2" href="javascript:void(0)">
+                                                <div class="item-photo">
+                                                    <img id="Imgupload2" src="images/camera.png" alt="" />
+                                                </div>
+                                            </a>
+                                            <a class="link-txt" href="javascript:void(0)" ng-click="RemoveImage('2')">Remove</a>
+                                        </div>
+
+                                        <div class="bx-item">
+                                            <a id="upload_link3" href="javascript:void(0)">
+                                                <div class="item-photo">
+                                                    <img id="Imgupload3" src="images/camera.png" alt="" />
+                                                </div>
+                                            </a>
+                                            <a class="link-txt" href="javascript:void(0)" ng-click="RemoveImage('3')">Remove</a>
+                                        </div>
+
+                                        <div class="bx-item">
+                                            <a id="upload_link4" href="javascript:void(0)">
+                                                <div class="item-photo">
+                                                    <img id="Imgupload4" src="images/camera.png" alt="" />
+                                                </div>
+                                            </a>
+                                            <a class="link-txt" href="javascript:void(0)" ng-click="RemoveImage('4')">Remove</a>
+                                        </div>
+
+                                        <div class="bx-item">
+                                            <a id="upload_link5" href="javascript:void(0)">
+                                                <div class="item-photo">
+                                                    <img id="Imgupload5" src="images/camera.png" alt="" />
+                                                </div>
+                                            </a>
+                                            <a class="link-txt" href="javascript:void(0)" ng-click="RemoveImage('5')">Remove</a>
+                                        </div>
+
+                                        <div class="bx-item">
+                                            <a id="upload_link6" href="javascript:void(0)">
+                                                <div class="item-photo">
+                                                    <img id="Imgupload6" src="images/camera.png" alt="" />
+                                                </div>
+                                            </a>
+                                            <a class="link-txt" href="javascript:void(0)" ng-click="RemoveImage('6')">Remove</a>
+                                        </div>
+
+                                        <div class="bx-item">
+                                            <a id="upload_link7" href="javascript:void(0)">
+                                                <div class="item-photo">
+                                                    <img id="Imgupload7" src="images/camera.png" alt="" />
+                                                </div>
+                                            </a>
+                                            <a class="link-txt" href="javascript:void(0)" ng-click="RemoveImage('7')">Remove</a>
+                                        </div>
+
+                                        <div class="bx-item">
+                                            <a id="upload_link8" href="javascript:void(0)">
+                                                <div class="item-photo">
+                                                    <img id="Imgupload8" src="images/camera.png" alt="" />
+                                                </div>
+                                            </a>
+                                            <a class="link-txt" href="javascript:void(0)" ng-click="RemoveImage('8')">Remove</a>
+                                        </div>
+
+                                        <div class="bx-item">
+                                            <a id="upload_link9" href="javascript:void(0)">
+                                                <div class="item-photo">
+                                                    <img id="Imgupload9" src="images/camera.png" alt="" />
+                                                </div>
+                                            </a>
+                                            <a class="link-txt" href="javascript:void(0)" ng-click="RemoveImage('9')">Remove</a>
+                                        </div>
+
+                                        <div class="bx-item">
+                                            <a id="upload_link10" href="javascript:void(0)">
+                                                <div class="item-photo">
+                                                    <img id="Imgupload10" src="images/camera.png" alt="" />
+                                                </div>
+                                            </a>
+                                            <a class="link-txt" href="javascript:void(0)" ng-click="RemoveImage('10')">Remove</a>
+                                        </div>
+
+                                        <div class="bx-item">
+                                            <a id="upload_link11" href="javascript:void(0)">
+                                                <div class="item-photo">
+                                                    <img id="Imgupload11" src="images/camera.png" alt="" />
+                                                </div>
+                                            </a>
+                                            <a class="link-txt" href="javascript:void(0)" ng-click="RemoveImage('11')">Remove</a>
+                                        </div>
+
+                                        <div class="bx-item">
+                                            <a id="upload_link12" href="javascript:void(0)">
+                                                <div class="item-photo">
+                                                    <img id="Imgupload12" src="images/camera.png" alt="" />
+                                                </div>
+                                            </a>
+                                            <a class="link-txt" href="javascript:void(0)" ng-click="RemoveImage('12')">Remove</a>
+                                        </div>
+
+                                        <div class="bx-item">
+                                            <a id="upload_link13" href="javascript:void(0)">
+                                                <div class="item-photo">
+                                                    <img id="Imgupload13" src="images/camera.png" alt="" />
+                                                </div>
+                                            </a>
+                                            <a class="link-txt" href="javascript:void(0)" ng-click="RemoveImage('13')">Remove</a>
+                                        </div>
+
+                                        <div class="bx-item">
+                                            <a id="upload_link14" href="javascript:void(0)">
+                                                <div class="item-photo">
+                                                    <img id="Imgupload14" src="images/camera.png" alt="" />
+                                                </div>
+                                            </a>
+                                            <a class="link-txt" href="javascript:void(0)" ng-click="RemoveImage('14')">Remove</a>
+                                        </div>
+
+                                        <div class="bx-item">
+                                            <a id="upload_link15" href="javascript:void(0)">
+                                                <div class="item-photo">
+                                                    <img id="Imgupload15" src="images/camera.png" alt="" />
+                                                </div>
+                                            </a>
+                                            <a class="link-txt" href="javascript:void(0)" ng-click="RemoveImage('15')">Remove</a>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="f-text">How much would you like to sell it for?</div>
+                                        <input type="text" ng-model="ViewData.Price" class="form-control" placeholder="Price">
+                                    </div>
+
+<button type="button" ng-click="UploadPrice()" class="btn btn-submit">Update</button>
+
+</div>
+</form>
+</div>		
+				</div><!--col-md-6-->
+		   </div><!--row-->
+		   
+<div class="footer-text">© Zeroori.com 2019, All Rights Reserved.</div>
+            
+       </div><!--post-ad-box-->
+    
+</div><!--container-->  
+</div><!--post-ad-sec-->
+	
+
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <div>
+                <div>
+                    <img id="Imgupload15" src="images/download.png" alt="" style=" display: block;margin-left: auto;margin-right: auto;" />
+                </div>
+            </div>
+        </div>
+    </div>
+	
+
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/custom.js"></script>
+    
+</body>
+</html>

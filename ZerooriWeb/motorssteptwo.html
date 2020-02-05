@@ -1,0 +1,190 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content=""/>
+<meta name="keywords" content="">
+<title>ZEROORI</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/responsive.css" rel="stylesheet">
+	
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-cookies.min.js"></script>
+<script src="Controler/motorssteptwo.js?test=1"></script>
+
+<link rel="icon" href="images/fav.png" type="image/gif" sizes="16x16">
+</head>
+
+<body ng-app="ZerooriApp" ng-controller="motorssteptwo"  ng-cloak>
+	
+<div class="post-ad-sec">
+<div class="container">
+	   
+<div class="post-ad-box">
+		   
+<div class="row justify-content-center">
+			   
+<div class="col-lg-6 col-md-10">
+				
+<div class="post-ad-logo">
+<a href="index.html"><img src="images/zeroori-logo-inner.png" alt=""/></a>
+</div>				
+				
+<div class="login-user-name"><img class="btn-icon" src="images/icon-user-login-color-one.png" alt="" />{{LoginStatusCaption}}</div>
+<a class="btn-my-ad" href="my-ads.html"><img class="btn-icon" src="images/icon-my-ads.png" alt=""/>My Ads</a>
+				
+<div class="post-ad-header">
+<h3>Please fill in your motor details</h3>
+</div>
+
+				
+<div class="forms-post-sec">
+<form>
+<div class="form-bx">
+
+<div class="row">
+
+<div class="form-group col-md-12">
+<input class="form-control" type="text" name="firstname" ng-model="SelectedData.Title" value="" placeholder="Title">
+</div>
+
+<div class="form-group col-md-6">
+<select class="form-control" id="sel1" ng-model="SelectedData.Year" ng-options="Year.MotorSpecValue for Year in ViewData.YearCol track by Year.MotorSpecDtlId"></select>
+</div>
+
+<div class="form-group col-md-6">
+<select class="form-control" id="sel1" ng-model="SelectedData.Brand" ng-options="Brand.MotorSpecValue for Brand in ViewData.BrandCol track by Brand.MotorSpecDtlId"></select>
+</div>
+
+<div class="form-group col-md-6">
+<input type="text" class="form-control" ng-model="SelectedData.KiloMetrs" placeholder="Kilometers">
+</div>
+
+
+<div class="form-group col-md-6">
+<select class="form-control" id="sel1" ng-model="SelectedData.Condition" ng-options="Condition.MotorSpecValue for Condition in ViewData.ConditionCol track by Condition.MotorSpecDtlId"></select>
+</div>
+
+
+<div class="form-group col-md-6">
+<select class="form-control" id="sel1" ng-model="SelectedData.Colour" ng-options="Colour.MotorSpecValue for Colour in ViewData.ColourCol track by Colour.MotorSpecDtlId"></select>
+</div>
+
+<div class="form-group col-md-6">
+<select class="form-control" id="sel1" ng-model="SelectedData.Doors" ng-options="Doors.MotorSpecValue for Doors in ViewData.DoorsCol track by Doors.MotorSpecDtlId"></select>
+</div>
+
+<div class="form-group col-md-6">
+<select class="form-control" id="sel1" ng-model="SelectedData.Warranty" ng-options="Warranty.MotorSpecValue for Warranty in ViewData.WarrantyCol track by Warranty.MotorSpecDtlId"></select>
+</div>
+
+<div class="form-group col-md-6">
+<select class="form-control" id="sel1" ng-model="SelectedData.RegionalSpecs" ng-options="RegionalSpecs.MotorSpecValue for RegionalSpecs in ViewData.RegionalSpecsCol track by RegionalSpecs.MotorSpecDtlId"></select>
+</div>
+
+<div class="form-group col-md-6">
+<select class="form-control" id="sel1" ng-model="SelectedData.Transmisson" ng-options="Transmisson.MotorSpecValue for Transmisson in ViewData.TransmissonCol track by Transmisson.MotorSpecDtlId"></select>
+</div>
+
+<div class="form-group col-md-6">
+<select class="form-control" id="sel1" ng-model="SelectedData.BodyType" ng-options="BodyType.MotorSpecValue for BodyType in ViewData.BodyTypeCol track by BodyType.MotorSpecDtlId"></select>
+</div>
+
+<div class="form-group col-md-6">
+<select class="form-control" id="sel1" ng-model="SelectedData.FuelType" ng-options="FuelType.MotorSpecValue for FuelType in ViewData.FuelTypeCol track by FuelType.MotorSpecDtlId"></select>
+</div>
+
+<div class="form-group col-md-6">
+<select class="form-control" id="sel1" ng-model="SelectedData.Cylinders" ng-options="Cylinders.MotorSpecValue for Cylinders in ViewData.CylindersCol track by Cylinders.MotorSpecDtlId"></select>
+</div>
+
+<div class="form-group col-md-6">
+<select class="form-control" id="sel1" ng-model="SelectedData.HoursePower" ng-options="HoursePower.MotorSpecValue for HoursePower in ViewData.HoursePowerCol track by HoursePower.MotorSpecDtlId"></select>
+</div>
+
+<div class="form-group col-md-6">
+<select class="form-control" id="sel1" ng-model="SelectedData.SellerType" ng-options="SellerType.MotorSpecValue for SellerType in ViewData.SellerTypeCol track by SellerType.MotorSpecDtlId"></select>
+</div>
+
+<div class="form-group col-md-12">
+<textarea name="comment" form="usrform" rows="4" class="form-control" ng-model="SelectedData.Description" placeholder="Description:"></textarea>
+</div>
+
+
+<div class="form-group form-check col-md-12">
+<label class="form-check-label">
+<input class="form-check-input" type="checkbox"> My car is insured in the Doha
+</label>
+</div>
+
+</div><!--row-->
+	
+<button type="button" class="btn btn-submit" ng-click="DoSave()">Next</button>
+	
+
+	
+</div>	
+</form>	
+</div>
+				
+</div><!--col-lg-6-->
+</div><!--row-->
+		   
+<div class="footer-text">© Zeroori.com 2019, All Rights Reserved.</div>
+            
+</div><!--post-ad-box-->
+    
+</div><!--container-->  
+</div><!--post-ad-sec-->
+
+	
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+<div class="modal-dialog modal-dialog-centered">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+</div>
+<div class="modal-body popup">
+
+<form>													
+<div class="form-group">
+<i class="fa fa-user"></i>
+<input id="email" ng-model="ViewData.Email" type="text" class="form-control" name="email" placeholder="Email Address">
+</div>
+
+<div class="form-group">
+<i class="fa fa-lock"></i>
+<input id="password" ng-model="ViewData.Passwd" type="password" class="form-control" name="password" placeholder="Password">
+<img class="icon-eye" src="images/icon-gray-eye.png" alt="" />
+</div>
+													
+     
+<div class="login-sec">
+<a class="btn btn-block" href="#" ng-click="GetUserInfo('UL')">Login</a>
+</div>
+
+<div class="sign-up-sec">
+<a class="btn btn-block signup-popup" href="#" ng-click="navigate('signup')">
+<i class="fa fa-user-plus" aria-hidden="true"></i>
+Sign Up
+</a>
+</div>
+<div class="forgot-pwd"><a href="#"  ng-click="navigate('forgotpassword')">Forgot Password?</a></div>
+</form>
+												
+</div>
+</div>
+</div>
+</div>
+	
+			
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/custom.js"></script>
+    
+</body>
+</html>

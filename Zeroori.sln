@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.572
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ZerooriWeb", "ZerooriWeb\", "{963939AE-3C82-4BD0-9C04-B28120780E42}"
+	ProjectSection(WebsiteProperties) = preProject
+		SccProjectName = "SAK"
+		SccAuxPath = "SAK"
+		SccLocalPath = "SAK"
+		SccProvider = "SAK"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		ProjectReferences = "{59cfcebe-1eae-4bdb-9c3f-571a5d89ca95}|ZerooriBO.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_51612"
+		Debug.AspNetCompiler.PhysicalPath = "ZerooriWeb\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_51612\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_51612"
+		Release.AspNetCompiler.PhysicalPath = "ZerooriWeb\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_51612\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "51612"
+		SlnRelativePath = "ZerooriWeb\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZerooriBO", "ZerooriBO\ZerooriBO.csproj", "{59CFCEBE-1EAE-4BDB-9C3F-571A5D89CA95}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBHelperM", "DBHelper\DBHelperM.csproj", "{C94E926A-DE48-4C4A-BB10-80C2905DF8FA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{963939AE-3C82-4BD0-9C04-B28120780E42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{963939AE-3C82-4BD0-9C04-B28120780E42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{963939AE-3C82-4BD0-9C04-B28120780E42}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{963939AE-3C82-4BD0-9C04-B28120780E42}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{59CFCEBE-1EAE-4BDB-9C3F-571A5D89CA95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59CFCEBE-1EAE-4BDB-9C3F-571A5D89CA95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59CFCEBE-1EAE-4BDB-9C3F-571A5D89CA95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59CFCEBE-1EAE-4BDB-9C3F-571A5D89CA95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C94E926A-DE48-4C4A-BB10-80C2905DF8FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C94E926A-DE48-4C4A-BB10-80C2905DF8FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C94E926A-DE48-4C4A-BB10-80C2905DF8FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C94E926A-DE48-4C4A-BB10-80C2905DF8FA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5B6D0719-9E9E-4441-83FB-16A1397A1AB6}
+	EndGlobalSection
+EndGlobal

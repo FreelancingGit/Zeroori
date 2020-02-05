@@ -1,0 +1,235 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content=""/>
+<meta name="keywords" content="">
+<title>ZEROORI</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/responsive.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-cookies.min.js"></script>
+    <script src="Controler/index.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="icon" href="images/fav.png" type="image/gif" sizes="16x16">
+</head>
+
+<body ng-app="ZerooriApp" ng-controller="Index"  ng-cloak>
+     
+	<style>
+          body {
+        background-color: #4d454c;
+          }      
+      </style>
+	
+    <div class="hm-header">
+        <div class="container-fluid">
+			<div class="row">
+				
+				<div class="col-lg-12">
+					
+ 					<div class="bx-wrapper">
+                    <div class="logo"><a href="index.html"><img src="images/zeroori-logo.png" alt=""/></a></div>
+
+<div class="header-right">
+	
+<a class="btn btn-arabic" href="#"><img class="btn-icon" src="images/icon-language.png" alt=""/>Arabic</a>
+
+<a class="btn btn-post-ad" data-toggle="modal" href="#" ng-click="PostAdd()"><img class="btn-icon" src="images/icon-post-ad.png" alt="" />Post an ad</a>
+	
+	
+	<!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+
+                     <form class="sign-contain">
+						<div class="form-group">
+						<i class="fa fa-user"></i>
+						<input id="email" ng-model="ViewData.Email" type="text" class="form-control sign-input" name="email" placeholder="Email Address">
+						 </div>
+						 
+					<div class="form-group">
+						<i class="fa fa-lock"></i>
+						<input id="password" ng-model="ViewData.Passwd" type="password" class="form-control sign-input" name="password" placeholder="Password">
+						<img class="icon-eye" src="images/icon-gray-eye.png" alt="" />
+					</div>
+
+                                    <div class="login-sec">
+										 <a class="btn btn-block" href="#" ng-click="GetUserInfo('UL')">Login</a>
+                                    </div>
+									
+                                                <div class="sign-up-sec">
+                                                    <a class="btn btn-block signup-popup" href="#" ng-click="navigate('signup')">
+                                                        <i class="fa fa-user-plus" aria-hidden="true"></i>
+                                                        Sign Up
+                                                    </a>
+                                                </div>
+
+
+                                                <div class="forgot-pwd"><a href="#">Forgot Password?</a></div>
+
+					</form>
+			
+		  </div>
+      </div>
+    </div>
+  </div>	
+
+<div class="btn-signin">
+<div class="dropdown">
+  <button class="btn btn-sign dropdown-toggle" type="button" data-toggle="dropdown">Hi John</button>
+  <ul class="dropdown-menu dropdown-profile-menu">
+    <li><a href="my-profile.html"><img class="icon" src="images/icon-myprofile.png" alt=""/>My Profile</a></li>
+    <li><a href="my-profile.html"><img class="icon" src="images/icon-my-ads.png" alt=""/>My Ads</a></li>
+    <li><a href="#"><img class="icon" src="images/icon-signout.png" alt=""/>Account</a></li>
+  </ul>
+</div>
+
+</div>
+	
+	
+                    <div class="menu-container">
+                        <div class="sub_top_three">
+                            <div>
+                                <div class="menu_icon">
+                                    <a class="toggle-nav" href="#">
+                                        <div class="hamburger">
+                                            <div class="top-bun"></div>
+                                            <div class="meat"></div>
+                                            <div class="menu_section">menu</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="header_mobil">
+                                <div class="nice-nav open">
+                                    <div class="user-info clear">
+                                        <div class="menu-close"><a href="#"><img src="images/clos.png"></a></div>
+                                    </div>
+
+                                    <div class="clear"></div>
+                                    <ul>
+                                        <li class="active"><a href="index.html">Home</a></li>
+                                        <li><a href="about.html">About</a></li>
+                                        <li><a href="contact.html">Contact Us</a></li>
+                                        <li class="menu-signin"><a href=""> {{LoginStatus}}</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+					
+
+	
+	
+</div><!--header-right-->
+				
+</div><!--bx-wrapper--->
+					
+				</div><!--col-lg-12-->
+			
+			</div><!--row-->
+			
+			
+        </div>
+    </div>
+	
+	
+	<div class="nav-catg-sec hm-margin">
+		<div class="container">
+			
+			<div class="row">
+				
+				<div class="col-lg-12">
+					<div class="box-nav">
+						<a class="btn-catg" href="#" ng-click="navigate('motorlist')"><img src="images/t01.png" alt=""><span>Motors</span></a>
+						<a class="btn-catg" href="classifiedslist.html"><img src="images/t02.png" alt=""><span>Classifieds</span></a>
+						<a class="btn-catg" href="propertieslist.html"><img src="images/t04.png" alt=""><span>Properties</span></a>
+						<a class="btn-catg" href="jobs-hiring-listing.html"><img src="images/t05.png" alt=""><span>Jobs</span></a>
+						<a class="btn-catg" href="deals-list.html"><img src="images/t08.png" alt=""><span>Deals</span></a>
+						<a class="btn-catg" href="brandslist.html"><img src="images/t09.png" alt=""><span>Brands</span></a>
+						<a class="btn-catg" href="frelnc-hiring-listing.html"><img src="images/t06.png" alt=""><span>Freelance</span></a>
+						<a class="btn-catg" href="directorylist.html"><img src="images/t07.png" alt=""><span>Directory</span></a>
+						<a class="btn-catg" href="malls.html"><img src="images/t03.png" alt=""><span>Malls</span></a>
+						<a class="btn-catg" href="governmentlist.html"><img src="images/t10.png" alt=""><span>E-Govt.</span></a>
+			
+					</div><!--box-nav--->
+				</div><!--col-lg-12-->
+				
+				<div class="col-lg-12">					
+						<div class="search-sec hm-search-margin">
+							<div class="input-group">
+								<input type="text" class="form-control" placeholder="How can i help you?">
+								<div class="input-group-btn">
+										<button class="btn btn-default search_icon" type="button"><i class="fa fa-search-plus"></i></button>
+								</div>
+							 </div>	
+						</div>
+				</div><!--col-lg-12-->
+				
+			
+			
+			</div><!--row-->
+		
+
+			
+		</div><!--container--->		
+	</div><!--nav-catg-sec--->
+
+    <div id="bg"></div>
+
+    <div class="footer-home">© 2019 Zeroori.com. All rights reserved.</div>
+    
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/custom.js"></script>
+
+    <script>
+        var BackgroundScroll = function (params) {
+            params = $.extend({
+                scrollSpeed: 18,
+                imageWidth: $('#bg').width(),
+                imageHeight: $('#bg').height()
+            }, params);
+
+            var step = 1,
+                current = 0,
+                restartPosition = - (params.imageWidth - params.imageHeight);
+
+            var scroll = function () {
+                current -= step;
+                if (current == restartPosition) {
+                    current = 0;
+                }
+                $('#bg').css('backgroundPosition', current + 'px 0');
+
+            };
+
+            this.init = function () {
+                setInterval(scroll, params.scrollSpeed);
+
+            };
+        };
+
+        var scroll = new BackgroundScroll();
+        scroll.init();
+
+    </script>
+
+</body>
+</html>

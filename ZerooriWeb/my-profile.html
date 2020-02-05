@@ -1,0 +1,399 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content=""/>
+<meta name="keywords" content="">
+<title>ZEROORI</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/responsive.css" rel="stylesheet">
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-cookies.min.js"></script>
+    <script src="Controler/myprofile.js"></script>
+	
+
+<link rel="icon" href="images/fav.png" type="image/gif" sizes="16x16">
+</head>
+
+<body ng-app="ZerooriApp" ng-controller="myprofile"  ng-cloak>
+
+    <div class="hm-header">
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="col-lg-12">
+
+                    <div class="bx-wrapper">
+                        <div class="logo"><a href="index.html"><img src="images/zeroori-logo-inner.png" alt="" /></a></div>
+
+                        <div class="header-right">
+
+                            <div class="show-username"><img class="icon" src="images/icon-user-login-color-one.png" alt="">{{UserName}}</div>
+
+                            <div class="top-buttons-box">
+
+                                <a class="btn btn-post-ad" data-toggle="modal" href="#" ng-click="PostAdd()"><img class="btn-icon" src="images/icon-post-ad.png" alt="" />Post An Ad</a>
+
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="myModal" role="dialog">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            </div>
+                                            <div class="modal-body">
+
+                                                <form>
+                                                    <div class="form-group">
+                                                        <i class="fa fa-user"></i>
+                                                        <input id="email" ng-model="ViewData.Email" type="text" class="form-control sign-input" name="email" placeholder="Email Address">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <i class="fa fa-lock"></i>
+                                                        <input id="password1" ng-model="ViewData.Passwd" type="password" class="form-control sign-input" name="password" placeholder="Password">
+                                                        <img class="icon-eye" src="images/icon-gray-eye.png" alt=""  ng-click="ShowPwd('password1')" />
+                                                    </div>
+
+                                                    <div class="login-sec">
+                                                        <a class="btn btn-block" href="#" ng-click="GetUserInfo('UL')">Login</a>
+                                                    </div>
+
+                                                    <div class="sign-up-sec">
+                                                        <a class="btn btn-block signup-popup" href="#" ng-click="navigate('signup')">
+                                                            <i class="fa fa-user-plus" aria-hidden="true"></i>
+                                                            Sign Up
+                                                        </a>
+                                                    </div>
+
+
+                                                    <div class="forgot-pwd"><a href="#"  ng-click="navigate('forgotpassword')">Forgot Password?</a></div>
+
+                                                </form>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="signin-dropdown" ng-show="ISSignOutStatus">
+                                    <div class="dropdown">
+                                        <button type="button" class="btn btn-sign dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" ng-click="SignOut()" aria-haspopup="true">
+                                            {{LoginStatusCaption}}
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-main">
+                                            <form>
+                                                <div class="form-group">
+                                                    <i class="fa fa-user"></i>
+                                                    <input id="email" ng-model="ViewData.Email" type="text" style="color:white!important" class="form-control sign-input" name="email" placeholder="Email Address">
+                                                </div>
+                                                <div class="form-group">
+                                                    <i class="fa fa-lock"></i>
+                                                    <input id="password2" ng-model="ViewData.Passwd" type="password" style="color:white!important" class="form-control sign-input" name="password" placeholder="Password">
+                                                    <img class="icon-eye" src="images/icon-gray-eye.png" alt=""   ng-click="ShowPwd('password2')"  />
+                                                </div>
+
+                                                <div class="login-sec">
+                                                    <a class="btn btn-block" href="#" ng-click="GetUserInfo('UL')">Login</a>
+                                                </div>
+
+                                                <div class="sign-up-sec">
+                                                    <a class="btn btn-block signup-popup" href="#" ng-click="navigate('signup')">
+                                                        <i class="fa fa-user-plus" aria-hidden="true"></i>
+                                                        Sign Up
+                                                    </a>
+                                                </div>
+
+                                                <div class="forgot-pwd"><a href="#"  ng-click="navigate('forgotpassword')">Forgot Password?</a></div>
+
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="signin-dropdown" ng-show="ISSignINStatus">
+                                    <div class="dropdown">
+                                        <button class="btn btn-sign dropdown-toggle" type="button" data-toggle="dropdown">
+                                            {{LoginStatusCaption}}
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-menu-right dropdown-profile-menu">
+                                            <li><a href="my-profile.html"><img class="icon"  src="images/icon-myprofile.png" alt="My Profile" />My Profile</a></li>
+                                            <li><a href="my-ads.html"><img class="icon" src="images/icon-my-ads.png" alt="My Ads" />My Ads</a></li>
+                                            <li><a href="#" ng-click="SignOut()"><img class="icon" src="images/icon-signout.png" alt="Sign Out" />Sign Out</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+                            </div><!--top-buttons-box-->
+
+                        </div><!--header-right-->
+
+                    </div><!--bx-wrapper--->
+
+                </div><!--col-lg-12-->
+
+            </div><!--row-->
+
+
+        </div><!--container-->
+    </div><!--header-->
+
+    <div class="sub-banner-sec">
+
+        <div class="container">
+            <div class="box-sub-nav">
+                <a class="btn-profile active" href="my-profile.html"><img src="images/icon-btn-my-profile.png" alt="" /><span>My Profile</span></a>
+                <a class="btn-profile" href="my-ads.html"><img src="images/icon-btn-my-ads.png" alt="" /><span>My Ads</span></a>
+                <a class="btn-profile" href="my-products.html"><img src="images/icon-btn-my-products.png" alt="" /><span>My Products</span></a>
+            </div>
+        </div>
+
+    </div><!--sub-banner-sec--->
+
+
+    <div class="body-container">
+        <div class="container">
+
+            <div class="profile-sec">
+
+                <div class="row justify-content-center">
+                    <div class="col-lg-7 col-md-10">
+
+                        <h3>Edit your Profile</h3>
+
+
+                        <div class="form-profile">
+                            <form>
+                                <h4>Change User Name</h4>
+                                <div class="row">
+                                    <div class="form-group col-sm-6">
+                                        <div class="f-text">First Name</div>
+                                        <input type="text" ng-model="ViewData.FistNam"  class="form-control" value="John">
+                                    </div>
+
+                                    <div class="form-group col-sm-6">
+                                        <div class="f-text">Last Name</div>
+                                        <input type="text" ng-model="ViewData.LastNam"   class="form-control" value="Jose">
+                                    </div>
+
+                                </div>
+
+
+                                <div class="row">
+
+                                    <div class="col-sm-6">
+                                        <h4>Mobile Number</h4>
+                                        <div class="row">
+                                            <div class="form-group col-md-12">
+                                                <input type="text" ng-model="ViewData.Mob"  class="form-control" value="+971 4 123456789">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <h4>Email Address</h4>
+                                        <div class="row">
+                                            <div class="form-group col-md-12">
+                                                <input type="text"  ng-model="ViewData.Email" class="form-control" value="mail@sitename.com">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="col-sm-6">
+                                        <h4>Date of Birth</h4>
+                                        <div class="row">
+                                            <div class="form-group col-md-12">
+                                                <input type="date"  ng-model="ViewData.DOB"  class="form-control" name="bday">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <h4>Gender</h4>
+                                        <div class="row">
+                                            <div class="form-group col-md-6 text-left">
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked>
+                                                    <label class="form-check-label" for="inlineRadio1">Male</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                                    <label class="form-check-label" for="inlineRadio2">Female</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+                                </div>
+
+
+                                <button type="button" ng-click="DoSave()" class="btn btn-submit">Update</button>
+                                <button type="button" class="btn btn-submit color">Cancel</button>
+                            </form>
+                        </div>
+
+
+                        <div class="form-profile">
+                            <form>
+                                <h4>Change Password</h4>
+                                <div class="row">
+                                    <div class="form-group col-sm-4">
+                                        <div class="f-text">Old Password</div>
+                                        <input type="password"  ng-model="ViewData.OldPasswd"  class="form-control" value="123456">
+                                    </div>
+
+                                    <div class="form-group col-sm-4">
+                                        <div class="f-text">New Password</div>
+                                        <input type="password"  ng-model="ViewData.Passwd"  class="form-control">
+                                    </div>
+
+                                    <div class="form-group col-sm-4">
+                                        <div class="f-text">Confirm New Password</div>
+                                        <input type="password"  ng-model="ViewData.Cpasswd" class="form-control">
+                                    </div>
+
+                                </div>
+
+                                <button type="button"  ng-click="DoUpdatePwd()" class="btn btn-submit">Change Password</button>
+                            </form>
+                        </div>
+
+                        <div class="form-profile">
+                            <form>
+                                <h4>Deactivate my account</h4>
+                                <div class="text">Are you sure you want to deactivate your subcrition?</div>
+
+                                <button type="button" class="btn btn-submit">Deactivate</button>
+                            </form>
+                        </div>
+
+                        <div class="form-profile">
+                            <form>
+                                <h4>Permanently delete my account</h4>
+                                <div class="text">Are you sure you want to delete your account?</div>
+
+                                <button type="button" class="btn btn-submit">Delete</button>
+                            </form>
+                        </div>
+
+                    </div><!--col-lg-6-->
+
+                </div><!--row-->
+
+            </div><!--profile-sec-->
+
+        </div><!--container-->
+    </div><!--body-container-->
+
+    <div class="footer-sec">
+        <div class="container">
+
+            <div class="footer-widgets">
+
+                <div class="row">
+
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="footer-column">
+                            <h5>Quick Links</h5>
+                            <ul class="links">
+                                <li><a href="about.html">About Us</a></li>
+                                <li><a href="careers.html">Careers</a></li>
+                                <li><a href="contact.html">Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </div><!--col-lg-3-->
+
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="footer-column">
+                            <h5>Policy</h5>
+                            <ul class="links">
+                                <li><a href="privacypolicy.html">Privacy Policy </a></li>
+                                <li><a href="terms.html">Terms & Conditions </a></li>
+                            </ul>
+                        </div>
+                    </div><!--col-lg-3-->
+
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="footer-column">
+                            <h5>Follow Us</h5>
+                            <div class="social-footer">
+                                <a href="#"><img src="images/fb.png" alt="" /></a>
+                                <a href="#"><img src="images/twitter.png" alt="" /></a>
+                                <a href="#"><img src="images/insta.png" alt="" /></a>
+                            </div>
+                        </div>
+                    </div><!--col-lg-3-->
+
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="footer-column">
+                            <h5>Subscribe to our newsletter</h5>
+                            <div class="input-group">
+                                <input type="text" class="form-control foot-newsletter " placeholder="Email Address">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-default foot-newsletter-btn" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--col-lg-3-->
+
+                </div><!--row-->
+
+            </div><!--footer-widgets-->
+
+
+            <div class="footer-bottom">© Zeroori.com 2019, All Rights Reserved.</div>
+
+        </div><!--container-->
+    </div><!--footer-->
+
+	
+<div class="mobile-sec-footer">
+
+<a class="nv-item pr" data-toggle="modal" href="#" ng-click="PostAdd()">
+	<div class="btn-icon-mob"><img src="images/icon-post-ad-mobile.png" alt=""/></div>
+	<div class="link-mob">Post an ad</div>	
+</a>
+
+	
+<a class="nv-item" data-toggle="modal" href="#" ng-click="SignIN()" ng-show="ISSignOutStatus">
+	<div class="btn-icon-mob"><img src="images/icon-sign-mobile.png" alt=""/></div>
+	<div class="link-mob">{{LoginStatusCaption}}</div>
+</a>
+
+                                <div class="nv-item" ng-show="ISSignINStatus">
+                                    <div class="dropdown">
+                                        <button class="btn btn-sign dropdown-toggle" type="button" data-toggle="dropdown">
+											
+										<div class="btn-icon-mob"><img src="images/icon-sign-mobile.png" alt=""/></div>
+										<div class="link-mob">{{LoginStatusCaption}}</div>	
+											
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-profile-menu">
+                                            <li><a href="my-profile.html"><img class="icon"  src="images/icon-myprofile.png" alt="My Profile"/>My Profile</a></li>
+                                            <li><a href="my-ads.html"><img class="icon" src="images/icon-my-ads.png" alt="My Ads"/>My Ads</a></li>
+                                            <li><a href="#" ng-click="SignOut()"><img class="icon" src="images/icon-signout.png" alt="Sign Out"/>Sign Out</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+</div><!--mobile-sec-footer-->
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/custom.js"></script>
+
+</body>
+</html>

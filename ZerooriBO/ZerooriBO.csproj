@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{59CFCEBE-1EAE-4BDB-9C3F-571A5D89CA95}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ZerooriBO</RootNamespace>
+    <AssemblyName>ZerooriBO</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DBHelperM">
+      <HintPath>PLABSM\DBHelperM.dll</HintPath>
+    </Reference>
+    <Reference Include="PLSMS">
+      <HintPath>PLABSM\PLSMS.dll</HintPath>
+    </Reference>
+    <Reference Include="PLWM">
+      <HintPath>PLABSM\PLWM.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DTO\BaseD.cs" />
+    <Compile Include="DTO\ProductViewModel.cs" />
+    <Compile Include="DTO\ComDisValD.cs" />
+    <Compile Include="DTO\ZA2000D.cs" />
+    <Compile Include="DTO\ZA2010D.CS" />
+    <Compile Include="DTO\ZA2011D.CS" />
+    <Compile Include="DTO\ZA3010D.cs" />
+    <Compile Include="DTO\ZA3011D.cs" />
+    <Compile Include="DTO\ZA3011LD.CS" />
+    <Compile Include="DTO\ZA3240D.cs" />
+    <Compile Include="DTO\ZA3230D.cs" />
+    <Compile Include="DTO\ZA3220D.cs" />
+    <Compile Include="DTO\ZA3210D.cs" />
+    <Compile Include="DTO\JobsmyaddsD.cs" />
+    <Compile Include="DTO\ZA3800D.cs" />
+    <Compile Include="DTO\ZA3661LD.CS" />
+    <Compile Include="DTO\ZA3660D.CS" />
+    <Compile Include="DTO\ZA3270LD.CS" />
+    <Compile Include="DTO\ZA3271LD.CS" />
+    <Compile Include="DTO\ZA3630RPD.CS" />
+    <Compile Include="DTO\ZA3630SD.cs" />
+    <Compile Include="DTO\ZA3630LD.cs" />
+    <Compile Include="DTO\ZA3621SD.cs" />
+    <Compile Include="DTO\ZA3620LD.cs" />
+    <Compile Include="DTO\ZA3620SD.cs" />
+    <Compile Include="DTO\ZA3611SD.cs" />
+    <Compile Include="DTO\ZA3610LD.cs" />
+    <Compile Include="DTO\ZA3610SD.cs" />
+    <Compile Include="DTO\ZA3601SD.cs" />
+    <Compile Include="DTO\ZA3600SD.cs" />
+    <Compile Include="DTO\ZA3600LD.cs" />
+    <Compile Include="DTO\ZA3200D.cs" />
+    <Compile Include="DTO\ZA3000D.cs" />
+    <Compile Include="DTO\ZA3631RPD.CS" />
+    <Compile Include="DTO\ZA3640RPD.CS" />
+    <Compile Include="DTO\ZA3641RPD.CS" />
+    <Compile Include="DTO\ZA3650LD.cs" />
+    <Compile Include="DTO\ZA3650SD.cs" />
+    <Compile Include="DTO\ZA3700BD.CS" />
+    <Compile Include="DTO\ZA3721LD.CS" />
+    <Compile Include="DTO\ZA3711LD.CS" />
+    <Compile Include="DTO\ZA3701LD.CS" />
+    <Compile Include="DTO\ZA3700ILD.CS" />
+    <Compile Include="DTO\ZA3710ILD.CS" />
+    <Compile Include="DTO\ZA3710BD.CS" />
+    <Compile Include="DTO\ZA3700LFD.CS" />
+    <Compile Include="DTO\ZA3720ILD.CS" />
+    <Compile Include="DTO\ZA3710LFD.CS" />
+    <Compile Include="DTO\ZA3720LFD.CS" />
+    <Compile Include="DTO\ZA3720LD.CS" />
+    <Compile Include="DTO\ZA3720BD.CS" />
+    <Compile Include="Enums\PasswordStrength.cs" />
+    <Compile Include="Model\ZA2010M.cs" />
+    <Compile Include="Model\ZA3010M.cs" />
+    <Compile Include="Model\ZA3011M.cs" />
+    <Compile Include="Model\ZA3240M.cs" />
+    <Compile Include="Model\ZA3671M.cs" />
+    <Compile Include="Model\ZA3670M.cs" />
+    <Compile Include="Model\ZA3700myaddsM.cs" />
+    <Compile Include="Model\ZA3710myaddsM.cs" />
+    <Compile Include="Model\JobsmyaddsM.cs" />
+    <Compile Include="Model\ZA3720myaddsM.cs" />
+    <Compile Include="Model\ZA3800M.cs" />
+    <Compile Include="Model\ZA3680M.cs" />
+    <Compile Include="Model\ZA3661M.cs" />
+    <Compile Include="Model\ZA3270M .cs" />
+    <Compile Include="Model\ZA3271M.cs" />
+    <Compile Include="Model\ZA3630M.cs" />
+    <Compile Include="Model\ZA3630RPM.cs" />
+    <Compile Include="Model\ZA3631RPM.cs" />
+    <Compile Include="Model\ZA3640RPM.cs" />
+    <Compile Include="Model\ZA3641RPM.cs" />
+    <Compile Include="Model\ZA3650M.cs" />
+    <Compile Include="Model\ZA3721M.cs" />
+    <Compile Include="Model\ZA3711M.cs" />
+    <Compile Include="Model\ZA3701M.cs" />
+    <Compile Include="Model\ZA3700M.cs" />
+    <Compile Include="Model\ZA3710M.cs" />
+    <Compile Include="Model\ZA3720M.cs" />
+    <Compile Include="Model\ZA3621M.cs" />
+    <Compile Include="Model\ZA3620M.cs" />
+    <Compile Include="Model\ZA3610M.cs" />
+    <Compile Include="Model\ZA3601M.cs" />
+    <Compile Include="Model\ZA2990M.cs" />
+    <Compile Include="Model\ZA3600M.cs" />
+    <Compile Include="Model\ZA3500M.cs" />
+    <Compile Include="Model\ZA3000M.cs" />
+    <Compile Include="Model\ZA3611M.cs" />
+    <Compile Include="PLABSM\DBHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\GetEmailFormats.cs" />
+    <Compile Include="Utils\Utils.cs" />
+    <Compile Include="DTO\ZA2990D.cs" />
+    <Compile Include="DTO\ZA3500D.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

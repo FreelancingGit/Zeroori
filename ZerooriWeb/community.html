@@ -1,0 +1,638 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content=""/>
+<meta name="keywords" content="">
+<title>ZEROORI</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/responsive.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-cookies.min.js"></script>
+    <script src="Controler/index.js?test=1"></script>
+
+    <link rel="icon" href="images/fav.png" type="image/gif" sizes="16x16">
+</head>
+
+<body ng-app="ZerooriApp" ng-controller="Index"  ng-cloak>
+
+    <div class="hm-header">
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="col-lg-12">
+
+                    <div class="bx-wrapper">
+                        <div class="logo"><a href="index.html"><img src="images/zeroori-logo-inner.png" alt="" /></a></div>
+
+                        <div class="header-right">
+
+                            <div class="show-username"><img class="icon" src="images/icon-user-login-color-one.png" alt="">{{UserName}}</div>
+
+                            <div class="top-buttons-box">
+
+                                <a class="btn btn-post-ad" data-toggle="modal" href="#" ng-click="PostAdd()"><img class="btn-icon" src="images/icon-post-ad.png" alt="" />Post An Ad</a>
+
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="myModal" role="dialog">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            </div>
+                                            <div class="modal-body">
+
+                                                <form>
+                                                    <div class="form-group">
+                                                        <i class="fa fa-user"></i>
+                                                        <input id="email" ng-model="ViewData.Email" type="text" class="form-control sign-input" name="email" placeholder="Email Address">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <i class="fa fa-lock"></i>
+                                                        <input id="password1" ng-model="ViewData.Passwd" type="password" class="form-control sign-input" name="password" placeholder="Password">
+                                                        <img class="icon-eye" src="images/icon-gray-eye.png" alt=""  ng-click="ShowPwd('password1')" />
+                                                    </div>
+
+                                                    <div class="login-sec">
+                                                        <a class="btn btn-block" href="#" ng-click="GetUserInfo('UL')">Login</a>
+                                                    </div>
+
+                                                    <div class="sign-up-sec">
+                                                        <a class="btn btn-block signup-popup" href="#" ng-click="navigate('signup')">
+                                                            <i class="fa fa-user-plus" aria-hidden="true"></i>
+                                                            Sign Up
+                                                        </a>
+                                                    </div>
+
+
+                                                    <div class="forgot-pwd"><a href="#"  ng-click="navigate('forgotpassword')">Forgot Password?</a></div>
+
+                                                </form>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="signin-dropdown" ng-show="ISSignOutStatus">
+                                    <div class="dropdown">
+                                        <button type="button" class="btn btn-sign dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" ng-click="SignOut()" aria-haspopup="true">
+                                            {{LoginStatusCaption}}
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-main">
+                                            <form>
+                                                <div class="form-group">
+                                                    <i class="fa fa-user"></i>
+                                                    <input id="email" ng-model="ViewData.Email" type="text" style="color:white!important" class="form-control sign-input" name="email" placeholder="Email Address">
+                                                </div>
+                                                <div class="form-group">
+                                                    <i class="fa fa-lock"></i>
+                                                    <input id="password2" ng-model="ViewData.Passwd" type="password" style="color:white!important" class="form-control sign-input" name="password" placeholder="Password">
+                                                    <img class="icon-eye" src="images/icon-gray-eye.png" alt=""   ng-click="ShowPwd('password2')"  />
+                                                </div>
+
+                                                <div class="login-sec">
+                                                    <a class="btn btn-block" href="#" ng-click="GetUserInfo('UL')">Login</a>
+                                                </div>
+
+                                                <div class="sign-up-sec">
+                                                    <a class="btn btn-block signup-popup" href="#" ng-click="navigate('signup')">
+                                                        <i class="fa fa-user-plus" aria-hidden="true"></i>
+                                                        Sign Up
+                                                    </a>
+                                                </div>
+
+                                                <div class="forgot-pwd"><a href="#"  ng-click="navigate('forgotpassword')">Forgot Password?</a></div>
+
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="signin-dropdown" ng-show="ISSignINStatus">
+                                    <div class="dropdown">
+                                        <button class="btn btn-sign dropdown-toggle" type="button" data-toggle="dropdown">
+                                            {{LoginStatusCaption}}
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-menu-right dropdown-profile-menu">
+                                            <li><a href="my-profile.html"><img class="icon"  src="images/icon-myprofile.png" alt="My Profile" />My Profile</a></li>
+                                            <li><a href="my-ads.html"><img class="icon" src="images/icon-my-ads.png" alt="My Ads" />My Ads</a></li>
+                                            <li><a href="#" ng-click="SignOut()"><img class="icon" src="images/icon-signout.png" alt="Sign Out" />Sign Out</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+                            </div><!--top-buttons-box-->
+
+                        </div><!--header-right-->
+
+                    </div><!--bx-wrapper--->
+
+                </div><!--col-lg-12-->
+
+            </div><!--row-->
+
+
+        </div><!--container-->
+    </div><!--header-->
+
+
+	<div class="nav-catg-sec bg">
+		<div class="container">
+			
+			<div class="row">
+				
+				<div class="col-lg-12">
+					<div class="main-categ-sec">
+					<div class="box-nav">
+						
+						<a class="btn-catg" href="#" ng-click="navigate('motorlist')"><img src="images/t01.png" alt=""><span>Motors</span></a>
+						<a class="btn-catg" href="classifiedslist.html"><img src="images/t02.png" alt=""><span>Classifieds</span></a>
+						<a class="btn-catg" href="propertieslist.html"><img src="images/t04.png" alt=""><span>Properties</span></a>
+						<a class="btn-catg" href="jobs-hiring-listing.html"><img src="images/t05.png" alt=""><span>Jobs</span></a>
+						<a class="btn-catg" href="deals-list.html"><img src="images/t08.png" alt=""><span>Deals</span></a>
+						<a class="btn-catg" href="brandslist.html"><img src="images/t09.png" alt=""><span>Brands</span></a>
+						<a class="btn-catg active" href="frelnc-hiring-listing.html"><img src="images/t06.png" alt=""><span>Freelance</span></a>
+						<a class="btn-catg" href="directorylist.html"><img src="images/t07.png" alt=""><span>Directory</span></a>
+						<a class="btn-catg" href="malls.html"><img src="images/t03.png" alt=""><span>Malls</span></a>
+						<a class="btn-catg" href="governmentlist.html"><img src="images/t10.png" alt=""><span>E-Govt.</span></a>
+			
+					</div><!--box-nav--->
+					</div><!--main-categ-sec--->
+
+<div class="main-categ-mobile-sec">
+<a class="btn-block main-catg-mob" data-toggle="collapse" href="#MainCatg">Main Category</a>
+
+<div class="collapse" id="MainCatg">
+  <div class="card card-body">
+
+					<div class="box-nav">
+						<a class="btn-catg" href="#" ng-click="navigate('motorlist')"><img src="images/t01.png" alt=""><span>Motors</span></a>
+						<a class="btn-catg" href="classifiedslist.html"><img src="images/t02.png" alt=""><span>Classifieds</span></a>
+						<a class="btn-catg" href="propertieslist.html"><img src="images/t04.png" alt=""><span>Properties</span></a>
+						<a class="btn-catg" href="jobs-hiring-listing.html"><img src="images/t05.png" alt=""><span>Jobs</span></a>
+						<a class="btn-catg" href="deals-list.html"><img src="images/t08.png" alt=""><span>Deals</span></a>
+						<a class="btn-catg" href="brandslist.html"><img src="images/t09.png" alt=""><span>Brands</span></a>
+						<a class="btn-catg active" href="frelnc-hiring-listing.html"><img src="images/t06.png" alt=""><span>Freelance</span></a>
+						<a class="btn-catg" href="directorylist.html"><img src="images/t07.png" alt=""><span>Directory</span></a>
+						<a class="btn-catg" href="malls.html"><img src="images/t03.png" alt=""><span>Malls</span></a>
+						<a class="btn-catg" href="governmentlist.html"><img src="images/t10.png" alt=""><span>E-Govt.</span></a>
+			
+					</div><!--box-nav--->	  
+	  
+  </div>
+</div>
+</div><!--main-categ-mobile-sec-->					
+					
+				</div><!--col-lg-12-->
+				
+				<div class="col-lg-12">					
+						<div class="search-sec">
+							<div class="input-group">
+								<input type="text" class="form-control" placeholder="How can i help you?">
+								<div class="input-group-btn">
+										<button class="btn btn-default search_icon" type="button"><i class="fa fa-search-plus"></i></button>
+								</div>
+							 </div>	
+						</div>
+				</div><!--col-lg-12-->		
+			
+			</div><!--row-->
+			
+		</div><!--container--->		
+	</div><!--nav-catg-sec--->
+
+
+<div class="body-container">
+	<div class="container">
+		
+		<div class="row">
+			
+			<div class="col-lg-3">
+				
+<div class="category-sec">
+<div class="category-bg">
+					
+<label class="radio">Accounting
+<input type="radio" name="catg-joblist">
+<span class="checkround"></span>
+</label>
+					
+<label class="radio">Airlines & Aviation
+<input type="radio" name="catg-joblist">
+<span class="checkround"></span>
+</label>
+					
+<label class="radio">Architecture & Interior Design
+<input type="radio" name="catg-joblist">
+<span class="checkround"></span>
+</label>
+					
+<label class="radio">Art & Entertainment
+<input type="radio" name="catg-joblist">
+<span class="checkround"></span>
+</label>
+					
+<label class="radio">Automotive
+<input type="radio" name="catg-joblist">
+<span class="checkround"></span>
+</label>
+					
+<label class="radio">Banking & Finance
+<input type="radio" name="catg-joblist">
+<span class="checkround"></span>
+</label>
+					
+<label class="radio">Beauty
+<input type="radio" name="catg-joblist">
+<span class="checkround"></span>
+</label>
+					
+<label class="radio">Business Development
+<input type="radio" name="catg-joblist">
+<span class="checkround"></span>
+</label>
+					
+<label class="radio">Supplies & Equipment
+<input type="radio" name="catg-joblist">
+<span class="checkround"></span>
+</label>
+					
+<label class="radio">Construction
+<input type="radio" name="catg-joblist">
+<span class="checkround"></span>
+</label>
+					
+<label class="radio">Consulting
+<input type="radio" name="catg-joblist">
+<span class="checkround"></span>
+</label>
+					
+<label class="radio">Customer Service
+<input type="radio" name="catg-joblist">
+<span class="checkround"></span>
+</label>
+					
+<label class="radio">Education
+<input type="radio" name="catg-joblist">
+<span class="checkround"></span>
+</label>
+					
+<label class="radio">Engineering
+<input type="radio" name="catg-joblist">
+<span class="checkround"></span>
+</label>
+					
+<label class="radio">Environmental Services
+<input type="radio" name="catg-joblist">
+<span class="checkround"></span>
+</label>
+					
+<label class="radio">Event Management
+<input type="radio" name="catg-joblist">
+<span class="checkround"></span>
+</label>
+					
+<label class="radio">Executive
+<input type="radio" name="catg-joblist">
+<span class="checkround"></span>
+</label>
+					
+<label class="radio">Fashion
+<input type="radio" name="catg-joblist">
+<span class="checkround"></span>
+</label>
+					
+<label class="radio">Food & Beverages
+<input type="radio" name="catg-joblist">
+<span class="checkround"></span>
+</label>
+					
+<label class="radio">Government / Administration
+<input type="radio" name="catg-joblist">
+<span class="checkround"></span>
+</label>
+					
+<label class="radio">Graphic Design
+<input type="radio" name="catg-joblist">
+<span class="checkround"></span>
+</label>
+					
+<label class="radio">Hospitality & Restaurants
+<input type="radio" name="catg-joblist">
+<span class="checkround"></span>
+</label>	
+	
+</div><!--category-bg--->
+</div><!--category-sec--->			
+
+<div class="category-mobile-sec">
+<a class="btn-block catg-mob" data-toggle="collapse" href="#CatgCollapse">Category List</a>
+	
+<div class="category-bg-mob">					
+<div class="collapse" id="CatgCollapse">
+<div class="card card-body">
+
+<label class="radio">Accounting
+<input type="radio" name="catg-joblist">
+<span class="checkround"></span>
+</label>
+					
+<label class="radio">Airlines & Aviation
+<input type="radio" name="catg-joblist">
+<span class="checkround"></span>
+</label>
+					
+<label class="radio">Architecture & Interior Design
+<input type="radio" name="catg-joblist">
+<span class="checkround"></span>
+</label>
+					
+<label class="radio">Art & Entertainment
+<input type="radio" name="catg-joblist">
+<span class="checkround"></span>
+</label>
+					
+<label class="radio">Automotive
+<input type="radio" name="catg-joblist">
+<span class="checkround"></span>
+</label>
+					
+<label class="radio">Banking & Finance
+<input type="radio" name="catg-joblist">
+<span class="checkround"></span>
+</label>
+					
+<label class="radio">Beauty
+<input type="radio" name="catg-joblist">
+<span class="checkround"></span>
+</label>
+					
+<label class="radio">Business Development
+<input type="radio" name="catg-joblist">
+<span class="checkround"></span>
+</label>
+					
+<label class="radio">Supplies & Equipment
+<input type="radio" name="catg-joblist">
+<span class="checkround"></span>
+</label>
+					
+<label class="radio">Construction
+<input type="radio" name="catg-joblist">
+<span class="checkround"></span>
+</label>
+					
+<label class="radio">Consulting
+<input type="radio" name="catg-joblist">
+<span class="checkround"></span>
+</label>
+					
+<label class="radio">Customer Service
+<input type="radio" name="catg-joblist">
+<span class="checkround"></span>
+</label>
+					
+<label class="radio">Education
+<input type="radio" name="catg-joblist">
+<span class="checkround"></span>
+</label>
+					
+<label class="radio">Engineering
+<input type="radio" name="catg-joblist">
+<span class="checkround"></span>
+</label>
+					
+<label class="radio">Environmental Services
+<input type="radio" name="catg-joblist">
+<span class="checkround"></span>
+</label>
+					
+<label class="radio">Event Management
+<input type="radio" name="catg-joblist">
+<span class="checkround"></span>
+</label>
+					
+<label class="radio">Executive
+<input type="radio" name="catg-joblist">
+<span class="checkround"></span>
+</label>
+					
+<label class="radio">Fashion
+<input type="radio" name="catg-joblist">
+<span class="checkround"></span>
+</label>
+					
+<label class="radio">Food & Beverages
+<input type="radio" name="catg-joblist">
+<span class="checkround"></span>
+</label>
+					
+<label class="radio">Government / Administration
+<input type="radio" name="catg-joblist">
+<span class="checkround"></span>
+</label>
+					
+<label class="radio">Graphic Design
+<input type="radio" name="catg-joblist">
+<span class="checkround"></span>
+</label>
+					
+<label class="radio">Hospitality & Restaurants
+<input type="radio" name="catg-joblist">
+<span class="checkround"></span>
+</label>
+	
+</div>
+</div><!--collapse--->	
+</div><!--category-bg--->
+	
+</div><!--category-mobile-sec--->
+	
+	</div><!--col-lg-3--->
+                
+                
+                <div class="col-lg-6">					
+					
+					<div class="sort-section">                   
+                        
+                        <div class="Sort-By">
+							<select class="form-control" id="">
+								<option>Hiring</option>
+								<option>Jobs Wanted</option>
+							</select>
+                        </div>          
+                        
+                    </div>
+					
+					
+<div class="jobs-listing-sec">
+	
+	<div class="jobs-items-list">
+		
+		<div class="item">
+			<div class="row">
+				
+				<div class="col-3">
+					<div class="image-hr-logo"><img src="images/job-company-logo.jpg" alt=""/></div>
+				</div>
+				
+				<div class="col-9">
+					<div class="txt-box">
+					<h3><a href="jobs-hiring-detail.html">Administrative Office Assistant</a></h3>
+
+					<div class="desc-sm">Good computer skills with key proficiency in MS Office, Excellent written and verbal communication</div>						
+
+					<div class="posted-box">
+						<div class="text-one">Company Name</div>
+						<div class="text-two">28 October 2019</div>
+					</div>
+						
+					</div>				
+				</div>
+				
+			</div><!--row-->
+		</div><!--box-->
+		
+		<div class="place">
+			<img class="icon-loc" src="images/lcation.png" alt="">
+			<div class="txt-loc">Halab Street, Beirut Road, Doha</div>
+		</div>
+	</div><!--jobs-items-list-->
+
+
+
+</div><!--jobs-listing-sec-->
+ 
+<div class="pagination-sec">
+  <ul class="pagination pagination-sm">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">4</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</div>
+					
+					
+<div class="advt-grid-items"><img src="images/advt-bottom.jpg" alt=""/></div>		
+					
+                </div><!--col-lg-6-->
+                
+                <div class="col-lg-3">
+					<div class="advt-right"><img src="images/advt-right.jpg" alt=""/></div>                        
+                </div>
+
+</div><!--row-->
+			
+</div><!--container-->    
+</div><!--body-container-->
+
+<div class="footer-sec">
+<div class="container">
+
+<div class="footer-widgets">
+
+<div class="row">
+
+<div class="col-lg-3 col-sm-6">
+<div class="footer-column">
+<h5>Quick Links</h5>
+<ul class="links">
+<li><a href="about.html">About Us</a></li>
+<li><a href="careers.html">Careers</a></li>
+<li><a href="contact.html">Contact Us</a></li>
+</ul>
+</div>
+</div><!--col-lg-3-->
+	
+<div class="col-lg-3 col-sm-6">
+<div class="footer-column">
+<h5>Policy</h5>
+<ul class="links">
+<li><a href="privacypolicy.html">Privacy Policy </a></li>
+<li><a href="terms.html">Terms & Conditions </a></li>
+</ul>
+</div>
+</div><!--col-lg-3-->
+	
+<div class="col-lg-3 col-sm-6">
+<div class="footer-column">
+<h5>Follow Us</h5>
+<div class="social-footer">
+<a href="https://www.facebook.com/ZerooriOnline" target="_blank"><img src="images/fb.png" alt=""/></a>
+<a href="https://twitter.com/zeroorionline" target="_blank"><img src="images/twitter.png" alt=""/></a>
+<a href="https://www.instagram.com/zeroorionline" target="_blank"><img src="images/insta.png" alt=""/></a>
+</div>
+</div>
+</div><!--col-lg-3-->
+
+<div class="col-lg-3 col-sm-6">
+<div class="footer-column">
+<h5>Subscribe to our newsletter</h5>
+<div class="input-group">
+<input type="text" class="form-control foot-newsletter " placeholder="Email Address">
+<div class="input-group-btn">
+<button class="btn btn-default foot-newsletter-btn" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+</div>
+</div>
+</div>
+</div><!--col-lg-3-->
+
+</div><!--row-->
+
+</div><!--footer-widgets-->
+	
+<div class="footer-bottom">© 2019 Zeroori.com. All rights reserved.</div>
+
+</div><!--container-->
+</div><!--footer-->
+
+ 
+	
+<div class="mobile-sec-footer">
+
+<a class="nv-item pr" data-toggle="modal" href="#" ng-click="PostAdd()">
+	<div class="btn-icon-mob"><img src="images/icon-post-ad-mobile.png" alt=""/></div>
+	<div class="link-mob">Post an ad</div>	
+</a>
+
+	
+<a class="nv-item" data-toggle="modal" href="#" ng-click="PostAdd()" ng-show="ISSignOutStatus">
+	<div class="btn-icon-mob"><img src="images/icon-sign-mobile.png" alt=""/></div>
+	<div class="link-mob">{{LoginStatusCaption}}</div>
+</a>
+
+                                <div class="nv-item" ng-show="ISSignINStatus">
+                                    <div class="dropdown">
+                                        <button class="btn btn-sign dropdown-toggle" type="button" data-toggle="dropdown">
+											
+										<div class="btn-icon-mob"><img src="images/icon-sign-mobile.png" alt=""/></div>
+										<div class="link-mob">{{LoginStatusCaption}}</div>	
+											
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-profile-menu">
+                                            <li><a href="my-profile.html"><img class="icon"  src="images/icon-myprofile.png" alt="My Profile"/>My Profile</a></li>
+                                            <li><a href="my-ads.html"><img class="icon" src="images/icon-my-ads.png" alt="My Ads"/>My Ads</a></li>
+                                            <li><a href="#" ng-click="SignOut()"><img class="icon" src="images/icon-signout.png" alt="Sign Out"/>Sign Out</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+</div><!--mobile-sec-footer-->
+	
+
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/custom.js"></script>
+
+</body>
+</html>

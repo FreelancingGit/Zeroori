@@ -1,0 +1,236 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content=""/>
+<meta name="keywords" content="">
+<title>ZEROORI</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/responsive.css" rel="stylesheet">
+	
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-cookies.min.js"></script>
+    <script src="Controler/jobswantedstepone.js?test=1"></script>
+
+    <link rel="icon" href="images/fav.png" type="image/gif" sizes="16x16">
+</head>
+
+<body ng-app="ZerooriApp" ng-controller="jobswantedstepone"  ng-cloak>
+
+<div class="post-ad-sec">
+<div class="container">
+	
+            <div class="post-ad-box">
+				
+                <div class="row justify-content-center">
+					
+                    <div class="col-lg-6 col-md-10">
+						
+                        <div class="post-ad-logo">
+                            <a href="index.html"><img src="images/zeroori-logo-inner.png" alt="" /></a>
+                        </div>
+						
+                        <div class="login-user-name"><img class="btn-icon" src="images/icon-user-login-color-one.png" alt="" />{{LoginStatusCaption}}</div>
+                        <a class="btn-my-ad" href="my-ads.html"><img class="btn-icon" src="images/icon-my-ads.png" alt="" />My Ads</a>
+                        <div class="post-ad-header">
+                            <h3>Submit your Profile</h3>
+                        </div>
+						
+                        <div class="forms-post-sec">
+                            <form>
+                                <div class="form-bx">
+									
+                                    <div class="photo-add-sec">
+                                        <h3>Photo</h3>
+
+                                        <input id="upload1" style="display:none;" type="file" accept="image/*" onchange="">
+
+                                        <div class="bx-item">
+                                            <a id="upload_link1" href="#">
+                                                <div class="item-photo">
+                                                    <img  id="Imgupload1" src="images/camera.png" alt="" />
+                                                </div>
+                                            </a>
+                                            <a class="link-txt" href="#" ng-click="RemoveImage('1')">Remove</a>
+                                        </div>
+                                    </div>
+									
+                                    <div class="row">
+
+                                        <div class="form-group col-md-6">
+                                            <input type="text" class="form-control" ng-model="SelectedData.FirstName" placeholder="First Name">
+                                        </div>
+
+                                        <div class="form-group col-md-6">
+                                            <input type="text" class="form-control" ng-model="SelectedData.LastName" placeholder="Last Name">
+                                        </div>
+
+                                        <div class="form-group col-md-6 text-left">
+                                            <span class="ds-block">Gender</span>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" ng-model="SelectedData.Gender" value="M" checked>
+                                                <label class="form-check-label" for="inlineRadio1">Male</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" ng-model="SelectedData.Gender" value="F" checked>
+                                                <label class="form-check-label" for="inlineRadio2">Female</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-md-6">
+                                            <select class="form-control" id="sel1" ng-model="SelectedData.Nationality"
+                                                    ng-options="Nationality.EmpJobValue for Nationality in ViewData.NationalityCol track by Nationality.EmpJobDtlId"></select>
+                                        </div>
+
+                                        <div class="form-group col-md-12">
+                                            <input type="text" ng-model="SelectedData.Title" class="form-control" placeholder="Title">
+                                        </div>
+
+                                        <div class="form-group col-md-12">
+                                            <textarea class="form-control" ng-model="SelectedData.Description" rows="3" id="" placeholder="Description">
+                                            </textarea>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <select class="form-control" id="sel1" ng-model="SelectedData.Industry"
+                                                    ng-options="Industry.EmpJobValue for Industry in ViewData.IndustryCol track by Industry.EmpJobDtlId"></select>
+                                        </div>
+
+                                        <div class="form-group col-md-6">
+                                            <input type="number" ng-model="SelectedData.Mobile" class="form-control" placeholder="Mobile">
+                                        </div>
+
+                                        <div class="form-group col-md-6">
+                                            <input type="text" ng-model="SelectedData.Email" class="form-control" placeholder="Email">
+                                        </div>
+
+                                        <div class="form-group col-md-6">
+                                            <select class="form-control" id="sel1" ng-model="SelectedData.CurrentLoc"
+                                                    ng-options="CurrentLoc.EmpJobValue for CurrentLoc in ViewData.CurrentLocCol track by CurrentLoc.EmpJobDtlId"></select>
+                                        </div>
+
+                                        <div class="form-group col-md-6">
+                                            <input type="text" ng-model="SelectedData.CurrentCompany" class="form-control" placeholder="Current Company">
+                                        </div>
+
+                                        <div class="form-group col-md-6">
+                                            <input type="text" ng-model="SelectedData.CurrentPos" class="form-control" placeholder="Current Position">
+                                        </div>
+
+                                        <div class="form-group col-md-6">
+                                            <input type="text" ng-model="SelectedData.NoticePeriod" class="form-control" placeholder="Notice Period">
+                                        </div>
+
+                                        <div class="form-group col-md-6">
+                                            <select class="form-control" id="sel1" ng-model="SelectedData.VisaStatus"
+                                                    ng-options="VisaStatus.EmpJobValue for VisaStatus in ViewData.VisaStatusCol track by VisaStatus.EmpJobDtlId"></select>
+                                        </div>
+
+                                        <div class="form-group col-md-6">
+                                            <select class="form-control"
+                                                    id="sel1"
+                                                    ng-model="SelectedData.CarrierLevel"
+                                                    ng-options="CarrierLevel.EmpJobValue for CarrierLevel in ViewData.CarrierLevelCol track by CarrierLevel.EmpJobDtlId"></select>
+                                        </div>
+
+                                        <div class="form-group col-md-6">
+                                            <select class="form-control"
+                                                    id="sel1"
+                                                    ng-model="SelectedData.CurrentSalary"
+                                                    ng-options="CurrentSalary.EmpJobValue for CurrentSalary in ViewData.CurrentSalaryCol track by CurrentSalary.EmpJobDtlId"></select>
+                                        </div>
+
+                                        <div class="form-group col-md-6">
+                                            <select class="form-control"
+                                                    id="sel1"
+                                                    ng-model="SelectedData.WorkExperiance"
+                                                    ng-options="WorkExperiance.EmpJobValue for WorkExperiance in ViewData.WorkExperianceCol track by WorkExperiance.EmpJobDtlId"></select>
+                                        </div>
+
+                                        <div class="form-group col-md-6">
+                                            <select class="form-control"
+                                                    id="sel1"
+                                                    ng-model="SelectedData.EducationalLevel"
+                                                    ng-options="EducationalLevel.EmpJobValue for EducationalLevel in ViewData.EducationalLevelCol track by EducationalLevel.EmpJobDtlId"></select>
+                                        </div>
+
+                                        <div class="form-group col-md-6">
+                                            <select class="form-control"
+                                                    id="sel1"
+                                                    ng-model="SelectedData.Commitment"
+                                                    ng-options="Commitment.EmpJobValue for Commitment in ViewData.CommitmentCol track by Commitment.EmpJobDtlId"></select>
+                                        </div>
+
+                                        <div class="form-group col-md-12 text-left">
+                                            <label for="exampleFormControlFile1">Upload your CV</label>
+                                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                        </div>
+
+                                    </div><!--row-->
+									
+                                    <button type="button" ng-click="DoSave()" class="btn btn-submit">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+						
+                    </div><!--col-lg-6-->
+					
+                </div><!--row-->
+
+				
+                <div class="footer-text">© Zeroori.com 2019, All Rights Reserved.</div>
+            </div><!--post-ad-box-->
+        </div><!--container-->
+    </div><!--post-ad-sec-->
+	
+	
+	
+							<!-- Modal -->
+                                <div class="modal fade" id="myModal" role="dialog">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            </div>
+                                            <div class="modal-body popup">
+
+                                                <form>													
+												<div class="form-group">
+													<i class="fa fa-user"></i>
+													<input id="email" ng-model="ViewData.Email" type="text" class="form-control" name="email" placeholder="Email Address">
+												</div>
+
+												<div class="form-group">
+													<i class="fa fa-lock"></i>
+													<input id="password" ng-model="ViewData.Passwd" type="password" class="form-control" name="password" placeholder="Password">
+													<img class="icon-eye" src="images/icon-gray-eye.png" alt="" />
+												</div>
+													
+     
+                                                    <div class="login-sec">
+                                                        <a class="btn btn-block" href="#" ng-click="GetUserInfo('UL')">Login</a>
+                                                    </div>
+
+                                                    <div class="sign-up-sec">
+                                                        <a class="btn btn-block signup-popup" href="#" ng-click="navigate('signup')">
+                                                            <i class="fa fa-user-plus" aria-hidden="true"></i>
+                                                            Sign Up
+                                                        </a>
+                                                    </div>
+													<div class="forgot-pwd"><a href="#"  ng-click="navigate('forgotpassword')">Forgot Password?</a></div>
+                                                </form>
+												
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+	
+	
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/custom.js"></script>
+    
+</body>
+</html>
