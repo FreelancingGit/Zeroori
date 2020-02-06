@@ -43,6 +43,18 @@
 			SessionId: ''
 		}
 	}
+	$scope.SortClassifiedList = function () {
+		console.log($scope.SelectedData.SortBy);
+		$scope.LoadData();
+	};
+	$scope.FilterAge = function () {
+		$scope.LoadData();
+	};
+	$scope.SelectedOption = function (item) {
+		console.log(item.Category);
+		$scope.SelectedData.Category = JSON.parse(angular.toJson(item.Category));
+		$scope.LoadData();
+	}
 	if ($scope.urlArray.length > 1) {
 		$scope.PrevPage = $scope.urlArray[0].replace('url=', '');
 	}
@@ -129,6 +141,7 @@
 					$scope.Products = response.data.ClasifiedsDataCol;
 					$scope.SelectedData.Age = response.data.AgeCol[0];
 					$scope.SelectedData.SortBy = response.data.SortByCol[0];
+					$scope.SelectedData.Category = response.data.CatagoryCol;
 					var PageNo = parseInt(response.data.PageNoCol[0].DisPlyMembr);
 					var TotalPages = response.data.PageNoCol[0].ValMembr;
 					$scope.NavOne = PageNo + 0;

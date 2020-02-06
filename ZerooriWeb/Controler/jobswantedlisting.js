@@ -30,19 +30,21 @@
 
     $scope.EmpJobCol = {};
     $scope.ReportypCol = {};
-
+    $scope.IndstryCol = {};
     $scope.SelectedData = {
-        PageNo: 1,
-        Reportyp: {
-            DisPlyMembr: '',
-            ValMembr: ''
-        },
+        PageNo: 1,       
         UserData:
         {
             FistNam: '',
             ZaBase: {
                 SessionId: ''
             }
+        },
+        IndstryCol: {           
+        },
+        ReportypCol: {
+            DisPlyMembr: '',
+            ValMembr: ''
         }
     }
 
@@ -59,7 +61,12 @@
         }
     }
 
-    
+    $scope.SelectedOption = function (item) {
+        console.log(item.Indstry);
+        $scope.SelectedData.IndstryCol = JSON.parse(angular.toJson(item.Indstry));
+        console.log($scope.SelectedData.IndstryCol);
+        $scope.LoadData();
+    }
    
     if ($scope.urlArray.length > 1) {
         $scope.PrevPage = $scope.urlArray[0].replace('url=', '');
@@ -136,7 +143,7 @@
     }
 
     $scope.showtemp = function () {
-        if ($scope.SelectedData.Reportyp.ValMembr == 0 && $scope.Page == 'jobs-wanted-listing')
+        if ($scope.SelectedData.ReportypCol.ValMembr == 0 && $scope.Page == 'jobs-wanted-listing')
             $scope.navigate("jobs-hiring-listing");
 
     }
@@ -165,8 +172,8 @@
                    
                     $scope.EmpJobCol = response.data.EmpJobCol;
                     $scope.ReportypCol = response.data.ReportypCol;
-
-                    $scope.SelectedData.Reportyp = response.data.ReportypCol[1];
+                    $scope.IndstryCol = response.data.IndustryCol;
+                    $scope.SelectedData.ReportypCol = response.data.ReportypCol[1];
 
                     var PageNo = parseInt(response.data.PageNoCol[0].DisPlyMembr);
                     var TotalPages = response.data.PageNoCol[0].ValMembr;
@@ -404,7 +411,7 @@
             && response.data.UserData.ZaBase.ErrorMsg != undefined
             && response.data.UserData.ZaBase.ErrorMsg.trim() != "") {
 
-            alert(response.data.ZaBase.ErrorMsg);
+            alert(response.data.UserData.ZaBase.ErrorMsg);
             return false;
         }
 

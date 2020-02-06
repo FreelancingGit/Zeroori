@@ -166,7 +166,7 @@ Sign Up
 <div class="category-bg" ng-repeat="Category in CategorysCol">
 <label class="radio">
 {{Category.ClasifdSpecValue}}<span class="catg-number"></span>
-<input type="radio" ng-model="FilterData.Category.ClasifdSpecDtlId" value="{{Category.ClasifdSpecDtlId}}" name="catg-classifieds">
+<input type="radio" ng-model="FilterData.Category.ClasifdSpecDtlId" value="{{Category.ClasifdSpecDtlId}}" name="catg-classifieds"  ng-click="SelectedOption(this)">
 <span class="checkround"></span>
 </label>
 </div><!--category-bg--->
@@ -178,7 +178,7 @@ Sign Up
 <div class="card card-body">
 <label class="radio">
 {{Category.ClasifdSpecValue}}<span class="catg-number"></span>
-<input type="radio" ng-model="FilterData.Category.ClasifdSpecDtlId" value="{{Category.ClasifdSpecDtlId}}" name="catg-classifieds">
+<input type="radio" ng-model="SelectedData.Category" value="{{Category.ClasifdSpecDtlId}}" name="catg-classifieds" ng-click="SelectedOption()">
 <span class="checkround"></span>
 </label>
 </div>
@@ -191,10 +191,10 @@ Sign Up
 <div class="location">
 <select class="form-control" id="sel1"
 ng-model="SelectedData.Age"
-ng-options="Age.DisPlyMembr for Age in AgeCol track by Age.ValMembr"></select>
+ng-options="Age.DisPlyMembr for Age in AgeCol track by Age.ValMembr" ng-change="FilterAge()"></select>
 </div>
 <div class="Sort-By">
-<select class="form-control" id="sel1"
+<select class="form-control" id="sel1" ng-change="SortClassifiedList()"
 ng-model="SelectedData.SortBy"
 ng-options="SortBy.DisPlyMembr for SortBy in SortByCol track by SortBy.ValMembr"></select>
 </div>
