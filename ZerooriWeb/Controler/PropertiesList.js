@@ -43,6 +43,19 @@
             SessionId: ''
         }
     }
+    $scope.SortPropertiesList = function () {
+        console.log($scope.SelectedData.SortBy);
+        $scope.LoadData();
+    };
+    $scope.FilterLocation = function () {
+        console.log($scope.SelectedData.Location)
+        $scope.LoadData();
+    };
+    $scope.SelectedOption = function (item) {
+        console.log(item.Category);
+        $scope.SelectedData.Category = JSON.parse(angular.toJson(item.Category));
+        $scope.LoadData();
+    }
     if ($scope.urlArray.length > 1) {
         $scope.PrevPage = $scope.urlArray[0].replace('url=', '');
     }

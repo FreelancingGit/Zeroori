@@ -220,7 +220,7 @@
 
                             <label class="radio">
                                 {{Category.PropSpecValue}}<span class="catg-number"></span>
-                                <input type="radio" ng-model="FilterData.Category.PropSpecDtlId" value="{{Category.PropSpecDtlId}}" name="catg-property">
+                                <input type="radio" ng-model="FilterData.Category.PropSpecDtlId" value="{{Category.PropSpecDtlId}}" name="catg-property" ng-click="SelectedOption(this)">
                                 <span class="checkround"></span>
                             </label>
 
@@ -241,7 +241,7 @@
                             <div class="dropdown">
                                 <select class="form-control" id="sel1"
                                         ng-model="SelectedData.Location"
-                                        ng-options="Location.DisPlyMembr for Location in LocationCol track by Location.ValMembr"></select>
+                                        ng-options="Location.DisPlyMembr for Location in LocationCol track by Location.ValMembr" ng-change="FilterLocation()"></select>
                             </div>
                         </div>
 
@@ -249,7 +249,7 @@
                             <div class="dropdown">
                                 <select class="form-control" id="sel1"
                                         ng-model="SelectedData.SortBy"
-                                        ng-options="SortBy.DisPlyMembr for SortBy in SortByCol track by SortBy.ValMembr"></select> 
+                                        ng-options="SortBy.DisPlyMembr for SortBy in SortByCol track by SortBy.ValMembr" ng-change="SortPropertiesList()"></select> 
                             </div>
                         </div>
 

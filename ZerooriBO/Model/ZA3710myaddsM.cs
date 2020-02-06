@@ -91,7 +91,7 @@ namespace ZerooriBO
                 new XElement("as_mode", "LD"),
                 new XElement("ai_pageno", FilterData.PageNo),
                 new XElement("as_sessionid",""),
-                new XElement("as_Option", FilterData.Catagory.ClasifdSpecDtlId),
+                new XElement("as_Option", FilterData.Category.PropSpecDtlId),
                 new XElement("as_location", FilterData.Location.ValMembr),
                 new XElement("as_sortby", FilterData.SortBy.ValMembr)
                 ));

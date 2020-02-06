@@ -166,7 +166,7 @@ Sign Up
 <div class="category-bg" ng-repeat="Category in CategorysCol">
 <label class="radio">
 {{Category.ClasifdSpecValue}}<span class="catg-number"></span>
-<input type="radio" ng-model="FilterData.Category.ClasifdSpecDtlId" value="{{Category.ClasifdSpecDtlId}}" name="catg-classifieds" ng-click="SelectedOption()">
+<input type="radio" ng-model="FilterData.Category.ClasifdSpecDtlId" value="{{Category.ClasifdSpecDtlId}}" name="catg-classifieds"  ng-click="SelectedOption(this)">
 <span class="checkround"></span>
 </label>
 </div><!--category-bg--->
@@ -178,7 +178,7 @@ Sign Up
 <div class="card card-body">
 <label class="radio">
 {{Category.ClasifdSpecValue}}<span class="catg-number"></span>
-<input type="radio" ng-model="FilterData.Category.ClasifdSpecDtlId" value="{{Category.ClasifdSpecDtlId}}" name="catg-classifieds" ng-click="SelectedOption()">
+<input type="radio" ng-model="SelectedData.Category" value="{{Category.ClasifdSpecDtlId}}" name="catg-classifieds" ng-click="SelectedOption()">
 <span class="checkround"></span>
 </label>
 </div>

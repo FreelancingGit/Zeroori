@@ -41,7 +41,7 @@ public class Classifiedslist : IHttpHandler
             Key = (this.Context.Request.QueryString).AllKeys[0];   // OnLoad: JSON.stringify($scope.ViewData.FilterData)
 
 
-            string Mode = "LO";
+        string Mode = "LO";
         if (Key != "")
         {
             String JsonData = this.Context.Request[Key];// Key ==  OnLoad
