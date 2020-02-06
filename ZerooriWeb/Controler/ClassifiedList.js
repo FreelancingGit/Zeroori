@@ -50,9 +50,8 @@
 	$scope.FilterAge = function () {
 		$scope.LoadData();
 	};
-	$scope.SelectedOption = function (item) {
-		console.log(item.Category);
-		$scope.SelectedData.Category = JSON.parse(angular.toJson(item.Category));
+	$scope.SelectedOption = function () {
+		console.log($scope.SelectedData.Category);
 		$scope.LoadData();
 	}
 	if ($scope.urlArray.length > 1) {
@@ -141,7 +140,7 @@
 					$scope.Products = response.data.ClasifiedsDataCol;
 					$scope.SelectedData.Age = response.data.AgeCol[0];
 					$scope.SelectedData.SortBy = response.data.SortByCol[0];
-					$scope.SelectedData.Category = response.data.CatagoryCol;
+					$scope.SelectedData.Category = response.data.CatagoryCol[0];
 					var PageNo = parseInt(response.data.PageNoCol[0].DisPlyMembr);
 					var TotalPages = response.data.PageNoCol[0].ValMembr;
 					$scope.NavOne = PageNo + 0;
