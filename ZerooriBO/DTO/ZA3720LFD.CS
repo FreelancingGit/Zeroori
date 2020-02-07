@@ -11,6 +11,7 @@ namespace ZerooriBO
         ZA3220D _Catagory  = new ZA3220D();
         ComDisValD _Location = new ComDisValD();
         ComDisValD _SortBy = new ComDisValD();
+		ComDisValD _Age = new ComDisValD();
         int _PageNo = 1;
 
         public ZA3000D UserData { get => _UserData; set => _UserData = value; }
