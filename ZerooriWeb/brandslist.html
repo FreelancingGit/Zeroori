@@ -405,23 +405,17 @@
 
                         <div class="location">
                             <div class="dropdown">
-                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">Location</button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">lorem ipsum</a>
-                                    <a class="dropdown-item" href="#">lorem ipsum</a>
-                                    <a class="dropdown-item" href="#">lorem ipsum</a>
-                                </div>
+                                <select class="form-control" id="sel1"
+                                        ng-model="SelectedData.Location"
+                                        ng-options="Location.DisPlyMembr for Location in LocationCol track by Location.ValMembr" ng-change="FilterLocation()"></select>
                             </div>
                         </div>
 
                         <div class="Sort-By">
                             <div class="dropdown">
-                                <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">Sort-By</button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">lorem ipsum</a>
-                                    <a class="dropdown-item" href="#">lorem ipsum</a>
-                                    <a class="dropdown-item" href="#">lorem ipsum</a>
-                                </div>
+                                <select class="form-control" id="sel1"
+                                        ng-model="SelectedData.SortBy"
+                                        ng-options="SortBy.DisPlyMembr for SortBy in SortByCol track by SortBy.ValMembr" ng-change="SortPropertiesList()"></select>
                             </div>
                         </div>
 

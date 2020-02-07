@@ -32,7 +32,8 @@
 
 
     $scope.PackCol = {};
-
+    $scope.LocationCol = {};
+    $scope.SortByCol = {};
 
     $scope.ViewData = {
         FistNam: "",
@@ -154,7 +155,10 @@
 
                   
                     $scope.PackCol = response.data.PackCol;
-
+                    $scope.SortByCol = response.data.SortByCol;
+                    $scope.LocationCol = response.data.LocationCol;
+                    $scope.SelectedData.Location = response.data.LocationCol[0];
+                    $scope.SelectedData.SortBy = response.data.SortByCol[0];
 
 
                     var PageNo = parseInt(response.data.PageNoCol[0].DisPlyMembr);

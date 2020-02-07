@@ -9,12 +9,14 @@ namespace ZerooriBO
     {
         ZA3640DCol _compnyjobcol = new ZA3640DCol();
         ZA3000D _UserData = new ZA3000D();
-		ComDisValDCol _reportypCol = new ComDisValDCol();
+        ZA3230D _indstry = new ZA3230D();
+        ComDisValDCol _reportypCol = new ComDisValDCol();
         ComDisValDCol _pageNoCol = new ComDisValDCol();
 
         public ZA3640DCol CompnyJobCol { get => _compnyjobcol; set => _compnyjobcol = value; }
         public ZA3000D UserData { get => _UserData; set => _UserData = value; }
-		public ComDisValDCol ReportypCol { get => _reportypCol; set => _reportypCol = value; }
+        public ZA3230D IndstryCol { get => _indstry; set => _indstry = value; }
+        public ComDisValDCol ReportypCol { get => _reportypCol; set => _reportypCol = value; }
         public ComDisValDCol PageNoCol { get => _pageNoCol; set => _pageNoCol = value; }
     }
 
@@ -40,6 +42,7 @@ namespace ZerooriBO
         string _email = string.Empty;
         String _proimg = string.Empty;
 		ComDisValD _reportyp = new ComDisValD();
+        ZA3230D _indstry = new ZA3230D();
         ZA3000D _UserData = new ZA3000D();
         int _PageNo = 1;
 
@@ -63,6 +66,8 @@ namespace ZerooriBO
         public string Proimg { get => _proimg; set => _proimg = value; }
 		public ComDisValD Reportyp { get => _reportyp; set => _reportyp = value; }
         public ZA3000D UserData { get => _UserData; set => _UserData = value; }
+        public ZA3230D IndstryCol { get => _indstry; set => _indstry = value; }
+
         public int PageNo { get => _PageNo; set => _PageNo = value; }
     }
 

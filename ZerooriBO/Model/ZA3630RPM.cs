@@ -88,6 +88,11 @@ namespace ZerooriBO
                     ValMembr = 1
                 });
 
+                UsageD.IndustryCol.Add(new ZA3230D()
+                {
+                    EmpJobDtlId = null,
+                    EmpJobValue = "All",
+                });
                 foreach (DataRow dr in filterDt.Rows)
                 {
                     UsageD.IndustryCol.Add(new ZA3230D()

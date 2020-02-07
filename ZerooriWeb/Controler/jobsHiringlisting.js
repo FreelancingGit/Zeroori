@@ -33,14 +33,10 @@
 
     $scope.CompnyJobCol = {};
     $scope.ReportypCol = {};
-
+    $scope.IndstryCol = {};
 
     $scope.SelectedData = {
-        PageNo: 1,
-        Reportyp: {
-            DisPlyMembr: '',
-            ValMembr:''
-        },
+        PageNo: 1,       
         UserData:
         {
             FistNam: '',
@@ -49,6 +45,12 @@
             ZaBase: {
                 SessionId: ''
             }
+        },
+        IndstryCol: {
+        },
+        Reportyp: {
+            DisPlyMembr: '',
+            ValMembr: ''
         }
     }
 
@@ -64,6 +66,12 @@
         }
     }
 
+    $scope.SelectedOption = function (item) {
+        console.log(item.Indstry);
+        $scope.SelectedData.IndstryCol = JSON.parse(angular.toJson(item.Indstry));
+        console.log($scope.SelectedData.IndstryCol);
+        $scope.LoadData();
+    }
 
     if ($scope.urlArray.length > 1) {
         $scope.PrevPage = $scope.urlArray[0].replace('url=', '');
@@ -174,7 +182,8 @@
                         $scope.SetStatus(false);
 
 					$scope.CompnyJobCol = response.data.CompnyJobCol;
-					$scope.ReportypCol = response.data.ReportypCol;
+                    $scope.ReportypCol = response.data.ReportypCol;
+                    $scope.IndstryCol = response.data.IndustryCol;
                     $scope.SelectedData.Reportyp = response.data.ReportypCol[0];
                    
                 } // User Login Mode

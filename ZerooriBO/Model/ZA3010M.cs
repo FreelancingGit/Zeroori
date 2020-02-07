@@ -167,6 +167,8 @@ namespace ZerooriBO
                 System.Data.DataTable dtComn = PLWM.Utils.GetDataTable(ds, 0);
                 System.Data.DataTable dtUser = PLWM.Utils.GetDataTable(ds, 1);
                 System.Data.DataTable PageNoDt = PLWM.Utils.GetDataTable(ds, 2);
+                System.Data.DataTable LocationDt = PLWM.Utils.GetDataTable(ds, 3);
+                System.Data.DataTable SortByDt = PLWM.Utils.GetDataTable(ds, 4);
 
                 if (dtComn.Rows.Count > 0)
                 {
@@ -199,6 +201,30 @@ namespace ZerooriBO
                     {
                         ValMembr = PLWM.Utils.CnvToInt(Dr["TotalPages"]),
                         DisPlyMembr = PLWM.Utils.CnvToStr(Dr["Page_No"]),
+                    });
+                }
+
+
+                UsageData.LocationCol = new ComDisValDCol();
+                UsageData.LocationCol.Add(new ComDisValD() { DisPlyMembr = "Location", ValMembr = -1 });
+                foreach (DataRow Dr in LocationDt.Rows)
+                {
+                    UsageData.LocationCol.Add(new ComDisValD()
+                    {
+                        DisPlyMembr = PLWM.Utils.CnvToStr(Dr["place_name"]),
+                        ValMembr = PLWM.Utils.CnvToInt(Dr["city_mast_id"]),
+                    });
+                }
+
+
+                UsageData.SortByCol = new ComDisValDCol();
+                UsageData.SortByCol.Add(new ComDisValD() { DisPlyMembr = "Sort By", ValMembr = -1 });
+                foreach (DataRow Dr in SortByDt.Rows)
+                {
+                    UsageData.SortByCol.Add(new ComDisValD()
+                    {
+                        DisPlyMembr = PLWM.Utils.CnvToStr(Dr["SortMode"]),
+                        ValMembr = PLWM.Utils.CnvToInt(Dr["SortValue"]),
                     });
                 }
             }
