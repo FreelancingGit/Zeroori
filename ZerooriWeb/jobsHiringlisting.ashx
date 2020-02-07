@@ -56,11 +56,11 @@ public class jobsHiringlisting : IHttpHandler
             else if (Key == "Init")
             {
                 ZA3640D UserFltr = JsonToObject<ZA3640D>(JsonData);
-                ZA3640RPD UserVew = new ZA3640RPD();
+                ZA3640LD UserVew = new ZA3640LD();
 
                 Mode = "LO";
                 ZA3640RPM UserPrflM = new ZA3640RPM();
-                UserVew = UserPrflM.DoLoad(UserFltr, Mode);
+                UserVew = UserPrflM.DoInit(UserFltr, Mode);
                 this.Context.Response.Write(ObjectToJson(UserVew));
             }
             else if (Key == "LoadData")

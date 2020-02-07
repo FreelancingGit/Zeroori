@@ -25,7 +25,7 @@ namespace ZerooriBO
                 new XElement("ai_pageno", ""),
                 new XElement("as_sessionid", FilterData.ZaBase.SessionId),
                 new XElement("as_Option", ""),
-                new XElement("as_location", ""),
+                new XElement("as_age", FilterData.UsrMastID),
                 new XElement("as_sortby", "")
                 ));
 
@@ -115,6 +115,11 @@ namespace ZerooriBO
                 }
 
                 UsageD.CatagoryCol = new ZA3220DCol();
+                UsageD.CatagoryCol.Add(new ZA3220D()
+                {
+                    ClasifdSpecDtlId = null,
+                    ClasifdSpecValue = "All",
+                });
                 foreach (DataRow Dr in CatagoryDt.Rows)
                 {
                     UsageD.CatagoryCol.Add(new ZA3220D()

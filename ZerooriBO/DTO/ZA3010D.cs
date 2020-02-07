@@ -15,9 +15,13 @@ namespace ZerooriBO
         ZA3010DCol _packCol = new ZA3010DCol();
         ZA3000D _UserData = new ZA3000D();
         ComDisValDCol _pageNoCol = new ComDisValDCol();
+        ComDisValDCol _locationCol = new ComDisValDCol();
+        ComDisValDCol _SortCol = new ComDisValDCol();
 
         public ZA3010DCol PackCol { get => _packCol; set => _packCol = value; }
         public ZA3000D UserData { get => _UserData; set => _UserData = value; }
+        public ComDisValDCol LocationCol { get => _locationCol; set => _locationCol = value; }
+        public ComDisValDCol SortByCol { get => _SortCol; set => _SortCol = value; }
         public ComDisValDCol PageNoCol { get => _pageNoCol; set => _pageNoCol = value; }
     }
         public class ZA3010D

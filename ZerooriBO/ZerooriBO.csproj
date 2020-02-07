@@ -69,6 +69,7 @@
     <Compile Include="DTO\ZA3220D.cs" />
     <Compile Include="DTO\ZA3210D.cs" />
     <Compile Include="DTO\JobsmyaddsD.cs" />
+    <Compile Include="DTO\ZA3640LD.cs" />
     <Compile Include="DTO\ZA3800D.cs" />
     <Compile Include="DTO\ZA3661LD.CS" />
     <Compile Include="DTO\ZA3660D.CS" />
