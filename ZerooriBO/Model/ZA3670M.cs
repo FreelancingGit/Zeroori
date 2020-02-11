@@ -280,6 +280,7 @@ namespace ZerooriBO
                 System.Data.DataTable UserDt = PLWM.Utils.GetDataTable(ds, 0);
                 System.Data.DataTable FrelncColDt = PLWM.Utils.GetDataTable(ds, 1);
                 System.Data.DataTable PageNoDt = PLWM.Utils.GetDataTable(ds, 2);
+                System.Data.DataTable filterDt = PLWM.Utils.GetDataTable(ds, 3);
 
                 if (UserDt.Rows.Count > 0)
                 {
@@ -329,6 +330,20 @@ namespace ZerooriBO
                     DisPlyMembr = "Jobs Wanted",
                     ValMembr = 1
                 });
+
+                UsageD.IndustryCol.Add(new ZA3230D()
+                {
+                    EmpJobDtlId = null,
+                    EmpJobValue = "All",
+                });
+                foreach (DataRow dr in filterDt.Rows)
+                {
+                    UsageD.IndustryCol.Add(new ZA3230D()
+                    {
+                        EmpJobDtlId = PLWM.Utils.CnvToNullableInt(dr["Emp_Job_Dtl_Id"]),
+                        EmpJobValue = PLWM.Utils.CnvToStr(dr["Emp_Job_Value"]),
+                    });
+                }
             }
             catch (Exception e)
             {

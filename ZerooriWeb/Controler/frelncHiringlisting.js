@@ -31,7 +31,7 @@
     
     $scope.EmpJobCol = {};
     $scope.ReportypCol = {};
-
+    $scope.IndstryCol = {};
     $scope.SelectedData = {
         PageNo: 1,
         Reportyp: {
@@ -44,6 +44,8 @@
             ZaBase: {
                 SessionId: ''
             }
+        },
+        Indstry: {
         }
     }
 
@@ -59,7 +61,12 @@
         }
     }
 
-
+    $scope.SelectedOption = function (item) {
+        console.log(item.Indstry);
+        $scope.SelectedData.Indstry = JSON.parse(angular.toJson(item.Indstry));
+        console.log($scope.SelectedData.Indstry);
+        $scope.LoadData();
+    }
 
 
     if ($scope.urlArray.length > 1) {
@@ -171,7 +178,8 @@
 
                     $scope.EmpJobCol = response.data.ComCol;
                     $scope.ReportypCol = response.data.ReportypCol;
-
+                    $scope.IndstryCol = response.data.IndstryCol;
+                    console.log(response.data.IndstryCol);
                     $scope.SelectedData.Reportyp = response.data.ReportypCol[0];
                 } // User Login Mode
 
@@ -188,7 +196,7 @@
     }
 
     $scope.LoadData = function () {
-
+        console.log('In LoadData')
         try {
             $http({
                 method: 'POST',

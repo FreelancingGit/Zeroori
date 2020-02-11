@@ -61,6 +61,7 @@
     <Compile Include="DTO\ZA2000D.cs" />
     <Compile Include="DTO\ZA2010D.CS" />
     <Compile Include="DTO\ZA2011D.CS" />
+    <Compile Include="DTO\ZA3000LFD.cs" />
     <Compile Include="DTO\ZA3010D.cs" />
     <Compile Include="DTO\ZA3011D.cs" />
     <Compile Include="DTO\ZA3011LD.CS" />

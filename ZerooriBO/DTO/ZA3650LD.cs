@@ -13,7 +13,8 @@ namespace ZerooriBO
     {
         ZA3000D _UserData = new ZA3000D();
         int? _compny_mast_id = null;
-        ZA3230DCol _indstry = new ZA3230DCol();
+        ZA3230DCol _indstryCol = new ZA3230DCol();
+        ZA3230D _indstry = new ZA3230D();
         ZA3230DCol _compny_size = new ZA3230DCol();
         ZA3230DCol _emplymnt_typ = new ZA3230DCol();
         ZA3230DCol _monthly_salary = new ZA3230DCol();
@@ -30,7 +31,9 @@ namespace ZerooriBO
        
 
         public ZA3000D UserData { get => _UserData; set => _UserData = value; }
-        public ZA3230DCol IndstryCol { get => _indstry; set => _indstry = value; }
+        public ZA3230DCol IndstryCol { get => _indstryCol; set => _indstryCol = value; }
+        public ZA3230D Indstry { get => _indstry; set => _indstry = value; }
+
         public ZA3230DCol CompnySizeCol { get => _compny_size; set => _compny_size = value; }
         public ZA3230DCol EmploymntTypeCol { get => _emplymnt_typ; set => _emplymnt_typ = value; }
         public ZA3230DCol MonthlySalaryCol { get => _monthly_salary; set => _monthly_salary = value; }

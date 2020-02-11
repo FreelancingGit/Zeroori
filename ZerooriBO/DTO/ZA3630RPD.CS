@@ -10,6 +10,7 @@ namespace ZerooriBO
         ZA3630DCol _empjobcol = new ZA3630DCol();
         ZA3000D _UserData = new ZA3000D();
         ZA3230D _indstry = new ZA3230D();
+        ZA3230DCol _industry = new ZA3230DCol();
         ComDisValDCol _pageNoCol = new ComDisValDCol();
         ComDisValDCol _reportypCol = new ComDisValDCol();
         int _PageNo = 1;
@@ -17,6 +18,8 @@ namespace ZerooriBO
         public ZA3630DCol EmpJobCol { get => _empjobcol; set => _empjobcol = value; }
         public ZA3000D UserData { get => _UserData; set => _UserData = value; }
         public ZA3230D IndstryCol { get => _indstry; set => _indstry = value; }
+        public ZA3230DCol IndustryCol { get => _industry; set => _industry = value; }
+
         public ComDisValDCol PageNoCol { get => _pageNoCol; set => _pageNoCol = value; }
         public int PageNo { get => _PageNo; set => _PageNo = value; }
         public ComDisValDCol ReportypCol { get => _reportypCol; set => _reportypCol = value; }

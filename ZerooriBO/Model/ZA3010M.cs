@@ -92,7 +92,10 @@ namespace ZerooriBO
                     new XElement("as_sessionid", FilterData.UserData.ZaBase.SessionId),
                     new XElement("ai_deal_mast_id", FilterData.DealMastID),
                     new XElement("ai_pageno", ""),
-                    new XElement("as_mode", Mode)
+                    new XElement("as_mode", Mode),
+                    new XElement("as_Option", null),
+                    new XElement("as_location", null),
+                    new XElement("as_sortby", null)
                 ));
 
 
@@ -144,6 +147,72 @@ namespace ZerooriBO
             return SaveDataV;
         }
 
+        public ZA3010D DoLoad(ZA3000LFD FilterData, String Mode)
+        {
+            ZA3010D SaveDataV = new ZA3010D();
+
+            try
+            {
+                XDocument doc = new XDocument(new XElement("Root",
+                    //new XElement("as_mode", Mode),
+                    new XElement("as_sessionid", FilterData.UserData.ZaBase.SessionId),
+                    new XElement("ai_deal_mast_id", FilterData.DealMastID),
+                    new XElement("ai_pageno", ""),
+                    new XElement("as_mode", Mode),
+                    new XElement("as_Option", FilterData.Category.ClasifdSpecDtlId),
+                    new XElement("as_location", FilterData.Location.ValMembr),
+                    new XElement("as_sortby", FilterData.SortBy.ValMembr)
+                ));
+
+
+                String XString = doc.ToString();
+                PLABSM.DAL dbObj = new PLABSM.DAL();
+                dbObj.ConnectionMode = PLABSM.ConnectionModes.WebDB;
+                DataSet ds = dbObj.SelectSP("ZA3010_SEL", XString, PLABSM.DbProvider.MSSql);
+
+
+
+                System.Data.DataTable dtComn = PLWM.Utils.GetDataTable(ds, 0);
+                System.Data.DataTable dtUser = PLWM.Utils.GetDataTable(ds, 1);
+
+                if (dtComn.Rows.Count > 0)
+                {
+                    SaveDataV.BusinessName = PLWM.Utils.CnvToStr(dtComn.Rows[0]["busines_Name"]);
+                    SaveDataV.URL = PLWM.Utils.CnvToStr(dtComn.Rows[0]["busines_Url"]);
+                    SaveDataV.Category = PLWM.Utils.CnvToStr(dtComn.Rows[0]["catgry_id"]);
+                    SaveDataV.BannerImage = PLWM.Utils.CnvToStr(dtComn.Rows[0]["banner_img_url"]);
+                    SaveDataV.CompanyLogo = PLWM.Utils.CnvToStr(dtComn.Rows[0]["logo_img_url"]);
+                    SaveDataV.Facebook = PLWM.Utils.CnvToStr(dtComn.Rows[0]["fb_url"]);
+                    SaveDataV.Instagram = PLWM.Utils.CnvToStr(dtComn.Rows[0]["Instagram_url"]);
+                    SaveDataV.Twitter = PLWM.Utils.CnvToStr(dtComn.Rows[0]["Twitter_url"]);
+                    SaveDataV.PhoneNo = PLWM.Utils.CnvToStr(dtComn.Rows[0]["Phone_No"]);
+                    SaveDataV.Email = PLWM.Utils.CnvToStr(dtComn.Rows[0]["Email"]);
+                    SaveDataV.Website = PLWM.Utils.CnvToStr(dtComn.Rows[0]["Website"]);
+                    SaveDataV.Location = PLWM.Utils.CnvToStr(dtComn.Rows[0]["geo_Location"]);
+                    SaveDataV.Description = PLWM.Utils.CnvToStr(dtComn.Rows[0]["Description"]);
+                }
+                if (dtUser.Rows.Count > 0)
+                {
+                    SaveDataV.UserData = new ZA3000D()
+                    {
+                        FistNam = PLWM.Utils.CnvToStr(dtUser.Rows[0]["usr_FistNam"]),
+                        ZaBase = new BaseD()
+                        {
+                            SessionId = PLWM.Utils.CnvToStr(dtUser.Rows[0]["sessionid"]),
+                        }
+                    };
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                SaveDataV.UserData.ZaBase.ErrorMsg = PLWM.Utils.CnvToSentenceCase(e.Message.ToLower().Replace("plerror", "").Replace("plerror", "").Trim());
+            }
+
+            return SaveDataV;
+        }
+
         //DoLoadPackage
         public ZA3010LD DoLoadPackage(ZA3000D FilterData, String Mode)
         {
@@ -155,7 +224,10 @@ namespace ZerooriBO
                     new XElement("ai_deal_mast_id", ""),
                     new XElement("as_sessionid", FilterData.ZaBase.SessionId),
                     new XElement("ai_pageno", ""),
-                    new XElement("as_mode", Mode)
+                    new XElement("as_mode", Mode),
+                    new XElement("as_Option", null),
+                    new XElement("as_location", null),
+                    new XElement("as_sortby", null)
                 ));
 
 
@@ -169,6 +241,7 @@ namespace ZerooriBO
                 System.Data.DataTable PageNoDt = PLWM.Utils.GetDataTable(ds, 2);
                 System.Data.DataTable LocationDt = PLWM.Utils.GetDataTable(ds, 3);
                 System.Data.DataTable SortByDt = PLWM.Utils.GetDataTable(ds, 4);
+                System.Data.DataTable CategoryDt = PLWM.Utils.GetDataTable(ds, 5);
 
                 if (dtComn.Rows.Count > 0)
                 {
@@ -192,6 +265,21 @@ namespace ZerooriBO
                         }
                     };
 
+                }
+
+                UsageData.CategoryCol = new ZA3220DCol();
+                UsageData.CategoryCol.Add(new ZA3220D()
+                {
+                    ClasifdSpecDtlId = null,
+                    ClasifdSpecValue = "All",
+                });
+                foreach (DataRow Dr in CategoryDt.Rows)
+                {
+                    UsageData.CategoryCol.Add(new ZA3220D()
+                    {
+                        ClasifdSpecDtlId = PLWM.Utils.CnvToInt(Dr["clasifd_dtl_id"]),
+                        ClasifdSpecValue = PLWM.Utils.CnvToStr(Dr["clasifd_value"]),
+                    });
                 }
 
                 UsageData.PageNoCol = new ComDisValDCol();
