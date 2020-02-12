@@ -115,11 +115,11 @@ namespace ZerooriBO
                 }
 
                 UsageD.CatagoryCol = new ZA3210DCol();
-                UsageD.CatagoryCol.Add(new ZA3210D()
-                {
-                    PropSpecDtlId = null,
-                    PropSpecValue = "All",
-                });
+                //UsageD.CatagoryCol.Add(new ZA3210D()
+                //{
+                //    PropSpecDtlId = null,
+                //    PropSpecValue = "All",
+                //});
                 foreach (DataRow Dr in CatagoryDt.Rows)
                 {
                     UsageD.CatagoryCol.Add(new ZA3210D()

@@ -68,12 +68,12 @@ public class brandList : IHttpHandler
             }
             else if (Key == "LoadData")
             {
-                ZA3000D UserFltr = JsonToObject<ZA3000D>(JsonData);
-                ZA3010LD UserVew = new ZA3010LD();
+                ZA3000LFD UserFltr = JsonToObject<ZA3000LFD>(JsonData);
+                ZA3010D UserVew = new ZA3010D();
 
                 Mode = "LD";
                 ZA3010M UserPrflM = new ZA3010M();
-                UserVew = UserPrflM.DoLoadPackage(UserFltr, Mode);
+                UserVew = UserPrflM.DoLoad(UserFltr, Mode);
                 this.Context.Response.Write(ObjectToJson(UserVew));
             }
             else if (Key == "SignOut")

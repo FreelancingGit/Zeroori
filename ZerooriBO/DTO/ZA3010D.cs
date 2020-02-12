@@ -17,14 +17,17 @@ namespace ZerooriBO
         ComDisValDCol _pageNoCol = new ComDisValDCol();
         ComDisValDCol _locationCol = new ComDisValDCol();
         ComDisValDCol _SortCol = new ComDisValDCol();
+        ZA3220DCol _Catagory = new ZA3220DCol();
 
         public ZA3010DCol PackCol { get => _packCol; set => _packCol = value; }
         public ZA3000D UserData { get => _UserData; set => _UserData = value; }
         public ComDisValDCol LocationCol { get => _locationCol; set => _locationCol = value; }
         public ComDisValDCol SortByCol { get => _SortCol; set => _SortCol = value; }
         public ComDisValDCol PageNoCol { get => _pageNoCol; set => _pageNoCol = value; }
+        public ZA3220DCol CategoryCol { get => _Catagory; set => _Catagory = value; }
+
     }
-        public class ZA3010D
+    public class ZA3010D
     {
         String _BusinessName = string.Empty;
         String _URL = string.Empty;

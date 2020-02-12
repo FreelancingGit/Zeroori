@@ -30,7 +30,7 @@
 
     $scope.EmpJobCol = {};
     $scope.ReportypCol = {};
-
+    $scope.IndstryCol = {};
 
     $scope.SelectedData = {
         PageNo: 1,
@@ -44,9 +44,16 @@
             ZaBase: {
                 SessionId: ''
             }
+        },
+        IndstryCol: {
         }
     }
-    
+    $scope.SelectedOption = function (item) {
+        console.log(item.Indstry);
+        $scope.SelectedData.IndstryCol = JSON.parse(angular.toJson(item.Indstry));
+        console.log($scope.SelectedData.IndstryCol);
+        $scope.LoadData();
+    }
     
    
     if ($scope.urlArray.length > 1) {
@@ -155,7 +162,8 @@
                    
                     $scope.EmpJobCol = response.data.EmpJobCol;
                     $scope.ReportypCol = response.data.ReportypCol;
-
+                    $scope.IndstryCol = response.data.IndustryCol;
+                    console.log(response.data.IndustryCol);
                     $scope.SelectedData.Reportyp = response.data.ReportypCol[1];
 
                     

@@ -34,7 +34,7 @@
     $scope.PackCol = {};
     $scope.LocationCol = {};
     $scope.SortByCol = {};
-
+    $scope.CatagoryCol = {};
     $scope.ViewData = {
         FistNam: "",
         LastNam: "",
@@ -45,9 +45,25 @@
         PageNo: 1,
         ZaBase: {
             SessionId: ''
-        }
+        },
+        Category: {},
+        Location: {},
+        SortBy: {},
+        PageNo: 1
     }
-
+    $scope.SortBrandList = function () {
+        console.log($scope.ViewData.SortBy);
+        $scope.LoadData();
+    };
+    $scope.FilterLocation = function () {
+        console.log($scope.ViewData.Location)
+        $scope.LoadData();
+    };
+    $scope.SelectedOption = function (item) {
+        console.log(item.Category);
+        $scope.ViewData.Category = JSON.parse(angular.toJson(item.Category));
+        $scope.LoadData();
+    }
 
     if ($scope.urlArray.length > 1) {
         $scope.PrevPage = $scope.urlArray[0].replace('url=', '');
@@ -157,10 +173,11 @@
                     $scope.PackCol = response.data.PackCol;
                     $scope.SortByCol = response.data.SortByCol;
                     $scope.LocationCol = response.data.LocationCol;
-                    $scope.SelectedData.Location = response.data.LocationCol[0];
-                    $scope.SelectedData.SortBy = response.data.SortByCol[0];
-
-
+                    $scope.ViewData.Location = response.data.LocationCol[0];
+                    $scope.ViewData.SortBy = response.data.SortByCol[0];
+                    $scope.CatagoryCol = response.data.CategoryCol;
+                    console.log(response.data.CategoryCol);
+                    
                     var PageNo = parseInt(response.data.PageNoCol[0].DisPlyMembr);
                     var TotalPages = response.data.PageNoCol[0].ValMembr;
 

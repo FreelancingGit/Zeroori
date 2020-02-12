@@ -174,222 +174,28 @@
             <div class="row">
                 <div class="col-lg-3">
 
-                    <div class="category-sec">
+                    <div class="category-sec"  ng-repeat="Category in CatagoryCol">
                         <div class="category-bg">
 
                             <label class="radio">
-                                Baby Items<span class="catg-number">(100)</span>
-                                <input type="radio" name="catg-brands">
+                                {{Category.ClasifdSpecValue}}<span class="catg-number"></span>
+                                <input type="radio" ng-model="FilterData.Category.ClasifdSpecDtlId" value="{{Category.ClasifdSpecDtlId}}" name="catg-brands" ng-click="SelectedOption(this)">
                                 <span class="checkround"></span>
                             </label>
-
-                            <label class="radio">
-                                Books<span class="catg-number">(100)</span>
-                                <input type="radio" name="catg-brands">
-                                <span class="checkround"></span>
-                            </label>
-
-                            <label class="radio">
-                                Computers & Networking<span class="catg-number">(100)</span>
-                                <input type="radio" name="catg-brands">
-                                <span class="checkround"></span>
-                            </label>
-
-                            <label class="radio">
-                                Mobile Phones & Tablets<span class="catg-number">(100)</span>
-                                <input type="radio" name="catg-brands">
-                                <span class="checkround"></span>
-                            </label>
-
-                            <label class="radio">
-                                Cameras & Imaging<span class="catg-number">(100)</span>
-                                <input type="radio" name="catg-brands">
-                                <span class="checkround"></span>
-                            </label>
-
-                            <label class="radio">
-                                Clothing & Accessories<span class="catg-number">(100)</span>
-                                <input type="radio" name="catg-brands">
-                                <span class="checkround"></span>
-                            </label>
-
-                            <label class="radio">
-                                Collectibles<span class="catg-number">(100)</span>
-                                <input type="radio" name="catg-brands">
-                                <span class="checkround"></span>
-                            </label>
-
-                            <label class="radio">
-                                DVDs & Movies<span class="catg-number">(100)</span>
-                                <input type="radio" name="catg-brands">
-                                <span class="checkround"></span>
-                            </label>
-
-                            <label class="radio">
-                                Electronics<span class="catg-number">(100)</span>
-                                <input type="radio" name="catg-brands">
-                                <span class="checkround"></span>
-                            </label>
-
-                            <label class="radio">
-                                Free Stuff<span class="catg-number">(100)</span>
-                                <input type="radio" name="catg-brands">
-                                <span class="checkround"></span>
-                            </label>
-
-                            <label class="radio">
-                                Business & Industrial<span class="catg-number">(100)</span>
-                                <input type="radio" name="catg-brands">
-                                <span class="checkround"></span>
-                            </label>
-
-                            <label class="radio">
-                                Music<span class="catg-number">(100)</span>
-                                <input type="radio" name="catg-brands">
-                                <span class="checkround"></span>
-                            </label>
-
-                            <label class="radio">
-                                Musical Instruments<span class="catg-number">(100)</span>
-                                <input type="radio" name="catg-brands">
-                                <span class="checkround"></span>
-                            </label>
-
-                            <label class="radio">
-                                Pets<span class="catg-number">(100)</span>
-                                <input type="radio" name="catg-brands">
-                                <span class="checkround"></span>
-                            </label>
-
-                            <label class="radio">
-                                Sports Equipment<span class="catg-number">(100)</span>
-                                <input type="radio" name="catg-brands">
-                                <span class="checkround"></span>
-                            </label>
-
-                            <label class="radio">
-                                Toys<span class="catg-number">(100)</span>
-                                <input type="radio" name="catg-brands">
-                                <span class="checkround"></span>
-                            </label>
-
-                            <label class="radio">
-                                Gaming<span class="catg-number">(100)</span>
-                                <input type="radio" name="catg-brands">
-                                <span class="checkround"></span>
-                            </label>
-
+                           
                         </div><!--category-bg--->
                     </div><!--category-sec--->
-                    <div class="category-mobile-sec">
+                    <div class="category-mobile-sec" ng-repeat="Category in CatagoryCol">
                         <a class="btn-block catg-mob" data-toggle="collapse" href="#CatgCollapse">Category List</a>
 
                         <div class="category-bg-mob">
                             <div class="collapse" id="CatgCollapse">
                                 <div class="card card-body">
-
                                     <label class="radio">
-                                        Baby Items<span class="catg-number">(100)</span>
-                                        <input type="radio" name="catg-brands">
+                                        {{Category.ClasifdSpecValue}}<span class="catg-number"></span>
+                                        <input type="radio" ng-model="FilterData.Category.ClasifdSpecDtlId" value="{{Category.ClasifdSpecDtlId}}" name="catg-brands" ng-click="SelectedOption(this)">
                                         <span class="checkround"></span>
                                     </label>
-
-                                    <label class="radio">
-                                        Books<span class="catg-number">(100)</span>
-                                        <input type="radio" name="catg-brands">
-                                        <span class="checkround"></span>
-                                    </label>
-
-                                    <label class="radio">
-                                        Computers & Networking<span class="catg-number">(100)</span>
-                                        <input type="radio" name="catg-brands">
-                                        <span class="checkround"></span>
-                                    </label>
-
-                                    <label class="radio">
-                                        Mobile Phones & Tablets<span class="catg-number">(100)</span>
-                                        <input type="radio" name="catg-brands">
-                                        <span class="checkround"></span>
-                                    </label>
-
-                                    <label class="radio">
-                                        Cameras & Imaging<span class="catg-number">(100)</span>
-                                        <input type="radio" name="catg-brands">
-                                        <span class="checkround"></span>
-                                    </label>
-
-                                    <label class="radio">
-                                        Clothing & Accessories<span class="catg-number">(100)</span>
-                                        <input type="radio" name="catg-brands">
-                                        <span class="checkround"></span>
-                                    </label>
-
-                                    <label class="radio">
-                                        Collectibles<span class="catg-number">(100)</span>
-                                        <input type="radio" name="catg-brands">
-                                        <span class="checkround"></span>
-                                    </label>
-
-                                    <label class="radio">
-                                        DVDs & Movies<span class="catg-number">(100)</span>
-                                        <input type="radio" name="catg-brands">
-                                        <span class="checkround"></span>
-                                    </label>
-
-                                    <label class="radio">
-                                        Electronics<span class="catg-number">(100)</span>
-                                        <input type="radio" name="catg-brands">
-                                        <span class="checkround"></span>
-                                    </label>
-
-                                    <label class="radio">
-                                        Free Stuff<span class="catg-number">(100)</span>
-                                        <input type="radio" name="catg-brands">
-                                        <span class="checkround"></span>
-                                    </label>
-
-                                    <label class="radio">
-                                        Business & Industrial<span class="catg-number">(100)</span>
-                                        <input type="radio" name="catg-brands">
-                                        <span class="checkround"></span>
-                                    </label>
-
-                                    <label class="radio">
-                                        Music<span class="catg-number">(100)</span>
-                                        <input type="radio" name="catg-brands">
-                                        <span class="checkround"></span>
-                                    </label>
-
-                                    <label class="radio">
-                                        Musical Instruments<span class="catg-number">(100)</span>
-                                        <input type="radio" name="catg-brands">
-                                        <span class="checkround"></span>
-                                    </label>
-
-                                    <label class="radio">
-                                        Pets<span class="catg-number">(100)</span>
-                                        <input type="radio" name="catg-brands">
-                                        <span class="checkround"></span>
-                                    </label>
-
-                                    <label class="radio">
-                                        Sports Equipment<span class="catg-number">(100)</span>
-                                        <input type="radio" name="catg-brands">
-                                        <span class="checkround"></span>
-                                    </label>
-
-                                    <label class="radio">
-                                        Toys<span class="catg-number">(100)</span>
-                                        <input type="radio" name="catg-brands">
-                                        <span class="checkround"></span>
-                                    </label>
-
-                                    <label class="radio">
-                                        Gaming<span class="catg-number">(100)</span>
-                                        <input type="radio" name="catg-brands">
-                                        <span class="checkround"></span>
-                                    </label>
-
                                 </div>
                             </div><!--collapse--->
                         </div><!--category-bg--->
@@ -406,7 +212,7 @@
                         <div class="location">
                             <div class="dropdown">
                                 <select class="form-control" id="sel1"
-                                        ng-model="SelectedData.Location"
+                                        ng-model="ViewData.Location"
                                         ng-options="Location.DisPlyMembr for Location in LocationCol track by Location.ValMembr" ng-change="FilterLocation()"></select>
                             </div>
                         </div>
@@ -414,8 +220,8 @@
                         <div class="Sort-By">
                             <div class="dropdown">
                                 <select class="form-control" id="sel1"
-                                        ng-model="SelectedData.SortBy"
-                                        ng-options="SortBy.DisPlyMembr for SortBy in SortByCol track by SortBy.ValMembr" ng-change="SortPropertiesList()"></select>
+                                        ng-model="ViewData.SortBy"
+                                        ng-options="SortBy.DisPlyMembr for SortBy in SortByCol track by SortBy.ValMembr" ng-change="SortBrandList()"></select>
                             </div>
                         </div>
 
