@@ -56,7 +56,8 @@ namespace ZerooriBO
                         Phone = PLWM.Utils.CnvToStr(dr["ph_num"]),
                         Email = PLWM.Utils.CnvToStr(dr["compny_websit"]),
                         Proimg = PLWM.Utils.CnvToStr(dr["proimg"]),
-                    };
+						imgPath = PLWM.Utils.CnvToStr(dr["img_fullPath"])
+					};
 
                 }
                 

@@ -2,8 +2,7 @@
 
     $scope.urlArray = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
     $scope.Page = 'jobs-hiring-step-one';
-
-    $scope.CurrentURL = $scope.urlArray[0];
+	$scope.CurrentURL = $scope.urlArray[0];
     $scope.PrevPage = '';
     $scope.SessionId = '';
     $scope.ComJobId = '';
@@ -22,7 +21,9 @@
     $scope.ExprnceCol = {};
     $scope.EductnLevlCol = {};
     $scope.ListedBycol = {};
-    $scope.CareervLevelCol = {};
+	$scope.CareervLevelCol = {};
+	$scope.locationCol = {};
+	$scope.JobsCol = {};
     
     //$scope.ViewData = {
        
@@ -45,10 +46,11 @@
         DescrpnStepOne: '',
         
         CompnyLogoImg: '',
-        JobTitle: '',
+		JobTitle: '',
         Neighbrhd: '',
-        Location: '',
-        DescrptnStepTwo: '',
+		Location: {},
+		DescrptnStepTwo: '',
+		filename:'',
         
         Indstry: {},
         CompnySize: {},
@@ -169,7 +171,8 @@
                 params: {
                     Init: JSON.stringify($scope.SelectedData)
                 }
-            }).then(function successCallback(response) {
+			}).then(function successCallback(response)
+			{
 				
                 if ($scope.isValidSave(response) && response.data.UserData.ZaBase.SessionId != "") {
                     $scope.SetStatus(true);
@@ -192,6 +195,9 @@
                     $scope.ListedBycol = response.data.ListedBycol;
 					$scope.CareervLevelCol = response.data.CareervLevelCol;
 					$scope.SelectedData.CompnySize = response.data.CompnySizeCol;
+					$scope.LocationCol = response.data.LocationCol;
+					$scope.JobsCol = response.data.JobsCol;
+
                     
                     if (response.data.FrelncMast.CompnyName != undefined || response.data.FrelncMast.CompnyName != null) {
                         $scope.SelectedData.CompnyName = response.data.FrelncMast.CompnyName;
@@ -229,6 +235,7 @@
 						$scope.SelectedData.ListedBy = response.data.ListedBycol[0];
 						$scope.SelectedData.CareerLvl = response.data.CareervLevelCol[0];
 						$scope.SelectedData.Exprnce = response.data.ExprnceCol[0];
+						$scope.SelectedData.Location = response.data.LocationCol[0];
                     }
                     else {
                         $scope.SelectedData.EmplymntTyp = response.data.EmploymntTypeCol[0];
@@ -236,7 +243,8 @@
                         $scope.SelectedData.EductnLvl = response.data.EductnLevlCol[0];
                         $scope.SelectedData.ListedBy = response.data.ListedBycol[0];
                         $scope.SelectedData.CareerLvl = response.data.CareervLevelCol[0];
-                        $scope.SelectedData.Exprnce = response.data.ExprnceCol[0];
+						$scope.SelectedData.Exprnce = response.data.ExprnceCol[0];
+						$scope.SelectedData.Location = response.data.LocationCol[0];
                     }
                     $('#myModal').modal('hide');
                 } // User Login Mode
@@ -281,14 +289,16 @@
         }
 
     }
-
+	
     $scope.SaveData = function () {
         
         if ($scope.isValidData() && ($scope.SessionId != null && $scope.SessionId != ""))
         {
             try {
 
-                var file = $('#upload1').get(0).files;
+				var file = $('#upload1').get(0).files;
+				console.log(file[0].name);
+				$scope.SelectedData.filename = file[0].name;
                 $http({
                     method: 'POST',
                     url: 'jobsHiringStepOne.ashx',
@@ -326,10 +336,6 @@
             alert("Please Enter Company Name");
             return false;
         }
-        else if ($scope.SelectedData.TradeLicns == '') {
-            alert("Please Enter Trade Licence");
-            return false;
-        }
         else if ($scope.SelectedData.ContctName == '') {
             alert("Please Enter Contact Name");
             return false;
@@ -362,55 +368,55 @@
         return true;
     }
     
-    $scope.isValidDataStepTwo = function () {
-        if ($scope.SelectedData.JobTitle == '') {
-            alert("Please Enter Job Title");
-            return false;
-        }
-        else if ($scope.SelectedData.Neighbrhd == '') {
-            alert("Please Enter Neighbourhood");
-            return false;
-        }
-        else if ($scope.SelectedData.Location == '') {
-            alert("Please Enter Location");
-            return false;
-        }
-        else if ($scope.SelectedData.DescrptnStepTwo == '') {
-            alert("Please Enter Description");
-            return false;
-        }
-  
-        else if ($scope.SelectedData.EmplymntTyp.EmpJobDtlId == -1) {
-            alert("Please Select Employement Type");
-        return false;
-        }
+	$scope.isValidDataStepTwo = function () {
+		if ($scope.SelectedData.JobTitle.EmpJobValue == '') {
+			alert("Please select Job Title");
+			return false;
+		}
+		else if ($scope.SelectedData.Neighbrhd == '') {
+			alert("Please Enter Neighbourhood");
+			return false;
+		}
+		else if ($scope.SelectedData.Location == '') {
+			alert("Please Enter Location");
+			return false;
+		}
+		else if ($scope.SelectedData.DescrptnStepTwo == '') {
+			alert("Please Enter Description");
+			return false;
+		}
 
-        else if ($scope.SelectedData.EductnLvl.EmpJobDtlId == -1) {
-            alert("Please Select Education Qualification");
-            return false;
-        }
+		else if ($scope.SelectedData.EmplymntTyp.EmpJobDtlId == -1) {
+			alert("Please Select Employement Type");
+			return false;
+		}
 
-        else if ($scope.SelectedData.CareerLvl.EmpJobDtlId == -1) {
-            alert("Please Select Career Level");
-            return false;
-        }
+		else if ($scope.SelectedData.EductnLvl.EmpJobDtlId == -1) {
+			alert("Please Select Education Qualification");
+			return false;
+		}
 
-        else if ($scope.SelectedData.Exprnce.EmpJobDtlId == -1) {
-            alert("Please Select Experiance ");
-            return false;
-        }
+		else if ($scope.SelectedData.CareerLvl.EmpJobDtlId == -1) {
+			alert("Please Select Career Level");
+			return false;
+		}
 
-        else if ($scope.SelectedData.ListedBy.EmpJobDtlId == -1) {
-            alert("Please Select Listed By");
-            return false;
-        }
+		else if ($scope.SelectedData.Exprnce.EmpJobDtlId == -1) {
+			alert("Please Select Experiance ");
+			return false;
+		}
 
-        else if ($scope.SelectedData.MonthlySalary.EmpJobDtlId == -1) {
-            alert("Please Select Current Salary");
-            return false;
-        }
-        return true;
-    }
+		else if ($scope.SelectedData.ListedBy.EmpJobDtlId == -1) {
+			alert("Please Select Listed By");
+			return false;
+		}
+
+		else if ($scope.SelectedData.MonthlySalary.EmpJobDtlId == -1) {
+			alert("Please Select Current Salary");
+			return false;
+		}
+		return true;
+	};
 
 	
 

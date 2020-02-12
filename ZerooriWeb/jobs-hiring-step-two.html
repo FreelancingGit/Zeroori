@@ -44,9 +44,12 @@
 
                                     <div class="row">
 
-                                        <div class="form-group col-md-12">
-                                            <input type="text" class="form-control" placeholder="Job Title" ng-model="SelectedData.JobTitle">
-                                        </div>
+										<div class="form-group col-md-12">
+											<!--<input type="text" class="form-control" placeholder="Job Title" ng-model="SelectedData.JobTitle">-->
+											<select class="form-control" id="sel1" ng-model="SelectedData.JobTitle"
+													ng-options="JobTitle.EmpJobValue for JobTitle in JobsCol track by JobTitle.EmpJobDtlId"></select>
+											<!--<input type="text" class="form-control" typeahead-on-select="setPcode($item)" ng-model="SelectedData.JobTitle" typeahead="JobsCol.EmpJobValue for state in JobsCol | filter:$viewValue" />-->
+										</div>
 
                                         <div class="form-group col-md-6">
                                             <select class="form-control" id="sel1" ng-model="SelectedData.EmplymntTyp"
@@ -92,9 +95,11 @@
                                                
                                         </div>
 
-                                        <div class="form-group col-md-6">
-                                            <input type="text" class="form-control" placeholder="Location" ng-model="SelectedData.Location">
-                                        </div>
+										<div class="form-group col-md-6">
+											<select class="form-control" id="sel7"
+													ng-model="SelectedData.Location"
+													ng-options="Location.DisPlyMembr for Location in LocationCol track by Location.ValMembr"></select>
+										</div>
 
                                         <div class="form-group col-md-12">
                                                 <textarea class="form-control" rows="4" id="" placeholder="Description" ng-model="SelectedData.DescrptnStepTwo">

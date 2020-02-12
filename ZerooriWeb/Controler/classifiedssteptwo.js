@@ -139,7 +139,8 @@
             alert(err);
         }
     }
-    $scope.Uploadimage = function (UploadFileName, Seq, ImgSrcNam) {
+	$scope.Uploadimage = function (UploadFileName, Seq, ImgSrcNam)
+	{
         var file = $(UploadFileName).get(0).files;
         $scope.ViewData.AdSeq = Seq;
         $http({

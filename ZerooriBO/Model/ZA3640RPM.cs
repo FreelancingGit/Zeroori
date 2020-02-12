@@ -60,7 +60,8 @@ namespace ZerooriBO
                         CrtdDt = PLWM.Utils.CnvToStr(dr["Crtd_dt"]),
                         CurrentLoc = PLWM.Utils.CnvToStr(dr["location"]),
                         Description = PLWM.Utils.CnvToStr(dr["Descr"]),
-                    });
+						imgPath = PLWM.Utils.CnvToStr(dr["img_fullPath"])
+					});
                 }
 
                 UsageD.PageNoCol = new ComDisValDCol();
@@ -152,6 +153,7 @@ namespace ZerooriBO
                         CrtdDt = PLWM.Utils.CnvToStr(dr["Crtd_dt"]),
                         CurrentLoc = PLWM.Utils.CnvToStr(dr["location"]),
                         Description = PLWM.Utils.CnvToStr(dr["Descr"]),
+						imgPath = PLWM.Utils.CnvToStr(dr["img_fullPath"])
                     });
                 }
 
