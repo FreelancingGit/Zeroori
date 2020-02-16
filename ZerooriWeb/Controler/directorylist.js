@@ -24,9 +24,9 @@
     $scope.NavFourVis = true;
     $scope.NavFiveVis = true;
     $scope.isLoading = false;
-    
+    $scope.PageCount = [];
     $scope.DirCol = {};
-    
+    $scope.SelectedPage = 0; 
     $scope.ViewData = {
         FistNam: "",
         LastNam: "",
@@ -88,11 +88,11 @@
 
     $scope.ShowPage = function (PageNum) {
 
-        var PageNo = 1;
+        var PageNo = $scope.SelectedPage == 0 ? 1 : $scope.SelectedPage;
 
         if (PageNum == 'L') {
 
-            PageNo = PageNo - 2;
+            PageNo = PageNo - 1;
         }
         else if (PageNum == 'R') {
             PageNo = PageNo + 1;
@@ -104,7 +104,7 @@
         if (PageNo <= 1)
             PageNo = 1
 
-
+        $scope.SelectedPage = PageNo;
         $scope.ViewData.PageNo = PageNo;
         $scope.LoadData();
 
@@ -154,6 +154,15 @@
                     var TotalPages = response.data.PageNoCol[0].ValMembr;
 
                     $scope.NavOne = PageNo + 0;
+                    var start = 1;
+                    if (PageNo > 2) start = PageNo - 2
+                    var total = 5;
+                    if (TotalPages < 5) total = TotalPages;
+                    $scope.PageCount = new Array(total);
+                    for (var i = 1; i <= total; i++) {
+                        $scope.PageCount[i - 1] = start;
+                        start = start + 1;
+                    }
 
                     if (PageNo + 1 <= TotalPages) {
                         $scope.NavTwo = PageNo + 1;
@@ -229,6 +238,17 @@
                         var TotalPages = response.data.PageNoCol[0].ValMembr;
 
                         $scope.NavOne = PageNo + 0;
+
+                        var start = 1;
+                        if (PageNo > 2) start = PageNo - 2
+                        var total = 5;
+                        if (TotalPages < 5) total = TotalPages;
+                        $scope.PageCount = new Array(total);
+                        for (var i = 1; i <= total; i++) {
+                            $scope.PageCount[i - 1] = start;
+                            start = start + 1;
+                        }
+
 
                         if (PageNo + 1 <= TotalPages) {
                             $scope.NavTwo = PageNo + 1;

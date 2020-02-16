@@ -30,7 +30,7 @@
     $scope.NavFiveVis = true;
     $scope.isLoading = false;
 
-
+    $scope.PageCount = [];
     $scope.Mallcol = {};
 
 
@@ -164,7 +164,15 @@
                     var TotalPages = response.data.PageNoCol[0].ValMembr;
 
                     $scope.NavOne = PageNo + 0;
-
+                    var start = 1;
+                    if (PageNo > 2) start = PageNo - 2
+                    var total = 5;
+                    if (TotalPages < 5) total = TotalPages;
+                    $scope.PageCount = new Array(total);
+                    for (var i = 1; i <= total; i++) {
+                        $scope.PageCount[i - 1] = start;
+                        start = start + 1;
+                    }
                     if (PageNo + 1 <= TotalPages) {
                         $scope.NavTwo = PageNo + 1;
                         $scope.NavTwoVis = true;
@@ -242,7 +250,15 @@
                         var TotalPages = response.data.PageNoCol[0].ValMembr;
 
                         $scope.NavOne = PageNo + 0;
-
+                        var start = 1;
+                        if (PageNo > 2) start = PageNo - 2
+                        var total = 5;
+                        if (TotalPages < 5) total = TotalPages;
+                        $scope.PageCount = new Array(total);
+                        for (var i = 1; i <= total; i++) {
+                            $scope.PageCount[i - 1] = start;
+                            start = start + 1;
+                        }
                         if (PageNo + 1 <= TotalPages) {
                             $scope.NavTwo = PageNo + 1;
                             $scope.NavTwoVis = true;

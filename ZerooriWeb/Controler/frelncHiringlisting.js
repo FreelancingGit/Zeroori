@@ -32,6 +32,7 @@
     $scope.EmpJobCol = {};
     $scope.ReportypCol = {};
     $scope.IndstryCol = {};
+    $scope.PageCount = [];
     $scope.SelectedData = {
         PageNo: 1,
         Reportyp: {
@@ -175,7 +176,17 @@
                     else
                         $scope.SetStatus(false);
 
-
+                    var PageNo = parseInt(response.data.PageNoCol[0].DisPlyMembr);
+                    var TotalPages = response.data.PageNoCol[0].ValMembr;
+                    var start = 1;
+                    if (PageNo > 2) start = PageNo - 2
+                    var total = 5;
+                    if (TotalPages < 5) total = TotalPages;
+                    $scope.PageCount = new Array(total);
+                    for (var i = 1; i <= total; i++) {
+                        $scope.PageCount[i - 1] = start;
+                        start = start + 1;
+                    }
                     $scope.EmpJobCol = response.data.ComCol;
                     $scope.ReportypCol = response.data.ReportypCol;
                     $scope.IndstryCol = response.data.IndstryCol;
@@ -210,7 +221,15 @@
                     $scope.isLoading = true;
 
                     $scope.EmpJobCol = response.data.ComCol;
-
+                    var start = 1;
+                    if (PageNo > 2) start = PageNo - 2
+                    var total = 5;
+                    if (TotalPages < 5) total = TotalPages;
+                    $scope.PageCount = new Array(total);
+                    for (var i = 1; i <= total; i++) {
+                        $scope.PageCount[i - 1] = start;
+                        start = start + 1;
+                    }
                     $scope.isLoading = false;
                 } // User Login Mode
 

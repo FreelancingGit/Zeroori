@@ -227,58 +227,61 @@
 
                     </div>
 
+                    <div class="">
+                        <div class="items-listing-sec">
 
-                    <div class="items-listing-sec">
+                            <div class="brand-items-list">
+                                <div class="row dir-items-list" ng-repeat="Pack in PackCol">
 
-                        <div class="brand-items-list">
-                            <div class="row" ng-repeat="Pack in PackCol">
-
-                                <div class="col-3">
-                                    <div class="br-logo"><a href="brandslist-detail.html"><img src="images/brand-logo.jpg" alt="" /></a></div>
-                                </div>
-
-                                <div class="col-9">
-                                    <div class="br-info">
-                                        <h3><a href="#" ng-click="ShowItemDetail(Pack.PackDealMastID)">{{Pack.BusinessName}}</a></h3>
-
-                                        <div class="br-text-box">
-                                            <img class="icon" src="images/lcation.png" alt="">
-                                            <div class="txt">{{Pack.Location}}</div>
-                                        </div>
-
-                                        <div class="br-text-box show">
-                                            <img class="icon" src="images/icon-email.png" alt="">
-                                            <div class="txt">{{Pack.Email}}</div>
-                                        </div>
-
+                                    <div class="col-3">
+                                        <div class="br-logo"><a href="brandslist-detail.html"><img src="images/brand-logo.jpg" alt="" /></a></div>
                                     </div>
-                                </div>
 
-                            
-                    </div><!--row-->
-                </div><!--brand-items-list-->
-            </div><!--items-listing-sec-->
-            <div class="pagination-sec">
-                <ul class="pagination pagination-sm">
-                    <li class="page-item"><a class="page-link" href="#" ng-click="ShowPage('L')">«</a></li>
-                    <li class="page-item"><a class="page-link" href="#" ng-show="NavOneVis" ng-click="ShowPage(NavOne)">{{NavOne}}</a></li>
-                    <li class="page-item"><a class="page-link" href="#" ng-show="NavTwoVis" ng-click="ShowPage(NavTwo)">{{NavTwo}}</a></li>
-                    <li class="page-item"><a class="page-link" href="#" ng-show="NavThreeVis" ng-click="ShowPage(NavThree)">{{NavThree}}</a></li>
-                    <li class="page-item"><a class="page-link" href="#" ng-show="NavFourVis" ng-click="ShowPage(NavFour)">{{NavFour}}</a></li>
-                    <li class="page-item"><a class="page-link" href="#" ng-show="NavFiveVis" ng-click="ShowPage(NavFive)">{{NavFive}}</a></li>
-                    <li class="page-item"><a class="page-link" href="#" ng-click="ShowPage('R')">»</a></li>
-                </ul>
-            </div>
+                                    <div class="col-9">
+                                        <div class="br-info">
+                                            <h3><a href="#" ng-click="ShowItemDetail(Pack.PackDealMastID)">{{Pack.BusinessName}}</a></h3>
+
+                                            <div class="br-text-box">
+                                                <img class="icon" src="images/lcation.png" alt="">
+                                                <div class="txt">{{Pack.Location}}</div>
+                                            </div>
+
+                                            <div class="br-text-box show">
+                                                <img class="icon" src="images/icon-email.png" alt="">
+                                                <div class="txt">{{Pack.Email}}</div>
+                                            </div>
+
+                                        </div>
+                                    </div>
 
 
-            <div class="advt-grid-items"><img src="images/advt-bottom.jpg" alt="" /></div>
+                                </div><!--row-->
+                            </div><!--brand-items-list-->
+                        </div><!--items-listing-sec-->
+                    </div>
+                        <div class="pagination-sec">
+                            <ul class="pagination pagination-sm">
+                                <li class="page-item"><a class="page-link" href="#" ng-click="ShowPage('L')">«</a></li>
+                                <!--<li class="page-item"><a class="page-link" href="#" ng-show="NavOneVis" ng-click="ShowPage(NavOne)">{{NavOne}}</a></li>
+                <li class="page-item"><a class="page-link" href="#" ng-show="NavTwoVis" ng-click="ShowPage(NavTwo)">{{NavTwo}}</a></li>
+                <li class="page-item"><a class="page-link" href="#" ng-show="NavThreeVis" ng-click="ShowPage(NavThree)">{{NavThree}}</a></li>
+                <li class="page-item"><a class="page-link" href="#" ng-show="NavFourVis" ng-click="ShowPage(NavFour)">{{NavFour}}</a></li>
+                <li class="page-item"><a class="page-link" href="#" ng-show="NavFiveVis" ng-click="ShowPage(NavFive)">{{NavFive}}</a></li>-->
+                                <li class="page-item" ng-repeat="x in PageCount"><a class="page-link" ng-show="NavOneVis" ng-click="ShowPage(x)">{{x}}</a></li>
 
-        </div><!--col-lg-6-->
+                                <li class="page-item"><a class="page-link" href="#" ng-click="ShowPage('R')">»</a></li>
+                            </ul>
+                        </div>
 
-        <div class="col-lg-3">
-            <div class="advt-right"><img src="images/advt-right.jpg" alt="" /></div>
-        </div>
-    </div><!--row-->
+
+                        <div class="advt-grid-items"><img src="images/advt-bottom.jpg" alt="" /></div>
+
+                    </div><!--col-lg-6-->
+
+                    <div class="col-lg-3">
+                        <div class="advt-right"><img src="images/advt-right.jpg" alt="" /></div>
+                    </div>
+                </div><!--row-->
     </div><!--container-->
     </div><!--body-container-->
     <div class="footer-sec">
