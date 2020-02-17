@@ -46,8 +46,8 @@
 
 										<div class="form-group col-md-12">
 											<!--<input type="text" class="form-control" placeholder="Job Title" ng-model="SelectedData.JobTitle">-->
-											<select class="form-control" id="sel1" ng-model="SelectedData.JobTitle"
-													ng-options="JobTitle.EmpJobValue for JobTitle in JobsCol track by JobTitle.EmpJobDtlId"></select>
+											<select class="form-control" id="sel1" ng-model="SelectedData.JobTitleData"
+													ng-options="JobTitleData.EmpJobValue for JobTitleData in JobsCol track by JobTitleData.EmpJobDtlId"></select>
 											<!--<input type="text" class="form-control" typeahead-on-select="setPcode($item)" ng-model="SelectedData.JobTitle" typeahead="JobsCol.EmpJobValue for state in JobsCol | filter:$viewValue" />-->
 										</div>
 

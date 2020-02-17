@@ -28,9 +28,11 @@ namespace ZerooriBO
         ComDisValDCol _pageNoCol = new ComDisValDCol();
         ZA3650SD _frelncMast = new ZA3650SD();
         ComDisValDCol _reportypCol = new ComDisValDCol();
-       
+		ZA3230DCol _jobsTitle = new ZA3230DCol();
+		ComDisValDCol _location = new ComDisValDCol();
 
-        public ZA3000D UserData { get => _UserData; set => _UserData = value; }
+
+		public ZA3000D UserData { get => _UserData; set => _UserData = value; }
         public ZA3230DCol IndstryCol { get => _indstryCol; set => _indstryCol = value; }
         public ZA3230D Indstry { get => _indstry; set => _indstry = value; }
 
@@ -48,5 +50,7 @@ namespace ZerooriBO
         public ComDisValDCol PageNoCol { get => _pageNoCol; set => _pageNoCol = value; }
         public ZA3650SD FrelncMast { get => _frelncMast; set => _frelncMast = value; }
         public ComDisValDCol ReportypCol { get => _reportypCol; set => _reportypCol = value; }
-    }
+		public ZA3230DCol JobsCol { get => _jobsTitle; set => _jobsTitle =value; }
+		public ComDisValDCol LocationCol { get=> _location; set => _location = value; }
+	}
 }

@@ -47,6 +47,7 @@
         
         CompnyLogoImg: '',
 		JobTitle: '',
+		JobTitleData: {},
         Neighbrhd: '',
 		Location: {},
 		DescrptnStepTwo: '',
@@ -236,6 +237,7 @@
 						$scope.SelectedData.CareerLvl = response.data.CareervLevelCol[0];
 						$scope.SelectedData.Exprnce = response.data.ExprnceCol[0];
 						$scope.SelectedData.Location = response.data.LocationCol[0];
+						$scope.SelectedData.JobTitleData = response.data.JobsCol[0];
                     }
                     else {
                         $scope.SelectedData.EmplymntTyp = response.data.EmploymntTypeCol[0];
@@ -245,6 +247,7 @@
                         $scope.SelectedData.CareerLvl = response.data.CareervLevelCol[0];
 						$scope.SelectedData.Exprnce = response.data.ExprnceCol[0];
 						$scope.SelectedData.Location = response.data.LocationCol[0];
+						$scope.SelectedData.JobTitleData = response.data.JobsCol[0];
                     }
                     $('#myModal').modal('hide');
                 } // User Login Mode
@@ -369,7 +372,7 @@
     }
     
 	$scope.isValidDataStepTwo = function () {
-		if ($scope.SelectedData.JobTitle.EmpJobValue == '') {
+		if ($scope.SelectedData.JobTitleData.EmpJobValue == '') {
 			alert("Please select Job Title");
 			return false;
 		}
@@ -425,8 +428,9 @@
 		$scope.SelectedData.CompnyJobMastId = $cookies.get('JobID');
 		console.log($cookies.get('JobID'));
 		console.log($scope.isValidDataStepTwo());
+		$scope.SelectedData.JobTitle = $scope.SelectedData.JobTitleData.EmpJobValue;
         
-        if ($scope.isValidDataStepTwo() && ($scope.SessionId != null && $scope.SessionId != ""))
+      //  if ($scope.isValidDataStepTwo() && ($scope.SessionId != null && $scope.SessionId != ""))
         try {
             $http({
                 method: 'POST',
