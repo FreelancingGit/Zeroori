@@ -27,7 +27,7 @@ namespace ZerooriBO
 
                     new XElement("as_busines_Name", FilterData.BusinessName),
                     new XElement("as_busines_Url", FilterData.URL),
-                    new XElement("ai_catgry_id", FilterData.Category),
+                    new XElement("ai_catgry_id", FilterData.Category.ValMembr),
                     new XElement("as_banner_img_url", FilterData.BannerImage),
                     new XElement("as_logo_img_url", FilterData.CompanyLogo),
 
@@ -56,7 +56,7 @@ namespace ZerooriBO
                 {
                     SaveDataV.BusinessName = PLWM.Utils.CnvToStr(dtComn.Rows[0]["busines_Name"]);
                     SaveDataV.URL = PLWM.Utils.CnvToStr(dtComn.Rows[0]["busines_Url"]);
-                    SaveDataV.Category = PLWM.Utils.CnvToStr(dtComn.Rows[0]["catgry_id"]);
+                    SaveDataV.Category.ValMembr = PLWM.Utils.CnvToInt(dtComn.Rows[0]["catgry_id"]);
 
                     SaveDataV.BannerImage = PLWM.Utils.CnvToStr(dtComn.Rows[0]["banner_img_url"]);
                     SaveDataV.CompanyLogo = PLWM.Utils.CnvToStr(dtComn.Rows[0]["logo_img_url"]);
@@ -108,12 +108,13 @@ namespace ZerooriBO
 
                 System.Data.DataTable dtComn = PLWM.Utils.GetDataTable(ds, 0);
                 System.Data.DataTable dtUser = PLWM.Utils.GetDataTable(ds, 1);
+				System.Data.DataTable dtCat = PLWM.Utils.GetDataTable(ds, 2);
 
-                if (dtComn.Rows.Count > 0)
+				if (dtComn.Rows.Count > 0)
                 {
                     SaveDataV.BusinessName = PLWM.Utils.CnvToStr(dtComn.Rows[0]["busines_Name"]);
                     SaveDataV.URL = PLWM.Utils.CnvToStr(dtComn.Rows[0]["busines_Url"]);
-                    SaveDataV.Category = PLWM.Utils.CnvToStr(dtComn.Rows[0]["catgry_id"]);
+                    SaveDataV.Category.ValMembr = PLWM.Utils.CnvToInt(dtComn.Rows[0]["catgry_id"]);
                     SaveDataV.BannerImage = PLWM.Utils.CnvToStr(dtComn.Rows[0]["banner_img_url"]);
                     SaveDataV.CompanyLogo = PLWM.Utils.CnvToStr(dtComn.Rows[0]["logo_img_url"]);
                     SaveDataV.Facebook = PLWM.Utils.CnvToStr(dtComn.Rows[0]["fb_url"]);
@@ -137,8 +138,21 @@ namespace ZerooriBO
                     };
                    
                 }
+				SaveDataV.CategoriesCol = new Model.CategoriesCol();
+				if (dtCat.Rows.Count > 0)
+				{
+					foreach (DataRow Dr in dtCat.Rows)
+					{
+						SaveDataV.CategoriesCol.Add(new ComDisValD()
+						{
+							 ValMembr = PLWM.Utils.CnvToInt(Dr["Id"]),
+							 DisPlyMembr = PLWM.Utils.CnvToStr(Dr["Category"])
 
-            }
+						});
+				    }
+				}
+
+			}
             catch (Exception e)
             {
                 SaveDataV.UserData.ZaBase.ErrorMsg = PLWM.Utils.CnvToSentenceCase(e.Message.ToLower().Replace("plerror", "").Replace("plerror", "").Trim());
@@ -179,7 +193,7 @@ namespace ZerooriBO
                 {
                     SaveDataV.BusinessName = PLWM.Utils.CnvToStr(dtComn.Rows[0]["busines_Name"]);
                     SaveDataV.URL = PLWM.Utils.CnvToStr(dtComn.Rows[0]["busines_Url"]);
-                    SaveDataV.Category = PLWM.Utils.CnvToStr(dtComn.Rows[0]["catgry_id"]);
+                    SaveDataV.Category.ValMembr = PLWM.Utils.CnvToInt(dtComn.Rows[0]["catgry_id"]);
                     SaveDataV.BannerImage = PLWM.Utils.CnvToStr(dtComn.Rows[0]["banner_img_url"]);
                     SaveDataV.CompanyLogo = PLWM.Utils.CnvToStr(dtComn.Rows[0]["logo_img_url"]);
                     SaveDataV.Facebook = PLWM.Utils.CnvToStr(dtComn.Rows[0]["fb_url"]);

@@ -184,11 +184,9 @@
 
                                     <div class="form-group col-md-12">
                                         <div class="f-text">Category</div>
-                                        <select class="form-control" id="sel1">
-                                            <option>Select Category</option>
-                                            <option>Select Category</option>
-                                            <option>Select Category</option>
-                                        </select>
+										<select class="form-control" id="sel1"
+												ng-model="SelectedData.Category"
+												ng-options="Category.DisPlyMembr for Category in CategoriesCol track by Category.ValMembr"></select>
                                     </div>
 
 

@@ -10,8 +10,8 @@
     $scope.ISLogin = true;
     $scope.ISSignINStatus = false;
     $scope.ISSignOutStatus = false;
-    $scope.EnablePostAds = false;
-
+	$scope.EnablePostAds = false;
+	$scope.CategoriesCol = {};
 
     $scope.SelectedData = {
         BusinessName: "",
@@ -20,8 +20,8 @@
         CompanyLogo: "",
         Facebook: "",
         Instagram: "",
-        Twitter: "",
-
+		Twitter: "",
+		Category:{},
         PhoneNo: "",
         Email: "",
         Website: "",
@@ -221,7 +221,7 @@
                         $scope.ViewData.Passwd = '';
                     } // User Login Mode
 
-                    $scope.SetSaveData(response)
+					$scope.SetSaveData(response);
 
                 }, function errorCallback(response) {
                     alert(response);
@@ -253,7 +253,7 @@
 
                     $scope.SaveLogo();
                     alert('Save Successfully');
-                    $scope.SetSaveData(response)
+					$scope.SetSaveData(response);
 
 
                 }, function errorCallback(response) {
@@ -295,23 +295,25 @@
         }
     }
 
-    $scope.SetSaveData = function (response) {
+	$scope.SetSaveData = function (response)
+	{
 
-        $scope.SelectedData.BusinessName = response.data.BusinessName;
-        $scope.SelectedData.URL = response.data.URL;
+		$scope.SelectedData.BusinessName = response.data.BusinessName;
+		$scope.SelectedData.URL = response.data.URL;
 
-        $scope.SelectedData.BannerImage = response.data.BannerImage;
-        $scope.SelectedData.CompanyLogo = response.data.CompanyLogo;
-        $scope.SelectedData.Facebook = response.data.Facebook;
-        $scope.SelectedData.Instagram = response.data.Instagram;
-        $scope.SelectedData.Twitter = response.data.Twitter;
-        $scope.SelectedData.PhoneNo = response.data.PhoneNo;
-        $scope.SelectedData.Email = response.data.Email;
-        $scope.SelectedData.Website = response.data.Website;
-        $scope.SelectedData.Location = response.data.Location;
-        $scope.SelectedData.Description = response.data.Description;
-
-    }
+		$scope.SelectedData.BannerImage = response.data.BannerImage;
+		$scope.SelectedData.CompanyLogo = response.data.CompanyLogo;
+		$scope.SelectedData.Facebook = response.data.Facebook;
+		$scope.SelectedData.Instagram = response.data.Instagram;
+		$scope.SelectedData.Twitter = response.data.Twitter;
+		$scope.SelectedData.PhoneNo = response.data.PhoneNo;
+		$scope.SelectedData.Email = response.data.Email;
+		$scope.SelectedData.Website = response.data.Website;
+		$scope.SelectedData.Location = response.data.Location;
+		$scope.SelectedData.Description = response.data.Description;
+		$scope.CategoriesCol = response.data.CategoriesCol;
+		$scope.SelectedData.Category = response.data.CategoriesCol[0];
+	};
     
     $scope.isValidSave = function (response) {
         if (response.data.UserData.ZaBase != undefined
