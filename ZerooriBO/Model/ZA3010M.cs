@@ -109,6 +109,7 @@ namespace ZerooriBO
                 System.Data.DataTable dtComn = PLWM.Utils.GetDataTable(ds, 0);
                 System.Data.DataTable dtUser = PLWM.Utils.GetDataTable(ds, 1);
 				System.Data.DataTable dtCat = PLWM.Utils.GetDataTable(ds, 2);
+				System.Data.DataTable dtLoc = PLWM.Utils.GetDataTable(ds, 3);
 
 				if (dtComn.Rows.Count > 0)
                 {
@@ -150,6 +151,19 @@ namespace ZerooriBO
 
 						});
 				    }
+				}
+				SaveDataV.LocationCol = new ZA2000DCol();
+				if (dtLoc.Rows.Count > 0)
+				{
+					foreach (DataRow Dr in dtLoc.Rows)
+					{
+						SaveDataV.LocationCol.Add(new ZA2000D()
+						{
+							CityMastID = PLWM.Utils.CnvToStr(Dr["city_mast_id"]),
+							PlaceName = PLWM.Utils.CnvToStr(Dr["place_name"])
+
+						});
+					}
 				}
 
 			}

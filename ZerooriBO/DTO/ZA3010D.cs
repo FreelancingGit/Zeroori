@@ -50,7 +50,8 @@ namespace ZerooriBO
         ZA3000D _UserData = new ZA3000D();
         String _PhotoPath = string.Empty;
         int _PageNo = 1;
-		CategoriesCol _Categories = new CategoriesCol(); 
+		CategoriesCol _Categories = new CategoriesCol();
+		ZA2000DCol _LocationCol = new ZA2000DCol();
 
 		public string URL { get => _URL; set => _URL = value; }
         public string CompanyLogo { get => _CompanyLogo; set => _CompanyLogo = value; }
@@ -74,6 +75,7 @@ namespace ZerooriBO
         public int PageNo { get => _PageNo; set => _PageNo = value; }
 		public CategoriesCol CategoriesCol { get => _Categories; set => _Categories = value; }
 		public ComDisValD Category { get => _Category; set => _Category = value; }
+		public ZA2000DCol LocationCol { get => _LocationCol; set => _LocationCol = value; }
 	}
 
     public class ZA3010DCol : System.Collections.ObjectModel.ObservableCollection<ZA3010D>

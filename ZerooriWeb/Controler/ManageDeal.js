@@ -102,32 +102,35 @@
 
    
 
-    $scope.DeleteDeal = function (DealMastId) {
-        $scope.SelectedData.DealMastID = DealMastId
-        if (($scope.SessionId != null && $scope.SessionId != "" && DealMastId != null)) {
-            try {
-                $http({
-                    method: 'POST',
-                    url: 'ManageDeal.ashx',
-                    params: {
-                        DeleteDeal: JSON.stringify($scope.SelectedData)
-                    }
-                }).then(function successCallback(response) {
+	$scope.DeleteDeal = function (DealMastId) {
+		$scope.SelectedData.DealMastID = DealMastId
+		if (($scope.SessionId != null && $scope.SessionId != "" && DealMastId != null)) {
+			try {
+				$http({
+					method: 'POST',
+					url: 'ManageDeal.ashx',
+					params: {
+						DeleteDeal: JSON.stringify($scope.SelectedData)
+					}
+				}).then(function successCallback(response) {
 
-                    alert('Delete Successfully');
-                   
-                }, function errorCallback(response) {
-                    alert(response);
-                    $scope.SetStatus(false);
-                });
-            }
-            catch (err) {
-                $scope.SetStatus(false);
-                alert(err);
-            }
-        }
-    }
+					alert('Delete Successfully');
 
+				}, function errorCallback(response) {
+					alert(response);
+					$scope.SetStatus(false);
+				});
+			}
+			catch (err) {
+				$scope.SetStatus(false);
+				alert(err);
+			}
+		}
+	};
+	$scope.AddDeal = function () {
+		$cookies.put("DEALID", 0);
+		$scope.navigate("add-deal");
+	};
     $scope.LoadDeal = function (DealMastId) {
 
         $scope.SelectedData.DealMastID = DealMastId

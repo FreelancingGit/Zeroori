@@ -30,7 +30,7 @@ namespace ZerooriBO
         int? _dealMastId = null;
         int? _packDealMastId = null;
         string _dealName = string.Empty;
-        string _price = string.Empty;
+        int? _price = null;
         string _descrptn = string.Empty;
         string _startDt = string.Empty;
         string _endDt = string.Empty;
@@ -38,13 +38,16 @@ namespace ZerooriBO
         string _busName = string.Empty;
         ZA3000D _UserData = new ZA3000D();
         string _bannerImg = string.Empty;
-        int _PageNo = 1;
+		string _userfrdr = string.Empty;
+		string _img1 = string.Empty;
+		string _img2 = string.Empty;
+		int _PageNo = 1;
 
         public ZA3000D UserData { get => _UserData; set => _UserData = value; }
         public int? DealMastId { get => _dealMastId; set => _dealMastId = value; }
         public int? PackDealMastId { get => _packDealMastId; set => _packDealMastId = value; }
         public string DealName { get => _dealName; set => _dealName = value; }
-        public string Price { get => _price; set => _price = value; }
+        public int? Price { get => _price; set => _price = value; }
         public string Descrptn { get => _descrptn; set => _descrptn = value; }
         public string StartDt { get => _startDt; set => _startDt = value; }
         public string EndDt { get => _endDt; set => _endDt = value; }
@@ -52,7 +55,10 @@ namespace ZerooriBO
         public string BusName { get => _busName; set => _busName = value; }
         public int PageNo { get => _PageNo; set => _PageNo = value; }
         public string BannerImg { get => _bannerImg; set => _bannerImg = value; }
-    }
+		public string Img1 { get => _img1; set => _img1 = value; }
+		public string Img2 { get => _img2; set => _img2 = value; }
+		public string usefldr { get => _userfrdr; set => _userfrdr = value; }
+	}
 
     public class ZA3011DCol : System.Collections.ObjectModel.ObservableCollection<ZA3011D>
     {

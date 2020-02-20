@@ -135,178 +135,98 @@ Sign Up
 				
 					
 <div class="form-profile">
-<form>	
-<div class="row">
-							
-<div class="form-group col-sm-6">
-<div class="f-text">Deal Name</div>
-<input type="text" class="form-control" placeholder="Deal Name" ng-model="SelectedData.DealName">
-</div>
-						
-<div class="form-group col-sm-6">
-<div class="f-text">Price</div>
-<input type="text" class="form-control" placeholder="Price" ng-model="SelectedData.Price">
-</div>
-							
-<div class="form-group col-md-12">
-<div class="f-text">Description</div>
-<textarea class="form-control" rows="4" id="" placeholder="Description" ng-model="SelectedData.Descrptn"></textarea>
-</div>
-							
-<div class="form-group col-sm-6">
-    <div class="f-text">Starting Date & Time</div>
-    <input type="text" id="exampleInput" name="input" ng-model="SelectedData.StartDt" placeholder="dd-MMM-yyyy"   />
-</div>
-							
-<div class="form-group col-sm-6">
-<div class="f-text">Ending Date & Time</div>
-<input type="text"  id="EndDt" ng-model="SelectedData.EndDt" placeholder="dd-MMM-yyyy" >
-</div>
-							
-</div>
-							
-<div class="photo-add-sec">
 	
-<h3>Add Photos</h3>
-<div class="bx-item">
-<a href="">
-<div class="item-photo">
-<img src="images/camera.png" alt="">
-</div>
-</a>
-<a class="link-txt" href="">Remove</a>
-</div>
-	
-<div class="bx-item">
-<a href="">
-<div class="item-photo">
-<img src="images/camera.png" alt="">
-</div>
-</a>
-<a class="link-txt" href="">Remove</a>
-</div>
-	
-<div class="bx-item">
-<a href="">
-<div class="item-photo">
-<img src="images/camera.png" alt="">
-</div>
-</a>
-<a class="link-txt" href="">Remove</a>
-</div>
-	
-<div class="bx-item">
-<a href="">
-<div class="item-photo">
-<img src="images/camera.png" alt="">
-</div>
-</a>
-<a class="link-txt" href="">Remove</a>
-</div>
-	
-<div class="bx-item">
-<a href="">
-<div class="item-photo">
-<img src="images/camera.png" alt="">
-</div>
-</a>
-<a class="link-txt" href="">Remove</a>
-</div>
-	
-<div class="bx-item">
-<a href="">
-<div class="item-photo">
-<img src="images/camera.png" alt="">
-</div>
-</a>
-<a class="link-txt" href="">Remove</a>
-</div>
-	
-<div class="bx-item">
-<a href="">
-<div class="item-photo">
-<img src="images/camera.png" alt="">
-</div>
-</a>
-<a class="link-txt" href="">Remove</a>
-</div>
-	
-<div class="bx-item">
-<a href="">
-<div class="item-photo">
-<img src="images/camera.png" alt="">
-</div>
-</a>
-<a class="link-txt" href="">Remove</a>
-</div>
-	
-<div class="bx-item">
-<a href="">
-<div class="item-photo">
-<img src="images/camera.png" alt="">
-</div>
-</a>
-<a class="link-txt" href="">Remove</a>
-</div>
-	
-<div class="bx-item">
-<a href="">
-<div class="item-photo">
-<img src="images/camera.png" alt="">
-</div>
-</a>
-<a class="link-txt" href="">Remove</a>
-</div>
-	
-<div class="bx-item">
-<a href="">
-<div class="item-photo">
-<img src="images/camera.png" alt="">
-</div>
-</a>
-<a class="link-txt" href="">Remove</a>
-</div>
-	
-<div class="bx-item">
-<a href="">
-<div class="item-photo">
-<img src="images/camera.png" alt="">
-</div>
-</a>
-<a class="link-txt" href="">Remove</a>
-</div>
-	
-<div class="bx-item">
-<a href="">
-<div class="item-photo">
-<img src="images/camera.png" alt="">
-</div>
-</a>
-<a class="link-txt" href="">Remove</a>
-</div>
-	
-<div class="bx-item">
-<a href="">
-<div class="item-photo">
-<img src="images/camera.png" alt="">
-</div>
-</a>
-<a class="link-txt" href="">Remove</a>
-</div>
-	
-<div class="bx-item">
-<a href="">
-<div class="item-photo">
-<img src="images/camera.png" alt="">
-</div>
-</a>
-<a class="link-txt" href="">Remove</a>
-</div>
-	
-</div>
-							
-<div class="text-center"><button type="button" class="btn btn-submit" ng-click="SaveData()">Submit</button></div>
-</form>	
+	<form name="submitdealForm" ng-submit="SaveData()" novalidate>
+		<div class="row">
+
+			<div class="form-group col-sm-6">
+				<div class="f-text">Deal Name*</div>
+				<div class="form-group" ng-class="{ 'has-error' : submitdealForm.dealName.$invalid && !submitdealForm.dealName.$pristine }">
+					<input type="text" name="dealName" class="form-control" placeholder="Deal Name" ng-model="SelectedData.DealName" required ng-minlength="3" ng-pattern="/^[A-Za-z0-9 ]+$/">
+					<p ng-show="submitdealForm.dealName.$invalid && !submitdealForm.dealName.$pristine" class="help-block">Deal name is required.</p>
+					<p ng-show="submitdealForm.dealName.$error.minlength" class="help-block">Deal name is too short.</p>
+					<p ng-show="submitdealForm.dealName.$error.pattern" class="help-block">Specail chars are not allowed.</p>
+				</div>
+				</div>
+
+			<div class="form-group col-sm-6">
+				<div class="f-text">Price*</div>
+				<div class="form-group" ng-class="{ 'has-error' : submitdealForm.price.$invalid && !submitdealForm.price.$pristine }">
+					<input type="number" name="price" class="form-control" placeholder="Price" ng-model="SelectedData.Price" required>
+					<p ng-show="submitdealForm.price.$invalid && !submitdealForm.price.$pristine" class="help-block">Price is required.</p>
+				</div>
+				</div>
+				<div class="form-group col-md-12">
+					<div class="f-text">Description</div>
+					<div class="form-group" ng-class="{ 'has-error' : submitdealForm.desc.$invalid && !submitdealForm.desc.$pristine }">
+						<textarea name="desc" class="form-control" rows="4" id="" placeholder="Description" ng-model="SelectedData.Descrptn" required></textarea>
+						<p ng-show="submitdealForm.desc.$invalid && !submitdealForm.desc.$pristine" class="help-block">Description is required.</p>
+					</div>
+					</div>
+
+					<div class="form-group col-sm-6">
+						<div class="f-text">Starting Date</div>
+						<div class="form-group" ng-class="{ 'has-error' : submitdealForm.startDate.$invalid && !submitdealForm.startDate.$pristine }">
+							<input type="date" id="startDt" name="startDate" ng-model="SelectedData.StartDt"  placeholder="dd-MMM-yyyy" required />
+							<p ng-show="submitdealForm.startDate.$invalid && !submitdealForm.startDate.$pristine" class="help-block">Start Date is required.</p>
+						</div>
+						</div>
+
+					<div class="form-group col-sm-6">
+						<div class="f-text">Ending Date </div>
+						<div class="form-group" ng-class="{ 'has-error' : submitdealForm.endDate.$invalid && !submitdealForm.endDate.$pristine }">
+							<input type="date" id="EndDt" name="endDate" ng-model="SelectedData.EndDt"  placeholder="dd-MMM-yyyy" required>
+							<p ng-show="submitdealForm.endDate.$invalid && !submitdealForm.endDate.$pristine" class="help-block">End Date is required.</p>
+						</div>
+					</div>
+						</div>
+
+		<div class="photo-add-sec">
+
+			<h3>Add Photos</h3>
+
+			<div class="form-group col-sm-6">
+
+				<div class="edit-box">
+
+					<a id="upload_link1" href="#">
+						<div class="item-photo-edit-bnr">
+							<img id="Imgupload1" src="" alt="">
+						</div>
+					</a>
+					<a class="linktxt" href="">Remove</a>
+				</div>
+
+				<div class="form-group">
+					<div class="f-text">Banner Image</div>
+					<input id="upload1" type="file" accept="image/*" onchange="" class="form-control-file">
+				</div>
+
+			</div>
+
+			<div class="form-group col-sm-6">
+
+				<div class="edit-box">
+					<a id="upload_link2" href="#">
+						<div class="item-photo-edit">
+							<img id="Imgupload2" src="" alt="">
+						</div>
+					</a>
+					<a class="linktxt" href="">Remove</a>
+				</div>
+
+				<div class="form-group">
+					<div class="f-text">Company Logo</div>
+					<input id="upload2" type="file" accept="image/*" onchange="" class="form-control-file">
+				</div>
+			</div>
+
+		</div>
+
+
+
+		<div class="text-center"><button type="submit" class="btn btn-submit" ng-disabled="submitdealForm.$invalid">Submit</button></div>
+	</form>	
 </div>
 					
 </div><!--col-md-6-->

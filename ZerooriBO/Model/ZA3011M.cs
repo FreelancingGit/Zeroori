@@ -42,17 +42,19 @@ namespace ZerooriBO
                 PLABSM.DAL dbObj = new PLABSM.DAL();
                 dbObj.ConnectionMode = PLABSM.ConnectionModes.WebDB;
                 DataSet ds = dbObj.SelectSP("ZA3011_IU", XString, PLABSM.DbProvider.MSSql);
-                
 
-                System.Data.DataTable dtComn = PLWM.Utils.GetDataTable(ds, 0);
+				System.Data.DataTable dtComn = PLWM.Utils.GetDataTable(ds, 0);
                 if(dtComn.Rows.Count>0)
                 {
-                    SaveDataV.DealName = PLWM.Utils.CnvToStr(dtComn.Rows[0]["deal_name"]);
-                    SaveDataV.Price = PLWM.Utils.CnvToStr(dtComn.Rows[0]["price"]);
+					SaveDataV.DealMastId = PLWM.Utils.CnvToInt(dtComn.Rows[0]["deal_mast_id"]);
+					SaveDataV.DealName = PLWM.Utils.CnvToStr(dtComn.Rows[0]["deal_name"]);
+                    SaveDataV.Price = PLWM.Utils.CnvToInt(dtComn.Rows[0]["price"]);
                     SaveDataV.Descrptn = PLWM.Utils.CnvToStr(dtComn.Rows[0]["descrptn"]);
                     SaveDataV.StartDt = PLWM.Utils.CnvToStr(dtComn.Rows[0]["start_dt"]);
                     SaveDataV.EndDt = PLWM.Utils.CnvToStr(dtComn.Rows[0]["end_dt"]);
-                }
+					SaveDataV.Img1 = PLWM.Utils.CnvToStr(dtComn.Rows[0]["img_name1"]);
+					SaveDataV.Img2 = PLWM.Utils.CnvToStr(dtComn.Rows[0]["img_name2"]);
+				}
                 
 
             }
@@ -172,7 +174,7 @@ namespace ZerooriBO
                         DealMastId= PLWM.Utils.CnvToInt(dr["deal_mast_id"]),
                         PackDealMastId = PLWM.Utils.CnvToInt(dr["pack_deal_mast_id"]),
                         DealName = PLWM.Utils.CnvToStr(dr["deal_name"]),
-                        Price = PLWM.Utils.CnvToStr(dr["price"]),
+                        Price = PLWM.Utils.CnvToInt(dr["price"]),
                         Descrptn= PLWM.Utils.CnvToStr(dr["descrptn"]),
                         Location= PLWM.Utils.CnvToStr(dr["geo_Location"]),
                     });
@@ -246,11 +248,14 @@ namespace ZerooriBO
                         DealMastId = PLWM.Utils.CnvToInt(dr["deal_mast_id"]),
                         PackDealMastId = PLWM.Utils.CnvToInt(dr["pack_deal_mast_id"]),
                         DealName = PLWM.Utils.CnvToStr(dr["deal_name"]),
-                        Price = PLWM.Utils.CnvToStr(dr["price"]),
+                        Price = PLWM.Utils.CnvToInt(dr["price"]),
                         StartDt = PLWM.Utils.CnvToStr(dr["start_dt"]),
                         EndDt = PLWM.Utils.CnvToStr(dr["end_dt"]),
                         Descrptn = PLWM.Utils.CnvToStr(dr["descrptn"]),
-                    });
+						Img1 = PLWM.Utils.CnvToStr(dr["img_name1"]),
+					   Img2 = PLWM.Utils.CnvToStr(dr["img_name2"])
+
+				});
 
                 }
                 
@@ -308,11 +313,14 @@ namespace ZerooriBO
                         DealMastId = PLWM.Utils.CnvToInt(dr["deal_mast_id"]),
                         PackDealMastId = PLWM.Utils.CnvToInt(dr["pack_deal_mast_id"]),
                         DealName = PLWM.Utils.CnvToStr(dr["deal_name"]),
-                        Price = PLWM.Utils.CnvToStr(dr["price"]),
+                        Price = PLWM.Utils.CnvToInt(dr["price"]),
                         Descrptn = PLWM.Utils.CnvToStr(dr["descrptn"]),
                         StartDt= PLWM.Utils.CnvToStr(dr["start_dt"]),
                         EndDt= PLWM.Utils.CnvToStr(dr["end_dt"]),
-                    };
+						Img1 = PLWM.Utils.CnvToStr(dr["img_name1"]),
+						Img2 = PLWM.Utils.CnvToStr(dr["img_name2"])
+
+					};
 
                 }
 
@@ -321,7 +329,8 @@ namespace ZerooriBO
                     DealDet.DealM = new ZA3010D
                     {
                         BusinessName = PLWM.Utils.CnvToStr(dr["busines_Name"]),
-                        Location = PLWM.Utils.CnvToStr(dr["geo_Location"]),
+                        Location = PLWM.Utils.CnvToStr(dr["geo_Location"])
+						
                     };
 
                 }
@@ -379,7 +388,7 @@ namespace ZerooriBO
                         DealMastId = PLWM.Utils.CnvToInt(dr["deal_mast_id"]),
                         PackDealMastId = PLWM.Utils.CnvToInt(dr["pack_deal_mast_id"]),
                         DealName = PLWM.Utils.CnvToStr(dr["deal_name"]),
-                        Price = PLWM.Utils.CnvToStr(dr["price"]),
+                        Price = PLWM.Utils.CnvToInt(dr["price"]),
                         Descrptn = PLWM.Utils.CnvToStr(dr["descrptn"]),
                         Location= PLWM.Utils.CnvToStr(dr["geo_Location"]),
                         BannerImg= PLWM.Utils.CnvToStr(dr["banner_img_url"]),
@@ -437,7 +446,7 @@ namespace ZerooriBO
                         PackDealMastId = PLWM.Utils.CnvToInt(dr["pack_deal_mast_id"]),
                         DealName = PLWM.Utils.CnvToStr(dr["deal_name"]),
                         Descrptn = PLWM.Utils.CnvToStr(dr["descrptn"]),
-                        Price = PLWM.Utils.CnvToStr(dr["price"]),
+                        Price = PLWM.Utils.CnvToInt(dr["price"]),
                         StartDt = PLWM.Utils.CnvToStr(dr["start_dt"]),
                         EndDt = PLWM.Utils.CnvToStr(dr["end_dt"]),
                     });

@@ -66,7 +66,6 @@ public class ManagePage : IHttpHandler
 				ZA3010D UserVew = new ZA3010D();
 
 				Mode = "SD";
-					 HttpFileCollection SelectedFiles = this.Context.Request.Files;
 				Stream fs = this.Context.Request.InputStream;
 
 				long FileLength = fs.Length;
@@ -74,7 +73,7 @@ public class ManagePage : IHttpHandler
 				UserVew = UserPrflM.DoSave(UserFltr, Mode,FileLength);
 				String FilePath = UserVew.BannerImage;
 
-				if (FilePath != "")
+				if (FilePath != "" && fs.Length>0)
 				{
 
 					BinaryReader br = new BinaryReader(fs);
@@ -117,7 +116,7 @@ public class ManagePage : IHttpHandler
 
 				String FilePath = UserVew.CompanyLogo;
 
-				if (FilePath != "")
+				if (FilePath != "" && fs.Length>0)
 				{
 
 					BinaryReader br = new BinaryReader(fs);

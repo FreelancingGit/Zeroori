@@ -162,8 +162,7 @@
 				
 				<div class="row">				
 					<div class="col-8"><h3>Manage Deal</h3></div>
-					<div class="col-4"><a class="btn btn-add-deal" href="add-deal.html">
-    <img src="images/icon-add-deal.png" alt="Add Deal">Add Deal</a></div>
+					<div class="col-4"><a class="btn btn-add-deal" ng-click="AddDeal()">Add Deal</a></div>
 				</div>	
                 <div ng-repeat="deal in Dealcol">
                     <div class="box">
@@ -176,7 +175,7 @@
                             <div class="col-lg-4 col-sm-5 col-4">
                                 <div class="info-right">
 
-                                    <a class="btn btn-pro-icon color-one" data-toggle="modal" href="#"  ng-click="DeleteDeal(deal.DealMastId)" ><img src="images/icon-deal-delete.png" alt="Delete"></a>
+                                    <a class="btn btn-pro-icon color-one" data-toggle="modal" href="#"  ng-click="DeleteDeal(deal.DealMastId)" >Delete</a>
 
                                     <!-- Modal -->
                                     <div class="modal fade" id="delete-dealOne" role="dialog">
@@ -196,8 +195,8 @@
                                         </div>
                                     </div>
                                     <!--//href="add-deal.html"-->
-                                    <a class="btn btn-pro-icon color-two" ng-click="LoadDeal(deal.DealMastId)"><img src="images/icon-deal-edit.png" alt="Edit"></a>
-                                    <a class="btn btn-pro-icon color-three" href="view-leads.html"><img src="images/icon-deal-leads.png" alt="View Leads"></a>
+                                    <a class="btn btn-pro-icon color-two" ng-click="LoadDeal(deal.DealMastId)">Edit</a>
+                                    <a class="btn btn-pro-icon color-three" href="view-leads.html">View Leads</a>
 
                                 </div>
                             </div>

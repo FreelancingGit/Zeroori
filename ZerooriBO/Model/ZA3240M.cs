@@ -60,7 +60,8 @@ namespace ZerooriBO
                                 PlanName = PLWM.Utils.CnvToStr(drPlans["plan_name"]),
                                 UsrBusinesMastId = PLWM.Utils.CnvToNullableInt(drPlans["pack_deal_mast_id"]),
                                 UsrBusinesName = PLWM.Utils.CnvToStr(drPlans["busines_Name"]),
-                            });
+								Category = PLWM.Utils.CnvToStr(drPlans["Category"])
+							});
                         }
                     }
 
