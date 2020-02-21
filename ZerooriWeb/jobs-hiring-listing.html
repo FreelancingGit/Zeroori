@@ -156,7 +156,7 @@
                 <div class="col-lg-12">
                     <div class="search-sec">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="How can i help you?">
+                            <input type="text" class="form-control" placeholder="How can i help you?" ng-model="query" ng-change="search()">
                             <div class="input-group-btn">
                                 <button class="btn btn-default search_icon" type="button"><i class="fa fa-search-plus"></i></button>
                             </div>
@@ -229,7 +229,7 @@
                     </div>
 
 
-                    <div class="jobs-listing-sec" ng-repeat="ComJob in CompnyJobCol">
+                    <div class="jobs-listing-sec" ng-repeat="ComJob in pagedItems[currentPage]">
 
                         <div class="jobs-items-list">
 
@@ -266,16 +266,17 @@
 
                     <div class="pagination-sec">
                         <ul class="pagination pagination-sm">
-                            <li class="page-item"><a class="page-link" href="#" ng-click="ShowPage('L')">«</a></li>
-                            <!--<li class="page-item"><a class="page-link" href="#" ng-show="NavOneVis" ng-click="ShowPage(NavOne)">{{NavOne}}</a></li>
-    <li class="page-item"><a class="page-link" href="#" ng-show="NavTwoVis" ng-click="ShowPage(NavTwo)">{{NavTwo}}</a></li>
-    <li class="page-item"><a class="page-link" href="#" ng-show="NavThreeVis" ng-click="ShowPage(NavThree)">{{NavThree}}</a></li>
-    <li class="page-item"><a class="page-link" href="#" ng-show="NavFourVis" ng-click="ShowPage(NavFour)">{{NavFour}}</a></li>
-    <li class="page-item"><a class="page-link" href="#" ng-show="NavFiveVis" ng-click="ShowPage(NavFive)">{{NavFive}}</a></li>-->
-                            <li class="page-item" ng-repeat="x in PageCount"><a class="page-link" ng-show="NavOneVis" ng-click="ShowPage(x)">{{x}}</a></li>
-
-                            <li class="page-item"><a class="page-link" href="#" ng-click="ShowPage('R')">»</a></li>
-
+                            <li ng-class="{disabled: currentPage == 0}" class="page-item">
+                                <a class="page-link" href ng-click="prevPage()">« Prev</a>
+                            </li>
+                            <li ng-repeat="n in range(pagedItems.length)"
+                                ng-class="{active: n == currentPage}"
+                                ng-click="setPage()" class="page-item">
+                                <a class="page-link" href ng-bind="n + 1">1</a>
+                            </li>
+                            <li ng-class="{disabled: currentPage == pagedItems.length - 1}" class="page-item">
+                                <a class="page-link" href ng-click="nextPage()">Next »</a>
+                            </li>
                         </ul>
                     </div>
 

@@ -132,9 +132,22 @@ Sign Up
 <div class="col-lg-12">
 <div class="search-sec hm-search-margin">
 <div class="input-group">
-<input type="text" class="form-control" placeholder="How can i help you?">
+    <span style="color:white;font-size:16px;padding: 10px;padding-top: 18px;">Looking for </span>
+    <select class="form-control" style="margin-right: 10px;" ng-model="CategorySearch">
+        <option value="">Select</option>
+        <option value="Motors">Motors</option>
+        <option value="Classifieds">Classifieds</option>
+        <option value="Properties">Properties</option>
+        <option value="Jobs">Jobs</option>
+        <option value="Deals">Deals</option>
+        <option value="Brands">Brands</option>
+        <option value="Freelance">Freelance</option>
+        <option value="Directory">Directory</option>
+        <option value="Malls">Malls</option>
+    </select>
+<input type="text" class="form-control" placeholder="How can i help you?" ng-model="search">
 <div class="input-group-btn">
-<button class="btn btn-default search_icon" ng-click="ShowE()" type="button"><i class="fa fa-search-plus"></i></button>
+<button class="btn btn-default search_icon" ng-click="ShowE(search)" type="button"><i class="fa fa-search-plus"></i></button>
 </div>
 </div>
 </div>

@@ -34,7 +34,7 @@ namespace ZerooriBO
                 dbObj.ConnectionMode = PLABSM.ConnectionModes.WebDB;
                 DataSet ds = dbObj.SelectSP("ZA3720_sel", XString, PLABSM.DbProvider.MSSql);
 
-                
+
                 System.Data.DataTable ClasifiedDt = PLWM.Utils.GetDataTable(ds, 0);
                 System.Data.DataTable PageNoDt = PLWM.Utils.GetDataTable(ds, 1);
 
@@ -43,6 +43,7 @@ namespace ZerooriBO
                 System.Data.DataTable CatagoryDt = PLWM.Utils.GetDataTable(ds, 3);
                 System.Data.DataTable LocationDt = PLWM.Utils.GetDataTable(ds, 4);
                 System.Data.DataTable SortByDt = PLWM.Utils.GetDataTable(ds, 5);
+                System.Data.DataTable SearchFilterDt = PLWM.Utils.GetDataTable(ds, 6);
 
                 if (UserDataDt.Rows.Count > 0)
                 {
@@ -91,14 +92,32 @@ namespace ZerooriBO
                     });
                 }
 
+                UsageD.ClasifiedsFilterDataCol = new ZA3720BDCol();
+                foreach (DataRow Dr in SearchFilterDt.Rows)
+                {
+                    UsageD.ClasifiedsFilterDataCol.Add(new ZA3720BD
+                    {
+                        Title = PLWM.Utils.CnvToStr(Dr["clasifd_title"]),
+                        Condition = PLWM.Utils.CnvToStr(Dr["Condition"]),
+                        Location = PLWM.Utils.CnvToStr(Dr["Location"])
+                        //PhNo = PLWM.Utils.CnvToStr(Dr["usr_phno"]),
+                        //PostDate = PLWM.Utils.CnvToStr(Dr["crtd_dt"]),
+                        //ProductImage = PLWM.Utils.CnvToStr(Dr["full_path"]),
+                        //Rate = PLWM.Utils.CnvToStr(Dr["Price"]),
+                        //Usage = PLWM.Utils.CnvToStr(Dr["Usage"]),
+                        //Warranty = PLWM.Utils.CnvToStr(Dr["warrenty"]),
+                        //ClasifdAdMastId = PLWM.Utils.CnvToStr(Dr["clasifd_ad_mast_id"]),
+                    });
+                }
+
                 UsageD.AgeCol = new ComDisValDCol();
                 UsageD.AgeCol.Add(new ComDisValD() { DisPlyMembr = "Age", ValMembr = -1 });
                 foreach (DataRow Dr in LocationDt.Rows)
                 {
                     UsageD.AgeCol.Add(new ComDisValD()
                     {
-                      DisPlyMembr = PLWM.Utils.CnvToStr(Dr["clasifd_value"]),
-                      ValMembr = PLWM.Utils.CnvToInt(Dr["clasifd_dtl_id"]),
+                        DisPlyMembr = PLWM.Utils.CnvToStr(Dr["clasifd_value"]),
+                        ValMembr = PLWM.Utils.CnvToInt(Dr["clasifd_dtl_id"]),
                     });
                 }
 
@@ -159,7 +178,7 @@ namespace ZerooriBO
                 XDocument doc = new XDocument(new XElement("Root",
                 new XElement("as_mode", "LD"),
                 new XElement("ai_pageno", FilterData.PageNo),
-                new XElement("as_sessionid",""),
+                new XElement("as_sessionid", ""),
                 new XElement("as_Option", FilterData.Category.ClasifdSpecDtlId),
                 new XElement("as_age", FilterData.Age.ValMembr),
                 new XElement("as_sortby", FilterData.SortBy.ValMembr)

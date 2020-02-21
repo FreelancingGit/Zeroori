@@ -1,4 +1,4 @@
-﻿angular.module("ZerooriApp", ['ngCookies']).controller("motorlist", function ($scope, $http, $cookies) {
+﻿angular.module("ZerooriApp", ['ngCookies']).controller("motorlist", function ($scope, $http, $cookies, $filter) {
 	$scope.urlArray = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
 	$scope.Page = 'motorlist';
 	$scope.CurrentURL = $scope.urlArray[0];
@@ -84,6 +84,8 @@
 			$scope.SessionId = $cookies.get($scope.ZaKey);
 			$scope.ViewData.ZaBase.SessionId = $cookies.get($scope.ZaKey);
 			$scope.LoadInit();
+			$scope.query = $cookies.get('searchID');
+			$scope.search();
 		}
 	}, function errorCallback(response) {
 		alert(response);
@@ -154,7 +156,7 @@
 					$scope.SelectedData.Color = response.data.ColorCol[0];
 					$scope.SelectedData.Model = response.data.ModelCol[0];
 					$scope.SelectedData.SortBy = response.data.SortByCol[0];
-
+					$scope.filterdata(response.data.MotorDataCol);
 					$scope.SortMotorList = function () {
 						console.log($scope.SelectedData.SortBy);
 						$scope.LoadData();
@@ -242,6 +244,7 @@
 					if (response.data.PageNoCol.length > 0) {
 						var PageNo = parseInt(response.data.PageNoCol[0].DisPlyMembr);
 						var TotalPages = response.data.PageNoCol[0].ValMembr;
+						$scope.filterdata(response.data.MotorDataCol);
 						$scope.NavOne = PageNo + 0;
 						var start = 1;
 						if (PageNo > 2) start = PageNo - 2
@@ -410,4 +413,84 @@
 		url = URL + '.html?url=' + $scope.Page;
 		$(location).attr('href', url);
 	};
+
+	//new code for search
+	$scope.filterdata = function (item) {
+		// init
+		$scope.filteredItems = [];
+		$scope.groupedItems = [];
+		$scope.itemsPerPage = 5;
+		$scope.pagedItems = [];
+		$scope.currentPage = 0;
+		$scope.items = item;
+
+		var searchMatch = function (haystack, needle) {
+			if (!needle) {
+				return true;
+			}
+			return haystack.toLowerCase().indexOf(needle.toLowerCase()) !== -1;
+		};
+
+		// init the filtered items
+		$scope.search = function () {
+			$scope.filteredItems = $filter('filter')($scope.items, function (item) {
+				for (var attr in item) {
+					if (searchMatch(item[attr], $scope.query))
+						return true;
+				}
+				return false;
+			});
+
+			$scope.currentPage = 0;
+			// now group by pages
+			$scope.groupToPages();
+		};
+
+		// calculate page in place
+		$scope.groupToPages = function () {
+			$scope.pagedItems = [];
+
+			for (var i = 0; i < $scope.filteredItems.length; i++) {
+				if (i % $scope.itemsPerPage === 0) {
+					$scope.pagedItems[Math.floor(i / $scope.itemsPerPage)] = [$scope.filteredItems[i]];
+				} else {
+					$scope.pagedItems[Math.floor(i / $scope.itemsPerPage)].push($scope.filteredItems[i]);
+				}
+			}
+		};
+
+		$scope.range = function (start, end) {
+			var ret = [];
+			if (!end) {
+				end = start;
+				start = 0;
+			}
+			for (var i = start; i < end; i++) {
+				ret.push(i);
+			}
+			return ret;
+		};
+
+		$scope.prevPage = function () {
+			if ($scope.currentPage > 0) {
+				$scope.currentPage--;
+			}
+		};
+
+		$scope.nextPage = function () {
+			if ($scope.currentPage < $scope.pagedItems.length - 1) {
+				$scope.currentPage++;
+			}
+		};
+
+		$scope.setPage = function () {
+			$scope.currentPage = this.n;
+		};
+
+		// functions have been describe process the data for display
+		$scope.search();
+
+
+	};
+
 })

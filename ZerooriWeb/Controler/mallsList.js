@@ -1,4 +1,4 @@
-﻿angular.module("ZerooriApp", ['ngCookies']).controller("MallsList", function ($scope, $http, $cookies) {
+﻿angular.module("ZerooriApp", ['ngCookies']).controller("MallsList", function ($scope, $http, $cookies,$filter) {
 
     $scope.urlArray = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
     $scope.Page = 'malls';
@@ -87,6 +87,8 @@
             $scope.SessionId = $cookies.get($scope.ZaKey);
             $scope.ViewData.ZaBase.SessionId = $cookies.get($scope.ZaKey);
             $scope.LoadInit();
+            $scope.query = $cookies.get('searchID');
+            $scope.search();
         }
 
     }, function errorCallback(response) {
@@ -158,7 +160,7 @@
                   
                     $scope.Mallcol = response.data.Mallcol;
 
-
+                    $scope.filterdata();
 
                     var PageNo = parseInt(response.data.PageNoCol[0].DisPlyMembr);
                     var TotalPages = response.data.PageNoCol[0].ValMembr;
@@ -248,7 +250,7 @@
 
                         var PageNo = parseInt(response.data.PageNoCol[0].DisPlyMembr);
                         var TotalPages = response.data.PageNoCol[0].ValMembr;
-
+                        $scope.filterdata();
                         $scope.NavOne = PageNo + 0;
                         var start = 1;
                         if (PageNo > 2) start = PageNo - 2
@@ -439,5 +441,84 @@
     $scope.navigate = function (URL) {
         url = URL + '.html?url=' + $scope.Page;
         $(location).attr('href', url);
+    };
+    //new code for search
+    $scope.filterdata = function () {
+        // init
+        $scope.filteredItems = [];
+        $scope.groupedItems = [];
+        $scope.itemsPerPage = 6;
+        $scope.pagedItems = [];
+        $scope.currentPage = 0;
+        $scope.items = $scope.Mallcol;
+
+        var searchMatch = function (haystack, needle) {
+            if (!needle) {
+                return true;
+            }
+            console.log(haystack);
+            return haystack.toString().toLowerCase().indexOf(needle.toLowerCase()) !== -1;
+        };
+
+        // init the filtered items
+        $scope.search = function () {
+            $scope.filteredItems = $filter('filter')($scope.items, function (item) {
+                for (var attr in item) {
+                    if (searchMatch(item[attr], $scope.query))
+                        return true;
+                }
+                return false;
+            });
+
+            $scope.currentPage = 0;
+            // now group by pages
+            $scope.groupToPages();
+        };
+
+        // calculate page in place
+        $scope.groupToPages = function () {
+            $scope.pagedItems = [];
+
+            for (var i = 0; i < $scope.filteredItems.length; i++) {
+                if (i % $scope.itemsPerPage === 0) {
+                    $scope.pagedItems[Math.floor(i / $scope.itemsPerPage)] = [$scope.filteredItems[i]];
+                } else {
+                    $scope.pagedItems[Math.floor(i / $scope.itemsPerPage)].push($scope.filteredItems[i]);
+                }
+            }
+        };
+
+        $scope.range = function (start, end) {
+            var ret = [];
+            if (!end) {
+                end = start;
+                start = 0;
+            }
+            for (var i = start; i < end; i++) {
+                ret.push(i);
+            }
+            return ret;
+        };
+
+        $scope.prevPage = function () {
+            if ($scope.currentPage > 0) {
+                $scope.currentPage--;
+            }
+        };
+
+        $scope.nextPage = function () {
+            if ($scope.currentPage < $scope.pagedItems.length - 1) {
+                $scope.currentPage++;
+            }
+        };
+
+        $scope.setPage = function () {
+            $scope.currentPage = this.n;
+        };
+
+        // functions have been describe process the data for display
+        $scope.search();
+
+
     };
 })
