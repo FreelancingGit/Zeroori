@@ -105,6 +105,7 @@ public class DrectoryList : IHttpHandler
     private string ObjectToJson(object data)
     {
         JavaScriptSerializer serializer = new JavaScriptSerializer();
+            serializer.MaxJsonLength = int.MaxValue;
         return serializer.Serialize(data);
     }
 

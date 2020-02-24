@@ -267,7 +267,7 @@
                             <li ng-class="{disabled: currentPage == 0}" class="page-item">
                                 <a class="page-link" href ng-click="prevPage()">« Prev</a>
                             </li>
-                            <li ng-repeat="n in range(pagedItems.length)"
+                            <li ng-repeat="n in range(currentPage,pagedItems.length)"
                                 ng-class="{active: n == currentPage}"
                                 ng-click="setPage()" class="page-item">
                                 <a class="page-link" href ng-bind="n + 1">1</a>

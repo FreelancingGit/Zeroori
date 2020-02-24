@@ -172,7 +172,7 @@
 					$scope.SelectedData.Location = response.data.LocationCol[0];
 					var PageNo = parseInt(response.data.PageNoCol[0].DisPlyMembr);
 					var TotalPages = response.data.PageNoCol[0].ValMembr;
-					
+
 					var start = 1;
 					if (PageNo > 2) start = PageNo - 2
 					var total = 5;
@@ -465,7 +465,9 @@
 				end = start;
 				start = 0;
 			}
-			for (var i = start; i < end; i++) {
+			var last = end > (start + 5) ? (start + 5) : end;
+			start = last <= 5 ? 0 : start;
+			for (var i = start; i < last; i++) {
 				ret.push(i);
 			}
 			return ret;

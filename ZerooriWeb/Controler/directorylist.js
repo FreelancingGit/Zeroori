@@ -1,4 +1,4 @@
-﻿angular.module("ZerooriApp", ['ngCookies']).controller("directorylist", function ($scope, $http, $cookies,$filter) {
+﻿angular.module("ZerooriApp", ['ngCookies']).controller("directorylist", function ($scope, $http, $cookies, $filter) {
     $scope.urlArray = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
     $scope.Page = 'directorylist';
     $scope.CurrentURL = $scope.urlArray[0];
@@ -26,7 +26,7 @@
     $scope.isLoading = false;
     $scope.PageCount = [];
     $scope.DirCol = {};
-    $scope.SelectedPage = 0; 
+    $scope.SelectedPage = 0;
     $scope.ViewData = {
         FistNam: "",
         LastNam: "",
@@ -231,7 +231,7 @@
 
 
                     $scope.DirCol = response.data.DirCol;
-                    
+
 
                     if (response.data.PageNoCol.length > 0) {
 
@@ -486,7 +486,9 @@
                 end = start;
                 start = 0;
             }
-            for (var i = start; i < end; i++) {
+            var last = end > (start + 5) ? (start + 5) : end;
+            start = last <= 5 ? 0 : start;
+            for (var i = start; i < last; i++) {
                 ret.push(i);
             }
             return ret;

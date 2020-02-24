@@ -434,7 +434,9 @@
                 end = start;
                 start = 0;
             }
-            for (var i = start; i < end; i++) {
+            var last = end > (start + 5) ? (start + 5) : end;
+            start = last <= 5 ? 0 : start;
+            for (var i = start; i < last; i++) {
                 ret.push(i);
             }
             return ret;
