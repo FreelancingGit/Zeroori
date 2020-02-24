@@ -157,34 +157,36 @@
 
 
     <div class="body-container">
-        <div class="container">
-            <div class="profile-sec" ng-repeat="Business in BusinessCol">
+		<div class="container">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Business Name</th>
+						<th>Category</th>
+						<th>Plan</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="Business in BusinessCol">
 
-                <div class="box">
-                    <div class="row">
-
-                        <div class="col-lg-8 col-sm-7 col-8">
-                            <div class="info-left">{{Business.UsrBusinesName}}</div>
-                        </div>
-
-                        <div class="col-lg-4 col-sm-5 col-4">
-                            <div class="info-right">
-                                <a class="btn btn-manage" ng-click="ShowBusiness(Business.UsrBusinesMastId)" href="#"><img src="images/icon-manage-page.png" alt="">Manage Page</a>
-                                <a class="btn btn-manage" ng-click="ShowDeals(Business.UsrBusinesMastId,Business.UsrBusinesName)" color" href="#"><img src="images/icon-manage-deal.png" alt="">Manage Deal</a>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div><!--box-->
+						<td>{{Business.UsrBusinesName}}</td>
+						<td>{{Business.Category}}</td>
+						<td>{{Business.PlanName}}</td>
+						<td>
+							<div class="info-right">
+								<a class="btn btn-manage" ng-click="ShowBusiness(Business.UsrBusinesMastId)" href="#"><img src="images/icon-manage-page.png" alt="">Manage Page</a>
+								<a class="btn btn-manage" ng-click="ShowDeals(Business.UsrBusinesMastId,Business.UsrBusinesName)" color" href="#"><img src="images/icon-manage-deal.png" alt="">Manage Deal</a>
+							</div>
+	
+							</td>
 
 
+</tbody>
+			</table>
+			<!--profile-sec-->
 
-
-
-            </div><!--profile-sec-->
-
-        </div><!--container-->
+		</div><!--container-->
     </div><!--body-container-->
 
     <div class="footer-sec">

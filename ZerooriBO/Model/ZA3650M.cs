@@ -42,9 +42,13 @@ namespace ZerooriBO
                 System.Data.DataTable CareerLvlDt = PLWM.Utils.GetDataTable(ds, 7);
                 System.Data.DataTable dtUser = PLWM.Utils.GetDataTable(ds, 8);
                 System.Data.DataTable dtSel = PLWM.Utils.GetDataTable(ds, 9);
+				System.Data.DataTable dtLoc = PLWM.Utils.GetDataTable(ds, 10);
+				var dt_Jobtitles = PLWM.Utils.GetDataTable(ds, 11);
 
 
-                DataRow drUser = null;
+
+
+				DataRow drUser = null;
                 if (dtUser.Rows.Count > 0)
                 {
                     drUser = dtUser.Rows[0];
@@ -60,10 +64,19 @@ namespace ZerooriBO
                         EmpJobValue = PLWM.Utils.CnvToStr(dr["Emp_Job_Value"]),
                     });
                 }
+				UsageD.JobsCol= new ZA3230DCol();
+				UsageD.JobsCol.Add(new ZA3230D() { EmpJobDtlId = -1, EmpJobValue = "Jobs Title" });
+				foreach (DataRow dr in dt_Jobtitles.Rows)
+				{
+					UsageD.JobsCol.Add(new ZA3230D()
+					{
+						EmpJobDtlId = PLWM.Utils.CnvToNullableInt(dr["Id"]),
+						EmpJobValue = PLWM.Utils.CnvToStr(dr["Title"]),
+					});
+				}
 
 
-
-                UsageD.CompnySizeCol = new ZA3230DCol();
+				UsageD.CompnySizeCol = new ZA3230DCol();
                 UsageD.CompnySizeCol.Add(new ZA3230D() { EmpJobDtlId = -1, EmpJobValue = "Company Size" });
                 foreach (DataRow dr in CompnySizeDt.Rows)
                 {
@@ -131,7 +144,18 @@ namespace ZerooriBO
                     });
                 }
 
-                UsageD.CareervLevelCol  = new ZA3230DCol();
+				UsageD.LocationCol = new ComDisValDCol();
+				UsageD.LocationCol.Add(new ComDisValD() { DisPlyMembr = "Location", ValMembr = -1 });
+				foreach (DataRow Dr in dtLoc.Rows)
+				{
+					UsageD.LocationCol.Add(new ComDisValD()
+					{
+						DisPlyMembr = PLWM.Utils.CnvToStr(Dr["place_name"]),
+						ValMembr = PLWM.Utils.CnvToInt(Dr["city_mast_id"]),
+					});
+				}
+
+				UsageD.CareervLevelCol  = new ZA3230DCol();
                 UsageD.CareervLevelCol.Add(new ZA3230D() { EmpJobDtlId = -1, EmpJobValue = "Career Level" });
                 foreach (DataRow dr in CareerLvlDt.Rows)
                 {
@@ -176,7 +200,6 @@ namespace ZerooriBO
                         //StepTwo
                         JobTitle= PLWM.Utils.CnvToStr(dr["job_title"]),
                         Neighbrhd= PLWM.Utils.CnvToStr(dr["neighbrhd"]),
-                        Location= PLWM.Utils.CnvToStr(dr["location"]),
                         DescrptnStepTwo= PLWM.Utils.CnvToStr(dr["descrptn_step_two"]),
 
                         EmplymntTyp = UsageD.EmploymntTypeCol.FirstOrDefault(x => x.EmpJobDtlId ==
@@ -196,8 +219,10 @@ namespace ZerooriBO
 
                         CareerLvl = UsageD.CareervLevelCol.FirstOrDefault(x => x.EmpJobDtlId ==
                                       PLWM.Utils.CnvToInt(dtSel.Rows[0]["career_lvl"])),
+						Location = UsageD.LocationCol.FirstOrDefault(x => x.DisPlyMembr ==
+									  PLWM.Utils.CnvToStr(dtSel.Rows[0]["place_name"])),
 
-                    };
+					};
                 }
             }
             catch (Exception e)
@@ -208,7 +233,7 @@ namespace ZerooriBO
             return UsageD;
         }
 
-        public ZA3650SD DoSave(ZA3650SD SaveData, String Mode, long FileLength)
+        public ZA3650SD DoSave(ZA3650SD SaveData, String Mode, long FileName)
         {
             ZA3650SD UsageD = new ZA3650SD();
 
@@ -236,9 +261,9 @@ namespace ZerooriBO
                 new XElement("ai_eductn_lvl", SaveData.EductnLvl.EmpJobDtlId),
                 new XElement("ai_listed_by", SaveData.ListedBy.EmpJobDtlId),
                  new XElement("ai_career_lvl", SaveData.CareerLvl.EmpJobDtlId),
-                new XElement("as_location", SaveData.Location),
+                new XElement("as_location", SaveData.Location.DisPlyMembr),
                 new XElement("as_dscrptn_step_two", SaveData.DescrptnStepTwo), 
-                new XElement("as_PhotoLength", FileLength)
+                new XElement("as_PhotoName", SaveData.filename)
 
                 ));
 
@@ -249,17 +274,23 @@ namespace ZerooriBO
                 DataSet ds = dbObj.SelectSP("ZA3650_IU", XString, PLABSM.DbProvider.MSSql);
                 DataTable dt = PLWM.Utils.GetDataTable(ds, 0);
                 DataTable dt_id = PLWM.Utils.GetDataTable(ds, 1);
+				DataTable dt_file = PLWM.Utils.GetDataTable(ds, 2);
 
                 if (dt.Rows.Count > 0)
                 {
                     UsageD.PhotoPath = PLWM.Utils.CnvToStr(dt.Rows[0]["UsrFldrName"]);
-                }
+					UsageD.filename = PLWM.Utils.CnvToStr(dt.Rows[0]["UsrFilename"]);
+					UsageD.imgName = PLWM.Utils.CnvToStr(dt.Rows[0]["img_name"]);
+
+				}
                 if (dt_id.Rows.Count > 0)
                 {
                     UsageD.CompnyJobMastId = PLWM.Utils.CnvToInt(dt_id.Rows[0]["compny_job_mast_id"]);
                 }
+				
 
-            }
+
+			}
             catch (Exception e)
             {
                 UsageD.UserData.ZaBase.ErrorMsg = PLWM.Utils.CnvToSentenceCase(e.Message.ToLower().Replace("plerror", "").Replace("plerror", "").Trim());

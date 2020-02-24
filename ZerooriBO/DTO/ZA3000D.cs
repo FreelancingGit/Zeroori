@@ -35,4 +35,5 @@ namespace ZerooriBO
         public bool AcceptAgrement { get => _AcceptAgrement; set => _AcceptAgrement = value; }
         public string OldPasswd { get => _OldPasswd; set => _OldPasswd = value; }
     }
+
 }

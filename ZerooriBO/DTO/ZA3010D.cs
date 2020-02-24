@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ZerooriBO.Model;
 
 namespace ZerooriBO
 {
@@ -31,7 +32,7 @@ namespace ZerooriBO
     {
         String _BusinessName = string.Empty;
         String _URL = string.Empty;
-        String _Category = string.Empty;
+		ComDisValD _Category = new ComDisValD();
         String _BannerImage = string.Empty;
         String _CompanyLogo = string.Empty;
         String _Facebook = string.Empty;
@@ -49,8 +50,10 @@ namespace ZerooriBO
         ZA3000D _UserData = new ZA3000D();
         String _PhotoPath = string.Empty;
         int _PageNo = 1;
+		CategoriesCol _Categories = new CategoriesCol();
+		ZA2000DCol _LocationCol = new ZA2000DCol();
 
-        public string URL { get => _URL; set => _URL = value; }
+		public string URL { get => _URL; set => _URL = value; }
         public string CompanyLogo { get => _CompanyLogo; set => _CompanyLogo = value; }
         public string Facebook { get => _Facebook; set => _Facebook = value; }
         public string Instagram { get => _Instagram; set => _Instagram = value; }
@@ -63,14 +66,17 @@ namespace ZerooriBO
         public string BusinessName { get => _BusinessName; set => _BusinessName = value; }
         public int? DealMastID { get => _DealMastID; set => _DealMastID = value; }
         public ZA3000D UserData { get => _UserData; set => _UserData = value; }
-        public string Category { get => _Category; set => _Category = value; }
+     //   public string Category { get => _Category; set => _Category = value; }
         public string BannerImage { get => _BannerImage; set => _BannerImage = value; }
         public int? PackDealMastID { get => _PackDealMastID; set => _PackDealMastID = value; }
         public int? PlanMastId { get => _planMastId; set => _planMastId = value; }
         public int? PackageMastId { get => _packageMastId; set => _packageMastId = value; }
         public string PhotoPath { get => _PhotoPath; set => _PhotoPath = value; }
         public int PageNo { get => _PageNo; set => _PageNo = value; }
-    }
+		public CategoriesCol CategoriesCol { get => _Categories; set => _Categories = value; }
+		public ComDisValD Category { get => _Category; set => _Category = value; }
+		public ZA2000DCol LocationCol { get => _LocationCol; set => _LocationCol = value; }
+	}
 
     public class ZA3010DCol : System.Collections.ObjectModel.ObservableCollection<ZA3010D>
     {

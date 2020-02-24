@@ -22,10 +22,11 @@ namespace ZerooriBO
         string _compny_logo_img = string.Empty;
         string _job_title = string.Empty;
         string _neighbrhd = string.Empty;
-        string _location = string.Empty;
         string _descrptn_step_two = string.Empty;
         String _PhotoPath = "";
         string _crtdDt = string.Empty;
+		string _filename = string.Empty;
+		string _imgName = string.Empty;
         ComDisValD _reportyp = new ComDisValD();
 
         ZA3230D _indstry = new ZA3230D();
@@ -36,6 +37,8 @@ namespace ZerooriBO
         ZA3230D _listed_by = new ZA3230D();
         ZA3230D _career_lvl = new ZA3230D();
         ZA3230D _exprnce = new ZA3230D();
+		ComDisValD _location = new ComDisValD();
+
 
        
         public int CompnyJobMastId { get => compny_job_mast_id; set => compny_job_mast_id = value; }
@@ -49,7 +52,7 @@ namespace ZerooriBO
         public string CompnyLogoImg { get => _compny_logo_img; set => _compny_logo_img = value; }
         public string JobTitle { get => _job_title; set => _job_title = value; }
         public string Neighbrhd { get => _neighbrhd; set => _neighbrhd = value; }
-        public string Location { get => _location; set => _location = value; }
+        public ComDisValD Location { get => _location; set => _location = value; }
         public string DescrptnStepTwo { get => _descrptn_step_two; set => _descrptn_step_two = value; }
         public string PhotoPath { get => _PhotoPath; set => _PhotoPath = value; }
         public ZA3000D UserData { get => _UserData; set => _UserData = value; }
@@ -63,7 +66,9 @@ namespace ZerooriBO
         public ZA3230D Exprnce { get => _exprnce; set => _exprnce = value; }
         public string CrtdDt { get => _crtdDt; set => _crtdDt = value; }
         public ComDisValD Reportyp { get => _reportyp; set => _reportyp = value; }
-    }
+		public string filename { get => _filename; set => _filename = value; }
+		public string imgName { get => _imgName; set => _imgName = value; }
+	}
 
     public class ZA3650SDCol : System.Collections.ObjectModel.ObservableCollection<ZA3650SD>
     {

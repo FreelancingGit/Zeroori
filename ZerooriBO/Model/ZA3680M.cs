@@ -177,7 +177,7 @@ namespace ZerooriBO
                         //StepTwo
                         JobTitle = PLWM.Utils.CnvToStr(dr["job_title"]),
                         Neighbrhd = PLWM.Utils.CnvToStr(dr["neighbrhd"]),
-                        Location = PLWM.Utils.CnvToStr(dr["location"]),
+                      //  Location = PLWM.Utils.CnvToStr(dr["location"]),
                         DescrptnStepTwo = PLWM.Utils.CnvToStr(dr["descrptn_step_two"]),
 
                         EmplymntTyp = UsageD.EmploymntTypeCol.FirstOrDefault(x => x.EmpJobDtlId ==
@@ -254,7 +254,7 @@ namespace ZerooriBO
                         CompnyName = PLWM.Utils.CnvToStr(dr["comp_name"]),
                         JobTitle = PLWM.Utils.CnvToStr(dr["Title"]),
                         CrtdDt = PLWM.Utils.CnvToStr(dr["crtd_dt"]),
-                        Location = PLWM.Utils.CnvToStr(dr["location"]),
+                       // Location = PLWM.Utils.CnvToStr(dr["location"]),
                         DescrpnStepOne = PLWM.Utils.CnvToStr(dr["descrpn"]),
                     });
 

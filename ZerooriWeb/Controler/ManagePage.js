@@ -10,8 +10,11 @@
     $scope.ISLogin = true;
     $scope.ISSignINStatus = false;
     $scope.ISSignOutStatus = false;
-    $scope.EnablePostAds = false;
-
+	$scope.EnablePostAds = false;
+	$scope.CategoriesCol = {};
+	$scope.LocationCol = {};
+	$scope.BannerImage = '';
+	$scope.CompanyLogo = '';
 
     $scope.SelectedData = {
         BusinessName: "",
@@ -20,12 +23,13 @@
         CompanyLogo: "",
         Facebook: "",
         Instagram: "",
-        Twitter: "",
-
+		Twitter: "",
+		Category:{},
         PhoneNo: "",
         Email: "",
         Website: "",
-        Location: "",
+		LocationData: {},
+		Location:'',
         Description: "",
         DealMastId: "",
         UserData: {
@@ -163,7 +167,7 @@
                         $cookies.put($scope.ZaKey, $scope.SessionId);
                         $('#myModal').modal("hide");
                         if ($scope.EnablePostAds && $scope.ISSignINStatus) {
-                            $scope.navigate('postyouradd')
+							$scope.navigate('postyouradd');
                         }
                     } // User Login Mode
                     else if (Mode == "UL" && response.data.UserData.ZaBase.SessionId == "") {
@@ -221,7 +225,7 @@
                         $scope.ViewData.Passwd = '';
                     } // User Login Mode
 
-                    $scope.SetSaveData(response)
+					$scope.SetSaveData(response);
 
                 }, function errorCallback(response) {
                     alert(response);
@@ -235,37 +239,67 @@
         }
     }
 
+	$scope.isValidInputs = function ()
+	{
+		var flag = true;
+		if ($scope.SelectedData.BusinessName == '' || $scope.SelectedData.BusinessName == null) {
+			flag = false;
+			alert("Please give your bussines name");
+			
+		}
+		else if ($scope.SelectedData.Category.ValMembr == -1) {
+			flag = false;
+			alert("Please Select category");
 
-    $scope.SaveData = function () {
-        if (($scope.SessionId != null && $scope.SessionId != "")) {
-            try {
+		}
+		else if ($scope.SelectedData.PhoneNo == '' || $scope.SelectedData.PhoneNo == null) {
+			flag = false;
+			alert("Please enter phone number");
 
-                var file = $('#upload1').get(0).files;
+		}
+		else if ($scope.SelectedData.Email == '' || $scope.SelectedData.Email == null) {
+			flag = false;
+			alert("Please enter Email");
 
-                $http({
-                    method: 'POST',
-                    url: 'ManagePage.ashx',
-                    data: file[0],
-                    params: {
-                        SaveData: JSON.stringify($scope.SelectedData)
-                    }
-                }).then(function successCallback(response) {
+		}
+		return flag;
+	};
 
-                    $scope.SaveLogo();
-                    alert('Save Successfully');
-                    $scope.SetSaveData(response)
+	$scope.SaveData = function ()
+	{
+		if ($scope.isValidInputs()) {
+
+			if (($scope.SessionId != null && $scope.SessionId != "")) {
+				try {
+					$scope.SelectedData.location = $scope.SelectedData.locationData.PlaceName;
+					var file = $('#upload1').get(0).files;
+
+					$http({
+						method: 'POST',
+						url: 'ManagePage.ashx',
+						data: file[0],
+						params: {
+							SaveData: JSON.stringify($scope.SelectedData)
+						}
+					}).then(function successCallback(response) {
+
+						$scope.SaveLogo();
+						alert('Save Successfully');
+						$(location).attr('href','my-products.html');
+						//$scope.SetSaveData(response);
 
 
-                }, function errorCallback(response) {
-                    alert(response);
-                    $scope.SetStatus(false);
-                });
-            }
-            catch (err) {
-                $scope.SetStatus(false);
-                alert(err);
-            }
-        }
+					}, function errorCallback(response) {
+						alert(response);
+						$scope.SetStatus(false);
+					});
+				}
+				catch (err) {
+					$scope.SetStatus(false);
+					alert(err);
+				}
+			}
+		}
     }
 
     $scope.SaveLogo = function () {
@@ -295,23 +329,27 @@
         }
     }
 
-    $scope.SetSaveData = function (response) {
+	$scope.SetSaveData = function (response)
+	{
 
-        $scope.SelectedData.BusinessName = response.data.BusinessName;
-        $scope.SelectedData.URL = response.data.URL;
+		$scope.SelectedData.BusinessName = response.data.BusinessName;
+		$scope.SelectedData.URL = response.data.URL;
 
-        $scope.SelectedData.BannerImage = response.data.BannerImage;
-        $scope.SelectedData.CompanyLogo = response.data.CompanyLogo;
-        $scope.SelectedData.Facebook = response.data.Facebook;
-        $scope.SelectedData.Instagram = response.data.Instagram;
-        $scope.SelectedData.Twitter = response.data.Twitter;
-        $scope.SelectedData.PhoneNo = response.data.PhoneNo;
-        $scope.SelectedData.Email = response.data.Email;
-        $scope.SelectedData.Website = response.data.Website;
-        $scope.SelectedData.Location = response.data.Location;
-        $scope.SelectedData.Description = response.data.Description;
-
-    }
+		$scope.SelectedData.BannerImage = response.data.BannerImage;
+		$scope.SelectedData.CompanyLogo = response.data.CompanyLogo;
+		$scope.SelectedData.Facebook = response.data.Facebook;
+		$scope.SelectedData.Instagram = response.data.Instagram;
+		$scope.SelectedData.Twitter = response.data.Twitter;
+		$scope.SelectedData.PhoneNo = response.data.PhoneNo;
+		$scope.SelectedData.Email = response.data.Email;
+		$scope.SelectedData.Website = response.data.Website;
+		$scope.SelectedData.Location = response.data.Location;
+		$scope.SelectedData.Description = response.data.Description;
+		$scope.CategoriesCol = response.data.CategoriesCol;
+		$scope.SelectedData.Category = response.data.CategoriesCol[0];
+		$scope.LocationCol = response.data.LocationCol;
+		$scope.SelectedData.locationData = response.data.LocationCol[0];
+	};
     
     $scope.isValidSave = function (response) {
         if (response.data.UserData.ZaBase != undefined

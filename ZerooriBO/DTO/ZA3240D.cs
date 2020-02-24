@@ -15,7 +15,8 @@ namespace ZerooriBO
         int? _usrPlanMastId = null;
         String _PlanName = string.Empty;
         String _usrBusinesName = string.Empty;
-        String _usrBusinesUrl = string.Empty;
+		String _category = string.Empty;
+		String _usrBusinesUrl = string.Empty;
         String _categryMastId = string.Empty;
         String _titleLogoUrl = string.Empty;
         String _businesLogoUrl = string.Empty;
@@ -32,7 +33,8 @@ namespace ZerooriBO
         public int? UsrBusinesMastId { get => _usrBusinesMastId; set => _usrBusinesMastId = value; }
         public int? UsrPlanMastId { get => _usrPlanMastId; set => _usrPlanMastId = value; }
         public string UsrBusinesName { get => _usrBusinesName; set => _usrBusinesName = value; }
-        public string UsrBusinesUrl { get => _usrBusinesUrl; set => _usrBusinesUrl = value; }
+		public string Category { get => _category; set => _category = value; }
+		public string UsrBusinesUrl { get => _usrBusinesUrl; set => _usrBusinesUrl = value; }
         public string CategryMastId { get => _categryMastId; set => _categryMastId = value; }
         public string TitleLogoUrl { get => _titleLogoUrl; set => _titleLogoUrl = value; }
         public string BusinesLogoUrl { get => _businesLogoUrl; set => _businesLogoUrl = value; }

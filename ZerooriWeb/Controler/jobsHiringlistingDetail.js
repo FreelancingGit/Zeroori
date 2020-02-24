@@ -43,17 +43,17 @@
     }
 
 
-    $scope.ViewData = {
-        FistNam: "",
-        LastNam: "",
-        Email: "",
-        Mob: "",
-        Passwd: "",
-        Cpasswd: "",
-        ZaBase: {
-            SessionId: ''
-        }
-    }
+	$scope.ViewData = {
+		FistNam: "",
+		LastNam: "",
+		Email: "",
+		Mob: "",
+		Passwd: "",
+		Cpasswd: "",
+		ZaBase: {
+			SessionId: ''
+		}
+	};
 
 
     if ($scope.urlArray.length > 1) {
@@ -94,8 +94,8 @@
         if ($scope.isValidSave(response)) {
 
             $scope.ZaKey = response.data.UserData.ZaBase.ZaKey;
-            $scope.SessionId = $cookies.get($scope.ZaKey);
-
+			$scope.SessionId = $cookies.get($scope.ZaKey);
+			$scope.UserName = "Hi, " + response.data.UserData.FistNam;
             $scope.FilterData.ComJobMast.CompanyJobMastId = $cookies.get('MADID');
             $scope.FilterData.UserData.ZaBase.SessionId = $cookies.get($scope.ZaKey);
             $scope.LoadInit();
@@ -141,7 +141,8 @@
                 params: {
                     Init: JSON.stringify($scope.FilterData)
                 }
-            }).then(function successCallback(response) {
+			}).then(function successCallback(response)
+			{
 
 
                 if ($scope.isValidSave(response)) {
@@ -152,12 +153,13 @@
                         response.data.UserData.FistNam != undefined &&
                         response.data.UserData.FistNam != "")
                         {
-                             $scope.SetStatus(true);
-                             $scope.ViewData.UserData.ZaBase.SessionId = $cookies.get($scope.ZaKey);
+						$scope.SetStatus(true);
+						$scope.UserName = "Hi, " + response.data.UserData.FistNam;
+						$scope.ViewData.ZaBase.SessionId = $cookies.get($scope.ZaKey);
                         }
                     else
-                        $scope.SetStatus(false);
-                    
+						$scope.SetStatus(false);
+					console.log(response.data);
 
                     $scope.ComJobMast = response.data.ComJobMast;
                 } // User Login Mode
