@@ -34,7 +34,7 @@ namespace ZerooriBO
                 dbObj.ConnectionMode = PLABSM.ConnectionModes.WebDB;
                 DataSet ds = dbObj.SelectSP("ZA3710_sel", XString, PLABSM.DbProvider.MSSql);
 
-                
+
                 System.Data.DataTable PropDt = PLWM.Utils.GetDataTable(ds, 0);
                 System.Data.DataTable PageNoDt = PLWM.Utils.GetDataTable(ds, 1);
 
@@ -97,8 +97,8 @@ namespace ZerooriBO
                 {
                     UsageD.LocationCol.Add(new ComDisValD()
                     {
-                      DisPlyMembr = PLWM.Utils.CnvToStr(Dr["place_name"]),
-                      ValMembr = PLWM.Utils.CnvToInt(Dr["city_mast_id"]),
+                        DisPlyMembr = PLWM.Utils.CnvToStr(Dr["place_name"]),
+                        ValMembr = PLWM.Utils.CnvToInt(Dr["city_mast_id"]),
                     });
                 }
 
@@ -124,7 +124,7 @@ namespace ZerooriBO
                 {
                     UsageD.CatagoryCol.Add(new ZA3210D()
                     {
-                        PropSpecDtlId = PLWM.Utils.CnvToInt(Dr["Prop_dtl_id"]),
+                        PropSpecDtlId = PLWM.Utils.CnvToStr(Dr["Prop_value"]) == "All" ? (int?)null : PLWM.Utils.CnvToInt(Dr["Prop_dtl_id"]),
                         PropSpecValue = PLWM.Utils.CnvToStr(Dr["Prop_value"]),
                     });
                 }
@@ -159,7 +159,7 @@ namespace ZerooriBO
                 XDocument doc = new XDocument(new XElement("Root",
                 new XElement("as_mode", "LD"),
                 new XElement("ai_pageno", FilterData.PageNo),
-                new XElement("as_sessionid",""),
+                new XElement("as_sessionid", ""),
                 new XElement("as_Option", FilterData.Category.PropSpecDtlId),
                 new XElement("as_location", FilterData.Location.ValMembr),
                 new XElement("as_sortby", FilterData.SortBy.ValMembr)

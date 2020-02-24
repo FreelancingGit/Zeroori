@@ -24,6 +24,7 @@ namespace ZerooriBO
         public ComDisValDCol AgeCol { get => _AgeCol; set => _AgeCol = value; }
         public ComDisValDCol SortByCol { get => _SortByCol; set => _SortByCol = value; }
         public ZA3720BDCol ClasifiedsDataCol { get => _ClasifiedsDataCol; set => _ClasifiedsDataCol = value; }
+        public ZA3720BDCol ClasifiedsFilterDataCol { get => _ClasifiedsDataCol; set => _ClasifiedsDataCol = value; }
         public ComDisValDCol PageNoCol { get => _pageNoCol; set => _pageNoCol = value; }
     }
 }

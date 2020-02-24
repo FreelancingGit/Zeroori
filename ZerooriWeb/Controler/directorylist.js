@@ -1,4 +1,4 @@
-﻿angular.module("ZerooriApp", ['ngCookies']).controller("directorylist", function ($scope, $http, $cookies) {
+﻿angular.module("ZerooriApp", ['ngCookies']).controller("directorylist", function ($scope, $http, $cookies,$filter) {
     $scope.urlArray = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
     $scope.Page = 'directorylist';
     $scope.CurrentURL = $scope.urlArray[0];
@@ -24,9 +24,9 @@
     $scope.NavFourVis = true;
     $scope.NavFiveVis = true;
     $scope.isLoading = false;
-    
+    $scope.PageCount = [];
     $scope.DirCol = {};
-    
+    $scope.SelectedPage = 0; 
     $scope.ViewData = {
         FistNam: "",
         LastNam: "",
@@ -80,6 +80,8 @@
             $scope.SessionId = $cookies.get($scope.ZaKey);
             $scope.ViewData.ZaBase.SessionId = $cookies.get($scope.ZaKey);
             $scope.LoadInit();
+            $scope.query = $cookies.get('searchID');
+            $scope.search();
         }
 
     }, function errorCallback(response) {
@@ -88,11 +90,11 @@
 
     $scope.ShowPage = function (PageNum) {
 
-        var PageNo = 1;
+        var PageNo = $scope.SelectedPage == 0 ? 1 : $scope.SelectedPage;
 
         if (PageNum == 'L') {
 
-            PageNo = PageNo - 2;
+            PageNo = PageNo - 1;
         }
         else if (PageNum == 'R') {
             PageNo = PageNo + 1;
@@ -104,7 +106,7 @@
         if (PageNo <= 1)
             PageNo = 1
 
-
+        $scope.SelectedPage = PageNo;
         $scope.ViewData.PageNo = PageNo;
         $scope.LoadData();
 
@@ -149,11 +151,20 @@
 
                     $scope.DirCol = response.data.DirCol;
 
-                    
+                    $scope.filterdata();
                     var PageNo = parseInt(response.data.PageNoCol[0].DisPlyMembr);
                     var TotalPages = response.data.PageNoCol[0].ValMembr;
 
                     $scope.NavOne = PageNo + 0;
+                    var start = 1;
+                    if (PageNo > 2) start = PageNo - 2
+                    var total = 5;
+                    if (TotalPages < 5) total = TotalPages;
+                    $scope.PageCount = new Array(total);
+                    for (var i = 1; i <= total; i++) {
+                        $scope.PageCount[i - 1] = start;
+                        start = start + 1;
+                    }
 
                     if (PageNo + 1 <= TotalPages) {
                         $scope.NavTwo = PageNo + 1;
@@ -227,8 +238,19 @@
 
                         var PageNo = parseInt(response.data.PageNoCol[0].DisPlyMembr);
                         var TotalPages = response.data.PageNoCol[0].ValMembr;
-
+                        $scope.filterdata();
                         $scope.NavOne = PageNo + 0;
+
+                        var start = 1;
+                        if (PageNo > 2) start = PageNo - 2
+                        var total = 5;
+                        if (TotalPages < 5) total = TotalPages;
+                        $scope.PageCount = new Array(total);
+                        for (var i = 1; i <= total; i++) {
+                            $scope.PageCount[i - 1] = start;
+                            start = start + 1;
+                        }
+
 
                         if (PageNo + 1 <= TotalPages) {
                             $scope.NavTwo = PageNo + 1;
@@ -410,5 +432,85 @@
     $scope.navigate = function (URL) {
         url = URL + '.html?url=' + $scope.Page;
         $(location).attr('href', url);
+    };
+
+    //new code for search
+    $scope.filterdata = function () {
+        // init
+        $scope.filteredItems = [];
+        $scope.groupedItems = [];
+        $scope.itemsPerPage = 6;
+        $scope.pagedItems = [];
+        $scope.currentPage = 0;
+        $scope.items = $scope.DirCol;
+
+        var searchMatch = function (haystack, needle) {
+            if (!needle) {
+                return true;
+            }
+            console.log(haystack);
+            return haystack.toString().toLowerCase().indexOf(needle.toLowerCase()) !== -1;
+        };
+
+        // init the filtered items
+        $scope.search = function () {
+            $scope.filteredItems = $filter('filter')($scope.items, function (item) {
+                for (var attr in item) {
+                    if (searchMatch(item[attr], $scope.query))
+                        return true;
+                }
+                return false;
+            });
+
+            $scope.currentPage = 0;
+            // now group by pages
+            $scope.groupToPages();
+        };
+
+        // calculate page in place
+        $scope.groupToPages = function () {
+            $scope.pagedItems = [];
+
+            for (var i = 0; i < $scope.filteredItems.length; i++) {
+                if (i % $scope.itemsPerPage === 0) {
+                    $scope.pagedItems[Math.floor(i / $scope.itemsPerPage)] = [$scope.filteredItems[i]];
+                } else {
+                    $scope.pagedItems[Math.floor(i / $scope.itemsPerPage)].push($scope.filteredItems[i]);
+                }
+            }
+        };
+
+        $scope.range = function (start, end) {
+            var ret = [];
+            if (!end) {
+                end = start;
+                start = 0;
+            }
+            for (var i = start; i < end; i++) {
+                ret.push(i);
+            }
+            return ret;
+        };
+
+        $scope.prevPage = function () {
+            if ($scope.currentPage > 0) {
+                $scope.currentPage--;
+            }
+        };
+
+        $scope.nextPage = function () {
+            if ($scope.currentPage < $scope.pagedItems.length - 1) {
+                $scope.currentPage++;
+            }
+        };
+
+        $scope.setPage = function () {
+            $scope.currentPage = this.n;
+        };
+
+        // functions have been describe process the data for display
+        $scope.search();
+
+
     };
 })

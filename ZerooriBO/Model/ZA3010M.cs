@@ -273,14 +273,17 @@ namespace ZerooriBO
 
                 if (dtComn.Rows.Count > 0)
                 {
-                    UsageData.PackCol.Add(new ZA3010D()
+                    foreach (DataRow item in dtComn.Rows)
                     {
-                        PackDealMastID = PLWM.Utils.CnvToInt(dtComn.Rows[0]["pack_deal_mast_id"]),
-                        BusinessName = PLWM.Utils.CnvToStr(dtComn.Rows[0]["busines_Name"]),
-                        Location = PLWM.Utils.CnvToStr(dtComn.Rows[0]["geo_Location"]),
-                        Email = PLWM.Utils.CnvToStr(dtComn.Rows[0]["Email"]),
-                        CompanyLogo= PLWM.Utils.CnvToStr(dtComn.Rows[0]["logo_img_url"]),
-                    });
+                        UsageData.PackCol.Add(new ZA3010D()
+                        {
+                            PackDealMastID = PLWM.Utils.CnvToInt(item["pack_deal_mast_id"]),
+                            BusinessName = PLWM.Utils.CnvToStr(item["busines_Name"]),
+                            Location = PLWM.Utils.CnvToStr(item["geo_Location"]),
+                            Email = PLWM.Utils.CnvToStr(item["Email"]),
+                            CompanyLogo = PLWM.Utils.CnvToStr(item["logo_img_url"]),
+                        });
+                    }                   
                 }
                 if (dtUser.Rows.Count > 0)
                 {
