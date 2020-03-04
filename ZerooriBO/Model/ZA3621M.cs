@@ -71,11 +71,11 @@ namespace ZerooriBO
                         }
                     };
                 }
-                
-               
 
-                
 
+
+
+                SignUpV.LocationCol.Add(new ZA2000D() { PlaceName = "Location", CityMastID = "-1" });
                 foreach (DataRow dr in dtLocation.Rows)
                 {
                     SignUpV.LocationCol.Add(new ZA2000D()

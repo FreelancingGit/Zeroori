@@ -128,6 +128,8 @@
                     if (response.data.Price != undefined)
                         $scope.SetSaveData(response);
                     $scope.LocationCol = response.data.LocationCol;
+                    $scope.ViewData.Location = response.data.LocationCol[0];
+                    //$scope.SelectedData.FuelType = response.data.FuelTypeCol[0];
                 } // User Login Mode
             }, function errorCallback(response) {
                 alert(response);

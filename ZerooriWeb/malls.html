@@ -195,7 +195,7 @@
                 <div class="col-lg-12">
                     <div class="search-sec">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="How can i help you?"  ng-model="query" ng-change="search()">
+                            <input type="text" class="form-control" placeholder="How can i help you?" ng-model="query" ng-change="search()">
                             <div class="input-group-btn">
                                 <button class="btn btn-default search_icon" type="button"><i class="fa fa-search-plus"></i></button>
                             </div>
@@ -396,37 +396,39 @@
 
                 <div class="col-lg-6">
 
-                    <div class="mall-listing-sec">
+                    <div class="mall-listing-sec" ng-repeat="Mall in pagedItems[currentPage]">
 
                         <div class="mall-items-list">
-                            <div class="row" ng-repeat="Mall in pagedItems[currentPage]">
-                                <div class="col-5">
-                                    <div class="mall-image"><a href="#" ng-click="ShowItemDetail(Mall.MallAdMastId)"><img src="{{Mall.MallMastImgPath}}" alt="" /></a></div>
-                                </div>
-                                <div class="col-7">
-                                    <div class="mall-info">
-                                        <h3><a href="mallsdetail.html">{{Mall.MallName}}</a></h3>
+                            <div class="item">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <div class="mall-image"><a href="#" ng-click="ShowItemDetail(Mall.MallAdMastId)"><img src="{{Mall.MallMastImgPath}}" alt="" /></a></div>
+                                    </div>
+                                    <div class="col-9">
+                                        <div class="mall-info">
+                                            <h3><a href="mallsdetail.html">{{Mall.MallName}}</a></h3>
 
-                                        <div class="txt-box">
-                                            <img class="icon" src="images/lcation.png" alt="">
-                                            <div class="txt">{{Mall.MallLocation}}</div>
-                                        </div>
-                                        <div class="txt-box show">
-                                            <img class="icon" src="images/icon-time.png" alt="">
-                                            <div class="txt">
-                                                {{
+                                            <div class="txt-box">
+                                                <img class="icon" src="images/lcation.png" alt="">
+                                                <div class="txt">{{Mall.MallLocation}}</div>
+                                            </div>
+                                            <div class="txt-box show">
+                                                <img class="icon" src="images/icon-time.png" alt="">
+                                                <div class="txt">
+                                                    {{
 Mall.MallStartTiming
-                                                }} am to {{Mall.MallEndTiming}}
+                                                    }} am to {{Mall.MallEndTiming}}
+                                                </div>
+                                            </div>
+
+                                            <div class="txt-box show">
+                                                <img class="icon" src="images/icon-web.png" alt="">
+                                                <div class="txt">{{Mall.MallUrl}}</div>
                                             </div>
                                         </div>
-
-                                        <div class="txt-box show">
-                                            <img class="icon" src="images/icon-web.png" alt="">
-                                            <div class="txt">{{Mall.MallUrl}}</div>
-                                        </div>
                                     </div>
-                                </div>
-                            </div><!--row-->
+                                </div><!--row-->
+                            </div>
                         </div><!--mall-items-list-->
 
 

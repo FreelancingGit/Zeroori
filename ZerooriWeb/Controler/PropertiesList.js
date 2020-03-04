@@ -409,6 +409,7 @@
                 return true;
             }
             console.log(haystack);
+            $cookies.remove('searchID');
             return haystack.toLowerCase().indexOf(needle.toLowerCase()) !== -1;
         };
 

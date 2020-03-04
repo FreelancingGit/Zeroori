@@ -246,22 +246,22 @@
 
 
                         <div class="form-profile">
-                            <form>
+                            <form autocomplete="false">
                                 <h4>Change Password</h4>
                                 <div class="row">
                                     <div class="form-group col-sm-4">
                                         <div class="f-text">Old Password</div>
-                                        <input type="password"  ng-model="ViewData.OldPasswd"  class="form-control" value="123456">
+                                        <input type="password"  ng-model="ViewData.OldPasswd"  class="form-control" value="123456" autocomplete="off">
                                     </div>
 
                                     <div class="form-group col-sm-4">
                                         <div class="f-text">New Password</div>
-                                        <input type="password"  ng-model="ViewData.Passwd"  class="form-control">
+                                        <input type="password"  ng-model="ViewData.Passwd"  class="form-control" autocomplete="off">
                                     </div>
 
                                     <div class="form-group col-sm-4">
                                         <div class="f-text">Confirm New Password</div>
-                                        <input type="password"  ng-model="ViewData.Cpasswd" class="form-control">
+                                        <input type="password"  ng-model="ViewData.Cpasswd" class="form-control" autocomplete="off">
                                     </div>
 
                                 </div>
